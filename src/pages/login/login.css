@@ -1,13 +1,13 @@
 .container-Login{
     border: solid 1px ;
-    background-color: lightgrey;
+    background-color: white;
     height: 100vh;
 }
 .container-FormLogin{
     border-radius: 5px;
-    background-color: white;
+    background-color: rgba(224, 224, 224, 0.1);
     margin: 5% 10% 8% 10%;
-    height: 80vh
+    height: 80vh;
 
 }
 
@@ -23,7 +23,6 @@
     width: 400px;
 }
 .container-img{
-    background-color: chocolate;
     height: 80vh;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
