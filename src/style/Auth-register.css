@@ -1,9 +1,9 @@
-.container-Login{
+.container-Register{
     border: solid white ;
     background-color: white;
     height: 90vh;
 }
-.container-FormLogin{
+.container-FormRegister{
     border-radius: 5px;
     background-color: rgba(224, 224, 224, 0.1);
     margin: 5% 10% 8% 10%;
@@ -11,13 +11,13 @@
 
 }
 
-.container-FormLogin h3{
+.container-FormRegister h3{
     text-align: center;
     margin-bottom: 30px;
 }
-.display{
+.display-register{
     position: relative;
-    margin: 150px 50px 50px 140px;
+    margin: 40px 50px 50px 140px;
 }
 .size{
     width: 400px;
@@ -28,8 +28,6 @@
     border-bottom-right-radius: 5px;
     object-fit: cover;
     background-image: url("https://media.istockphoto.com/id/947663966/vector/programming-design-concept.jpg?s=612x612&w=0&k=20&c=7ACckqE60fQkt8yLlFEkcVuhoBZWwwfUhyA2XaOZrGQ=");
-
-
 }
 .container-input .btn{
     margin-top: 20px;

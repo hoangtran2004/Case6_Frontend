@@ -2,7 +2,7 @@ import React from 'react';
 import NavbarHome from "../../component/Nav-bar/Navbar-home";
 import {Outlet} from "react-router-dom";
 
-function Home() {
+function HomeUser() {
     return (
        <div className={'container-fluid'}>
            <div className='row'>
@@ -16,4 +16,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default HomeUser;

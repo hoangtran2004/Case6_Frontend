@@ -1,25 +1,27 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import Home from "./page/home/Home";
+import HomeUser from "./page/user/Home-user";
 import AccessAccount from "./page/Access-account";
-import WorkLogin from "./page/Work-login";
-import AuthLogin from "./page/Auth-login";
-import WorkRegister from "./page/Work-register";
+import WorkLogin from "./page/company/Work-login";
+import AuthLogin from "./page/user/Auth-login";
+import WorkRegister from "./page/company/Work-register";
+import AuthRegister from "./page/user/Auth-register";
 
 function App() {
-  return (
-    <div>
-        <Routes>
-            <Route path={'auth/login'} element={<AuthLogin/>}></Route>
-            <Route path={''} element={<Home/>}>
-                <Route path={'access-account'} element={<AccessAccount/>}></Route>
-                <Route path={'work/login'} element={<WorkLogin/>}></Route>
-                {/*<Route path={'auth/login'} element={<AuthLogin/>}></Route>*/}
+    return (
+        <div>
+            <Routes>
+                <Route path={''} element={<HomeUser/>}>
+                    <Route path={'access-account'} element={<AccessAccount/>}></Route>
+                </Route>
+                <Route path={'work/company'} element={<WorkLogin/>}></Route>
                 <Route path={'work/register'} element={<WorkRegister/>}/>
-            </Route>
-        </Routes>
-    </div>
-  );
+                <Route path={'auth/company'} element={<AuthLogin/>}></Route>
+                <Route path={'auth/register'} element={<AuthRegister/>}></Route>
+
+            </Routes>
+        </div>
+    );
 }
 
 export default App;

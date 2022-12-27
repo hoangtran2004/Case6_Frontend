@@ -1,0 +1,41 @@
+import React from 'react';
+import {Field, Form, Formik} from "formik";
+import '../../style/Auth-login.css'
+
+function WorkLogin() {
+    return (
+        <div className="container-Login">
+            <div className="container-FormLogin">
+                <div className="row">
+                    <div className="col-6 ">
+                        <div className="container-input display">
+                            <Formik initialValues={{}} onSubmit={() => {
+
+                            }}>
+                                <Form>
+                                    <h3>Đăng nhập với doanh nghiệp</h3>
+                                    <div className="form-group">
+                                        <label>Tài khoản</label>
+                                        <Field type="text" value={''} className="form-control size"
+                                               placeholder="Tài khoản"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Mật khẩu</label>
+                                        <Field type="password" value={''} className="form-control size"
+                                               placeholder="Mật khẩu"/>
+                                    </div>
+                                    <button className="btn btn-primary size">Đăng nhập</button>
+                                </Form>
+                            </Formik>
+                        </div>
+                    </div>
+                    <div className="col-6">
+                        <div className="container-img"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default WorkLogin;
