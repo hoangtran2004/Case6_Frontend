@@ -1,17 +1,16 @@
-import {Formik, Form, Field} from "formik";
+import {Field, Form, Formik} from "formik";
 import '../../style/Auth-login.css'
-import {Link} from "react-router-dom";
 
 export default function AuthLogin() {
     return (
         <>
-
             <div className="container-Login">
                 <div className="container-FormLogin">
                     <div className="row">
                         <div className="col-6 ">
                             <div className="container-input display">
                                 <Formik initialValues={{}} onSubmit={() => {
+
                                 }}>
                                     <Form>
                                         <h3>Đăng nhập với người dùng</h3>
@@ -34,7 +33,6 @@ export default function AuthLogin() {
                             <div className="container-img"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </>
