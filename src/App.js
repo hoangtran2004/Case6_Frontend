@@ -10,10 +10,11 @@ function App() {
   return (
     <div>
         <Routes>
+            <Route path={'auth/login'} element={<AuthLogin/>}></Route>
             <Route path={''} element={<Home/>}>
                 <Route path={'access-account'} element={<AccessAccount/>}></Route>
                 <Route path={'work/login'} element={<WorkLogin/>}></Route>
-                <Route path={'auth/login'} element={<AuthLogin/>}></Route>
+                {/*<Route path={'auth/login'} element={<AuthLogin/>}></Route>*/}
                 <Route path={'work/register'} element={<WorkRegister/>}/>
             </Route>
         </Routes>
