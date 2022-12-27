@@ -1,8 +1,8 @@
 import {Formik, Form, Field} from "formik";
-import '../login/login.css'
+import '../../style/login.css'
 import {Link} from "react-router-dom";
 
-export default function LoginUser() {
+export default function AuthLogin() {
     return (
         <>
 
