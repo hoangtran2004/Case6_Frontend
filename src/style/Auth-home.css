@@ -1,0 +1,13 @@
+.search-input{
+    width: 100px;
+}
+.contain-search{
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+.contain-search button{
+    width: 150px;
+}
+.contain-search .form-control{
+    background-color:rgba(29, 65, 245, 0.1)
+}
