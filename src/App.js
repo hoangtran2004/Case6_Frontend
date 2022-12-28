@@ -7,6 +7,7 @@ import AuthLogin from "./page/user/Auth-login";
 import WorkRegister from "./page/company/Work-register";
 import AuthRegister from "./page/user/Auth-register";
 import AuthListJob from "./page/user/Auth-listJob";
+import NavbarWork from "./component/Nav-bar/Navbar-Work";
 function App() {
     return (
         <div>
@@ -15,7 +16,9 @@ function App() {
                     <Route path={''} element={<AuthListJob/>}></Route>
                     <Route path={'access-account'} element={<AccessAccount/>}></Route>
                 </Route>
-                <Route path={'work/login'} element={<WorkLogin/>}></Route>
+                <Route path={'work/login'} element={<WorkLogin/>}>
+                    <Route path={'work-page'} element={<NavbarWork/>}></Route>
+                </Route>
                 <Route path={'work/register'} element={<WorkRegister/>}/>
                 <Route path={'auth/login'} element={<AuthLogin/>}></Route>
                 <Route path={'auth/register'} element={<AuthRegister/>}></Route>

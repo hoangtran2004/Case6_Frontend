@@ -20,9 +20,17 @@ function WorkLogin() {
 
     const handleWorkLogin = async (values) =>{
         let checkWorkLogin = await dispatch(workLogin(values))
-        console.log(values)
         console.log(checkWorkLogin)
-        await navigate('/')
+        try {
+            if(checkWorkLogin.payload.token){
+                navigate('/work-page')
+                console.log("anh Linh ")
+            }else {
+                alert(" Tài khoản hoặc mật khu doanh nghiệp không chính xác")
+            }
+        }catch (e){
+            console.log(e)
+        }
     }
 
 
@@ -55,13 +63,13 @@ function WorkLogin() {
                                                placeholder="Mật khẩu"/>
                                         <ErrorMessage name={'password'}/>
                                     </div>
-                                    <button className="btn btn-primary size">Đăng nhập</button>
+                                    <button type={'submit'} className="btn btn-primary size">Đăng nhập</button>
                                 </Form>
                             </Formik>
                         </div>
                     </div>
                     <div className="col-6">
-                        <div className="container-img"></div>
+                        <div className="container-imgWork"></div>
                     </div>
                 </div>
             </div>
