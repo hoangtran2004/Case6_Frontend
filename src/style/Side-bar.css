@@ -1,0 +1,7 @@
+.container-sideBar{
+    border: solid 1px lightgrey;
+    border-radius: 3px;
+    max-height: calc(100vh - 200px);
+}
+.container-sideBar .row{
+}
