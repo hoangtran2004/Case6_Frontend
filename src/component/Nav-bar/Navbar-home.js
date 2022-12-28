@@ -4,11 +4,10 @@ import '../../style/Navbar-home.css'
 function NavbarHome() {
 
     return (
-
-            <div className={'row'}>
+            <div className={'row'} >
                 <div className="col-12">
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light" >
-                        <a className="navbar-brand" href="Case6_Frontend/src/component/Nav-bar/Navbar-home#">Navbar</a>
+                    <nav className="navbar navbar-expand-lg navbar-light" >
+                        <Link className="navbar-brand" to="/"><img src="https://image.winudf.com/v2/image1/Y29tLmxvZ28uYW5pbWFsX3NjcmVlbl84XzE1NjIxNTA1MzFfMDM2/screen-8.jpg?fakeurl=1&type=.webp" alt="logo"/></Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                                 aria-label="Toggle navigation">
@@ -18,13 +17,15 @@ function NavbarHome() {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item active">
-                                    <a className="nav-link" href="Case6_Frontend/src/component/Nav-bar/Navbar-home#">Home <span className="sr-only">(current)</span></a>
+                                    <Link className="nav-link" to="#">Tìm việc làm<span className="sr-only">(current)</span></Link>
                                 </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="Case6_Frontend/src/component/Nav-bar/Navbar-home#">Link</a>
+                                <li className="nav-item active">
+                                    <Link className="nav-link" to="#">Danh sách công ty <span className="sr-only">(current)</span></Link>
                                 </li>
+
                                 <Link to={'/access-account'} className={'login'}><span>Đăng Nhập</span></Link>
                             </ul>
+
                         </div>
                     </nav>
                 </div>

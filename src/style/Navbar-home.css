@@ -3,8 +3,9 @@ nav{
     width: 100%;
     z-index: 999;
     top:0;
-    border-bottom: 1px solid;
+    border-bottom: solid 1px lightgrey;
     background: white !important;
+
 }
 .login{
     position: fixed;
@@ -15,4 +16,9 @@ nav{
 a:hover{
     color: gray !important;
     text-decoration: none !important;
+}
+.navbar img{
+    width: 70px;
+    height: 40px;
+    object-fit: cover;
 }
