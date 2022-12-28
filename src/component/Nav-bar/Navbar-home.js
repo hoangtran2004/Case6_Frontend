@@ -4,6 +4,7 @@ import '../../style/Navbar-home.css'
 function NavbarHome() {
 
     return (
+
             <div className={'row'}>
                 <div className="col-12">
                     <nav className="navbar navbar-expand-lg navbar-light bg-light" >
@@ -24,7 +25,6 @@ function NavbarHome() {
                                 </li>
                                 <Link to={'/access-account'} className={'login'}><span>Đăng Nhập</span></Link>
                             </ul>
-
                         </div>
                     </nav>
                 </div>
