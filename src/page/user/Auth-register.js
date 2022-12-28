@@ -13,23 +13,25 @@ function AuthRegister() {
     const handleRegister = async (values) => {
         let flag = false;
         do {
-            if (values.name.length < 8 || values.password !== values.repeatPassword) {
-                alert("Các trường của bạn đã nhập sai")
+            if (values.name.length < 8 ) {
+                alert("Tên người dùng phải từ 8 ký tự")
                 values.name = ''
-                values.password = ''
-                values.repeatPassword = ''
                 flag = true
             } else if (values.password.length < 8) {
                 alert(" Mật khẩu của bạn quá ngắn hãy nhập lại")
                 flag = true
+            } else if(values.password !== values.repeatPassword){
+                alert('Mật khẩu không hợp lệ')
+                    flag = true
             }
-           else {
-               let checkRegister = await dispatch(authRegister(values))
+            else {
+                let checkRegister = await dispatch(authRegister(values))
                 console.log(checkRegister)
-                flag= true
+                if (checkRegister.payload.checkRegister === true)
+                    navigate('/auth/login')
+                flag = true
             }
         } while (flag === false)
-
     }
 
     return (

@@ -4,24 +4,28 @@ import * as Yup from "yup";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {authLogin} from "../../service/Auth-service";
 
 export default function AuthLogin() {
     const navigate = useNavigate();
     const dispatch = useDispatch ();
 
     const SignupSchema = Yup.object().shape({
-        username: Yup.string()
-            .min(5, 'Tối thiểu 5 ký tự')
-            .max(30, 'Tối đa 30 ký tự')
-            .required("Vui lòng nhập"),
         password: Yup.string()
             .min(5, 'Tối thiểu 5 ký tự')
             .max(30, 'Tối đa 30 ký tự')
             .required('Vui lòng nhập')
     })
 
-    const handleChange = async (value) => {
+    const handleAuthLogin = async (value) => {
+        let checkAuthLogin = await dispatch(authLogin(value))
+        console.log(checkAuthLogin)
+        if(checkAuthLogin.payload.checkLogin === false){
+            alert('Tài khoản hoặc mật khẩu không chính xác')
 
+        }else {
+            navigate('/')
+        }
     }
     return (
         <>
@@ -31,20 +35,20 @@ export default function AuthLogin() {
                         <div className="col-6 ">
                             <div className="container-input display">
                                 <Formik initialValues={{
-                                    username: '',
+                                    email: '',
                                     password: ''
                                 }}
                                         validationSchema={SignupSchema}
-                                        onSubmit={(values) => {
-
+                                        onSubmit={(values,{resetForm}) => {
+                                            handleAuthLogin(values).then()
+                                            resetForm()
                                         }}>
                                     <Form>
                                         <h3>Đăng nhập với người dùng</h3>
                                         <div className="form-group">
-                                            <label>Tài khoản</label>
-                                            <Field type="text" className="form-control size" name={'username'}
-                                                   placeholder="Tài khoản"/>
-                                            <ErrorMessage name={'username'}/>
+                                            <label>Email</label>
+                                            <Field type="email" className="form-control size" name={'email'}
+                                                   placeholder="Tài khoản email"/>
                                         </div>
                                         <div className="form-group">
                                             <label>Mật khẩu</label>
@@ -52,7 +56,7 @@ export default function AuthLogin() {
                                                    placeholder="Mật khẩu"/>
                                             <ErrorMessage name={'password'}/>
                                         </div>
-                                        <button className="btn btn-primary size">Đăng nhập</button>
+                                        <button type={'submit'} className="btn btn-primary size">Đăng nhập</button>
                                     </Form>
                                 </Formik>
                             </div>
