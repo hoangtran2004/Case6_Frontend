@@ -4,14 +4,15 @@ export default function SideBar() {
     return(
         <>
             <div className="container-sideBar">
-                <div className="row">
+                <div className="row" style={{padding:'12px'}}>
                     <div className="col-12">
-                        <h4>Lọc tìm kiếm của bạn</h4>
+                        <p>Lọc tìm kiếm của bạn</p>
+                        <hr/>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12">
-                        <h5>Loại công việc</h5>
+                    <div className="col-12 type-job">
+                        <p style={{marginLeft:"14px", fontSize:"14px"}}>Loại công việc</p>
                         <Link to={'#'}>job1</Link>
                         <br/>
                         <Link to={'#'}>job2</Link>

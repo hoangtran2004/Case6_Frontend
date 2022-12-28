@@ -1,7 +1,18 @@
 .container-sideBar{
     border: solid 1px lightgrey;
-    border-radius: 3px;
-    max-height: calc(100vh - 200px);
+    border-radius: 4px;
+    width: 330px;
+    margin-left: 30px;
 }
-.container-sideBar .row{
+.container-sideBar p{
+    font-weight: 400;
+    font-size: 17px;
+}
+.container-sideBar .type-job{
+
+}
+
+
+hr {
+    /*margin-bottom: 0rem !important;*/
 }
