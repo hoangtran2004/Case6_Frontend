@@ -7,11 +7,28 @@ nav{
     background: white !important;
 
 }
+.name-user{
+    position: relative;
+    right: 7rem;
+    margin-top: 15px;
+}
 .login{
-    position: fixed;
-    right: 90px;
+    position: relative;
+    right: 130px;
     color: black;
     line-height: 40px;
+}
+.logout{
+    border: none;
+    background: white;
+    position: relative;
+    margin-left: -40px;
+    margin-right: 0;
+    color: black;
+    right: 36px;
+}
+.logout:hover{
+    color: lightslategrey;
 }
 a:hover{
     color: gray !important;

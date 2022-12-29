@@ -6,7 +6,7 @@ function WorkRegister(props) {
 
     return (
        <>
-
+            <h1>lìn MA</h1>
        </>
     );
 }

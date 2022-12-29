@@ -3,7 +3,7 @@ import {authLogin, authRegister} from "../../service/Auth-service";
 
 
 const initialState = {
-    currentAuth: JSON.parse(localStorage.getItem('auth'))
+    currentAuth: {}
 }
 
 const authSlice = createSlice({
@@ -13,7 +13,9 @@ const authSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(authLogin.fulfilled, (state, action)=>{
             state.currentAuth = action.payload
-            localStorage.setItem('auth', JSON.stringify(action.payload))
+            console.log(action.payload)
+            localStorage.setItem('token',action.payload.token)
+            localStorage.setItem('name',action.payload.user.name)
         })
         builder.addCase(authRegister.fulfilled,(state, action)=>{
             state.currentAuth = action.payload

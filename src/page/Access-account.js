@@ -4,7 +4,7 @@ import '../style/Access-account.css'
 
 function AccessAccount() {
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid' style={{marginTop:'67px'}}>
             <div className='row'>
                 <div className='col-6 left display-left'>
                     <div className={''}>

@@ -1,13 +1,74 @@
-.search-input{
+.search-input {
     width: 100px;
 }
-.contain-search{
-    margin-top: 25px;
+
+.contain-search {
+    margin-top: 6rem;
     margin-bottom: 20px;
 }
-.contain-search button{
+
+.contain-search button {
     width: 150px;
 }
-.contain-search .form-control{
-    background-color:rgba(29, 65, 245, 0.1)
+
+.contain-search .form-control {
+    background-color: rgba(29, 65, 245, 0.1)
+}
+
+.container-listJob .main {
+    padding: 20px;
+}
+
+.container-listJob .card-job {
+    border: solid 1px lightgrey;
+    border-radius: 4px;
+    height: 230px;
+    margin-left: 65px;
+    margin-bottom: 35px;
+}
+
+.container-listJob {
+    margin-left: 18px;
+}
+
+.container-listJob .card-logo {
+    height: 60px;
+    width: 40px;
+    object-fit: cover;
+}
+
+.job-description {
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.companyName {
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 400;
+    color: royalblue;
+
+}
+
+.container-listJob .sideBar{
+    margin-top: 20px;
+}
+
+.description {
+    padding: 2px;
+    font-size: 14px;
+}
+.icon-description{
+    width: 15px;
+    height: 15px;
+    object-fit: cover;
+    margin-right: 5px;
 }
