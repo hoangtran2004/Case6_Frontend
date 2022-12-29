@@ -29,6 +29,10 @@ function WorkRegister() {
          if (checkRegister.payload.checkRegister===true){
              navigate('/work/login')
          }
+         else {
+
+         }
+
      }
 
     return (
@@ -39,13 +43,13 @@ function WorkRegister() {
                         <div className="container-input display">
                             <Formik initialValues={{
                                 email: '',
-                                name: '',
+                                nameCompany: '',
                                 phoneNumber: '',
                                 address: ''
                             }}
                                     validationSchema={SignupSchema}
                                     onSubmit={(values,{resetForm}) => {
-                                        handleWorkRegister(values).then()
+                                        handleWorkRegister(values)
                                         resetForm()
                                         console.log(values)
                                     }}>
@@ -59,7 +63,7 @@ function WorkRegister() {
                                     </div>
                                     <div className="form-group">
                                         <label>Tên doanh nghiệp</label>
-                                        <Field type="text" required className="form-control size" name={'name'}
+                                        <Field type="text" required className="form-control size" name={'nameCompany'}
                                                placeholder="Tên doanh nghiệp"/>
                                         <ErrorMessage name={'nameCompany'}/>
                                     </div>
@@ -75,7 +79,7 @@ function WorkRegister() {
                                                placeholder="Địa chỉ"/>
                                         <ErrorMessage name={'address'}/>
                                     </div>
-                                    <button type={'submit'} style={{maxWidth:"25rem"}} className="btn btn-primary size">Đăng kí</button>
+                                    <button type={'submit'} className="btn btn-primary size">Đăng kí</button>
                                 </Form>
                             </Formik>
                         </div>

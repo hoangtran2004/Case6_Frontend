@@ -1,7 +1,10 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import '../../style/Work-navbar.css'
 function NavbarWork(props) {
+
+    const navigate = useNavigate()
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light work-navbar">
@@ -11,13 +14,17 @@ function NavbarWork(props) {
                     <ul className="navbar-nav">
 
                         <li className="nav-item ">
-                            <Link to={'#'} className="add"> Thêm tin tuyển dụng</Link>
+                            <Link to={'add-job'} className="add"> Thêm tin tuyển dụng</Link>
                         </li>
                         <li className="nav-item ">
                             <Link to={'#'} className="edit">Sửa thông tin doanh nghiệp</Link>
                         </li>
                         <li className="nav-item ">
-                            <Link to={'#'} className="logout">Đăng xuất</Link>
+                            <button className={'logout'} onClick={() => {
+                                localStorage.clear()
+                                navigate('/access-account')
+                            }}>Đăng xuất
+                            </button>
                         </li>
                     </ul>
                 </div>

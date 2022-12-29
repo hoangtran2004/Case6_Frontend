@@ -3,7 +3,7 @@ import {getCategory} from "../../service/Category-service";
 
 
 const initialState = {
-    category: {}
+    category: []
 }
 
 const categorySlice = createSlice({
@@ -11,8 +11,8 @@ const categorySlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: builder => {
-        builder.addCase(getCategory.fulfilled,(state, action) => {
-            state.work =action.payload
+        builder.addCase(getCategory.fulfilled, (state, action) => {
+            state.category = action.payload
         })
     }
 })

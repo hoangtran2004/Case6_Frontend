@@ -30,11 +30,7 @@ export default function SideBar() {
                 <div className="row">
                     <div className="col-12 type-job">
                         <p style={{marginLeft:"14px", fontSize:"14px"}}>Loại công việc</p>
-                        <Link to={'#'}>công nghệ thông tin</Link>
-                        <br/>
-                        <Link to={'#'}>Marketing</Link>
-                        <br/>
-                        <Link to={'#'}>Giáng viên </Link>
+
 
                     </div>
                 </div>
