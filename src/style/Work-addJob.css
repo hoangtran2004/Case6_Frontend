@@ -1,0 +1,46 @@
+.container-add-job {
+    background-color: black;
+    margin-top: 6em;
+    height: 50em;
+    object-fit: cover;
+    background-image: url("https://chandigarhupdates.com/wp-content/uploads/2021/08/IT-Companies-In-Panchkula.png") ;
+
+
+}
+
+.title-add-job {
+    text-align: center;
+    padding: 1em;
+}
+
+.form-add-job {
+    background-color: white;
+    border-radius: 0.5em;
+    height: 42em;
+
+}
+
+.name-item {
+    font-size: 0.7em;
+}
+
+.input-info-job {
+    width: 50em!important;
+    height: 2em!important;
+}
+.group-input{
+    margin-left: 1.5em!important;
+    margin-bottom: 0.3em!important;
+}
+.input-job{
+    padding: 2em;
+}
+.input-job .btn{
+    margin-left: 21.5em;
+    width: 9.5em;
+    margin-top: 2em;
+}
+.input-info-wage{
+    height: 2em!important;
+    width: 24.5em!important;
+}

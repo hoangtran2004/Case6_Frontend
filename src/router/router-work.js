@@ -13,7 +13,6 @@ function RouterWork() {
     }, [])
     return (
         <div>
-            <h1>abv</h1>
             <Outlet></Outlet>
         </div>
     )

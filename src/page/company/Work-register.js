@@ -29,6 +29,9 @@ function WorkRegister() {
          if (checkRegister.payload.checkRegister===true){
              navigate('/work/login')
          }
+         else {
+
+         }
 
      }
 
@@ -40,13 +43,14 @@ function WorkRegister() {
                         <div className="container-input display">
                             <Formik initialValues={{
                                 email: '',
-                                nameCompany: '',
+                                name: '',
                                 phoneNumber: '',
-                                address: ''
+                                address: '',
+                                image:'https://st.depositphotos.com/2218212/2938/i/600/depositphotos_29387653-stock-photo-facebook-profile.jpg'
                             }}
                                     validationSchema={SignupSchema}
                                     onSubmit={(values,{resetForm}) => {
-                                        handleWorkRegister(values)
+                                        handleWorkRegister(values).then()
                                         resetForm()
                                         console.log(values)
                                     }}>
@@ -60,9 +64,9 @@ function WorkRegister() {
                                     </div>
                                     <div className="form-group">
                                         <label>Tên doanh nghiệp</label>
-                                        <Field type="text" required className="form-control size" name={'nameCompany'}
+                                        <Field type="text" required className="form-control size" name={'name'}
                                                placeholder="Tên doanh nghiệp"/>
-                                        <ErrorMessage name={'nameCompany'}/>
+                                        <ErrorMessage name={'name'}/>
                                     </div>
                                     <div className="form-group">
                                         <label>Số điện thoại</label>

@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
-export function Hello(){
+export function HomeWork(){
     // localStorage.get("tokenCompany", 'avc')
     // let token = localStorage.getItem("tokenCompany")
     // let navigate = useNavigate()
@@ -12,6 +12,7 @@ export function Hello(){
     //     }
     // }, [])
     return (
+
         <h1>hello</h1>
     )
 }
