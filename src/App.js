@@ -7,20 +7,29 @@ import AuthLogin from "./page/user/Auth-login";
 import WorkRegister from "./page/company/Work-register";
 import AuthRegister from "./page/user/Auth-register";
 import AuthListJob from "./page/user/Auth-listJob";
+import RouterWork from "./router/router-work";
+import {Hello} from "./Hello";
+
 function App() {
     return (
         <div>
             <Routes>
-                <Route path={''} element={<HomeUser/>}>
-                    <Route path={''} element={<AuthListJob/>}></Route>
-                    <Route path={'access-account'} element={<AccessAccount/>}></Route>
-                </Route>
-                <Route path={'work/login'} element={<WorkLogin/>}>
-                </Route>
-                <Route path={'work/register'} element={<WorkRegister/>}/>
+                <Route path={'/access-account'} element={<AccessAccount/>}></Route>
+                //router user start
                 <Route path={'auth/login'} element={<AuthLogin/>}></Route>
                 <Route path={'auth/register'} element={<AuthRegister/>}></Route>
+                <Route path={'/'} element={<HomeUser/>}>
+                    <Route path={''} element={<AuthListJob/>}></Route>
+                </Route>
+                //router user end
 
+                //router work start
+                <Route path={'/work/login'} element={<WorkLogin/>}/>
+                <Route path={'/work/register'} element={<WorkRegister/>}/>
+                <Route path={'/work/*'} element={<RouterWork/>}>
+                        <Route path={''} element={<Hello/>}> </Route>
+                </Route>
+                //router work end
             </Routes>
         </div>
     );

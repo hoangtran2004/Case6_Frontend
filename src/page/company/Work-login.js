@@ -23,10 +23,10 @@ function WorkLogin() {
         console.log(checkWorkLogin)
         try {
             if(checkWorkLogin.payload.token){
-                navigate('/work-page')
+                navigate('/work/')
                 console.log("anh Linh ")
             }else {
-                alert(" Tài khoản hoặc mật khu doanh nghiệp không chính xác")
+                alert(" Tài khoản hoặc mật khẩu doanh nghiệp không chính xác")
             }
         }catch (e){
             console.log(e)
