@@ -1,6 +1,23 @@
 import '../style/Side-bar.css'
 import {Link} from "react-router-dom";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getCategory} from "../service/Category-service";
 export default function SideBar() {
+
+    const dispatch = useDispatch()
+
+
+    const category = useSelector(state =>{
+        console.log(state)
+      return state
+    })
+
+
+    useEffect(()=>{
+        dispatch(getCategory())
+    },[])
+
     return(
         <>
             <div className="container-sideBar">
@@ -13,13 +30,12 @@ export default function SideBar() {
                 <div className="row">
                     <div className="col-12 type-job">
                         <p style={{marginLeft:"14px", fontSize:"14px"}}>Loại công việc</p>
-                        <Link to={'#'}>job1</Link>
+                        <Link to={'#'}>công nghệ thông tin</Link>
                         <br/>
-                        <Link to={'#'}>job2</Link>
+                        <Link to={'#'}>Marketing</Link>
                         <br/>
-                        <Link to={'#'}>job3</Link>
-                        <br/>
-                        <Link to={'#'}>job4</Link>
+                        <Link to={'#'}>Giáng viên </Link>
+
                     </div>
                 </div>
             </div>

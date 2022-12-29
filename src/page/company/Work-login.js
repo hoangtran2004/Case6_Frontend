@@ -63,7 +63,7 @@ function WorkLogin() {
                                                placeholder="Mật khẩu"/>
                                         <ErrorMessage name={'password'}/>
                                     </div>
-                                    <button type={'submit'} className="btn btn-primary size">Đăng nhập</button>
+                                    <button type={'submit'} style={{maxWidth:"25rem"}} className="btn btn-primary size">Đăng nhập</button>
                                 </Form>
                             </Formik>
                         </div>

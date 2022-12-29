@@ -20,6 +20,8 @@
 }
 
 .container-listJob .card-job {
+    position: relative;
+    left: 22rem;
     border: solid 1px lightgrey;
     border-radius: 4px;
     height: 230px;
@@ -60,6 +62,7 @@
 
 .container-listJob .sideBar{
     margin-top: 20px;
+    position: fixed;
 }
 
 .description {

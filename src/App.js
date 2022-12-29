@@ -8,7 +8,8 @@ import WorkRegister from "./page/company/Work-register";
 import AuthRegister from "./page/user/Auth-register";
 import AuthListJob from "./page/user/Auth-listJob";
 import RouterWork from "./router/router-work";
-import {Hello} from "./Hello";
+import {HomeWork} from "./page/company/Home-work";
+import NavbarWork from "./component/Nav-bar/Navbar-work";
 
 function App() {
     return (
@@ -27,7 +28,8 @@ function App() {
                 <Route path={'/work/login'} element={<WorkLogin/>}/>
                 <Route path={'/work/register'} element={<WorkRegister/>}/>
                 <Route path={'/work/*'} element={<RouterWork/>}>
-                        <Route path={''} element={<Hello/>}> </Route>
+                    <Route path={''} element={<NavbarWork/>}> </Route>
+                    <Route path={''} element={<HomeWork/>}> </Route>
                 </Route>
                 //router work end
             </Routes>
