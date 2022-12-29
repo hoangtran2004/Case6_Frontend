@@ -7,7 +7,6 @@ import {useDispatch} from "react-redux";
 import {workLogin} from "../../service/Work-service";
 
 function WorkLogin() {
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -20,11 +19,9 @@ function WorkLogin() {
 
     const handleWorkLogin = async (values) =>{
         let checkWorkLogin = await dispatch(workLogin(values))
-        console.log(checkWorkLogin)
         try {
-            if(checkWorkLogin.payload.token){
-                navigate('/work/')
-                console.log("anh Linh ")
+            if(checkWorkLogin){
+                navigate('/work')
             }else {
                 alert(" Tài khoản hoặc mật khẩu doanh nghiệp không chính xác")
             }
@@ -32,7 +29,6 @@ function WorkLogin() {
             console.log(e)
         }
     }
-
 
     return (
         <div className="container-Login">
@@ -63,7 +59,7 @@ function WorkLogin() {
                                                placeholder="Mật khẩu"/>
                                         <ErrorMessage name={'password'}/>
                                     </div>
-                                    <button type={'submit'} className="btn btn-primary size">Đăng nhập</button>
+                                    <button type={'submit'} style={{maxWidth:"25rem"}} className="btn btn-primary size">Đăng nhập</button>
                                 </Form>
                             </Formik>
                         </div>

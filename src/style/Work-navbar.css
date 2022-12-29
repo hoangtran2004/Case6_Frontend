@@ -1,0 +1,22 @@
+.work-navbar{
+    height: 62px;
+}
+.add{
+    margin: 0 140px;
+    color: black;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+.edit{
+    position: relative;
+    left: 33rem;
+    color: black;
+    font-size: 18px;
+}
+.logout{
+    position: relative;
+    left: 39rem;
+    font-size: 18px;
+}

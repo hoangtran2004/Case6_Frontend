@@ -43,14 +43,13 @@ function WorkRegister() {
                         <div className="container-input display">
                             <Formik initialValues={{
                                 email: '',
-                                name: '',
+                                nameCompany: '',
                                 phoneNumber: '',
-                                address: '',
-                                image:'https://st.depositphotos.com/2218212/2938/i/600/depositphotos_29387653-stock-photo-facebook-profile.jpg'
+                                address: ''
                             }}
                                     validationSchema={SignupSchema}
                                     onSubmit={(values,{resetForm}) => {
-                                        handleWorkRegister(values).then()
+                                        handleWorkRegister(values)
                                         resetForm()
                                         console.log(values)
                                     }}>
@@ -64,9 +63,9 @@ function WorkRegister() {
                                     </div>
                                     <div className="form-group">
                                         <label>Tên doanh nghiệp</label>
-                                        <Field type="text" required className="form-control size" name={'name'}
+                                        <Field type="text" required className="form-control size" name={'nameCompany'}
                                                placeholder="Tên doanh nghiệp"/>
-                                        <ErrorMessage name={'name'}/>
+                                        <ErrorMessage name={'nameCompany'}/>
                                     </div>
                                     <div className="form-group">
                                         <label>Số điện thoại</label>
