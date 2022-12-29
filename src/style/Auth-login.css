@@ -33,4 +33,13 @@
 }
 .container-input .btn{
     margin-top: 20px;
+    max-width: 352px;
+}
+
+.container-imgWork{
+    height: 80vh;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    object-fit: cover;
+    background-image: url("https://img.freepik.com/free-vector/technical-support-system-calibration-software-configuration-settings-adjustments-professional-computer-maintenance-service-technician-occupation-concept-illustration_335657-2051.jpg");
 }

@@ -15,9 +15,10 @@ function App() {
                     <Route path={''} element={<AuthListJob/>}></Route>
                     <Route path={'access-account'} element={<AccessAccount/>}></Route>
                 </Route>
-                <Route path={'work/company'} element={<WorkLogin/>}></Route>
+                <Route path={'work/login'} element={<WorkLogin/>}>
+                </Route>
                 <Route path={'work/register'} element={<WorkRegister/>}/>
-                <Route path={'auth/company'} element={<AuthLogin/>}></Route>
+                <Route path={'auth/login'} element={<AuthLogin/>}></Route>
                 <Route path={'auth/register'} element={<AuthRegister/>}></Route>
 
             </Routes>

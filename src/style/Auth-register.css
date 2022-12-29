@@ -13,7 +13,7 @@
 
 .container-FormRegister h3{
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 .display-register{
     position: relative;
@@ -31,4 +31,9 @@
 }
 .container-input .btn{
     margin-top: 20px;
+}
+.form-company{
+    position: relative;
+    top: -120px;
+    left: -33px;
 }
