@@ -12,7 +12,6 @@ export function HomeWork(){
     //     }
     // }, [])
     return (
-
         <h1>hello</h1>
     )
 }
