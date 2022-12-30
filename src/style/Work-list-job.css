@@ -5,6 +5,7 @@
 }
 .main{
     padding: 20px;
+    float: right;
 }
 
 .container-listJobWork .card-job-work{
@@ -33,7 +34,7 @@
     height: 15px;
     object-fit: cover;
     margin-right: 5px;
-    margin-bottom: 12px;
+
 }
 .job-description-work{
     width: 300px;

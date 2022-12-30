@@ -11,10 +11,10 @@ const jobSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers: builder => {
-        builder.addCase(addJob.fulfilled,(state, action)=>{
-            state.job = action.payload
+        builder.addCase(addJob.fulfilled, (state, action) => {
+            state.job = [...state.job, action.payload]
         });
-        builder.addCase(getJob.fulfilled,(state, action)=>{
+        builder.addCase(getJob.fulfilled, (state, action) => {
             state.job = action.payload
         })
     }

@@ -60,8 +60,9 @@ export default function WorkAddJob() {
             alert('Nhập sai ngày')
         }
         else {
-            await dispatch(addJob(value))
-            await navigate('/work')
+             dispatch(addJob(value)).then(() => {
+                 navigate('/work')
+             })
         }
     }
 
@@ -98,7 +99,7 @@ export default function WorkAddJob() {
 
                                     }} onSubmit={(values, {validateForm}) => {
                                         handleAddJob(values).then()
-                                        validateForm()
+                                        validateForm().then()
 
                                     }}>
                                         <Form className="input-job">
