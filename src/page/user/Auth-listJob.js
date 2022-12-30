@@ -18,7 +18,6 @@ export default function AuthListJob() {
             <AuthSearch></AuthSearch>
             <div className="row container-listJob">
                 <div className="col-12">
-
                         <div className="col-3 sideBar">
                             <div>
                                 <SideBar></SideBar>
