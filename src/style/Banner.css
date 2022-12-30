@@ -1,0 +1,37 @@
+
+.display-left-banner{
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.right-banner{
+    height: 50vh;
+}
+.left-banner{
+    height: 50vh;
+}
+.display-left-banner > div {
+
+    margin: 20px auto;
+    font-size: 18px;
+    line-height: 24px;
+    color: #050C1B;
+    font-weight: 500;
+    max-width: 450px;
+}
+.content-text-banner {
+    max-width: 450px;
+}
+.left-banner {
+    background-image: linear-gradient(to bottom,  #4ca1af ,#c4e0e5);
+    height: 60vh;
+}
+.display-right-banner{
+    opacity: 1;
+}
+.banner-img{
+    height: 60vh;
+    object-fit: cover;
+    width: 36.4em;
+    margin-left: -1.1em!important;
+}

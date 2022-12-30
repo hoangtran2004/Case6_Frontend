@@ -20,7 +20,8 @@ export default function SideBar() {
 
     return(
         <>
-            <div className="container-sideBar">
+
+            <div className="container-sideBar" style={{zIndex:999}}>
                 <div className="row" style={{padding:'12px'}}>
                     <div className="col-12">
                         <p>Lọc tìm kiếm của bạn</p>

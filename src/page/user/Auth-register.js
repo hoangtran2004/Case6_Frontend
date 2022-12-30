@@ -21,7 +21,6 @@ function AuthRegister() {
             alert('Mật khẩu không hợp lệ')
         } else {
             let checkRegister = await dispatch(authRegister(values))
-            console.log(checkRegister)
             if (checkRegister.payload.checkRegister === true) {
                 navigate('/auth/login')
             } else {
