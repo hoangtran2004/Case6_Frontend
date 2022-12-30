@@ -8,7 +8,7 @@ function NavbarWork(props) {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light work-navbar">
-               <Link to={'#'}><img src={'https://cdn.pixabay.com/photo/2016/12/26/18/33/logo-1932539__340.png'} alt={''}/></Link>
+               <Link to={'/work'}><img src={'https://cdn.pixabay.com/photo/2016/12/26/18/33/logo-1932539__340.png'} alt={''}/></Link>
 
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
