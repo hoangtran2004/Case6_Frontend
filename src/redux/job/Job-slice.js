@@ -12,7 +12,7 @@ const jobSlice = createSlice({
     reducers:{},
     extraReducers: builder => {
         builder.addCase(addJob.fulfilled,(state, action)=>{
-            state.job = action.payload
+            state.job = [action.payload]
         });
         builder.addCase(getJob.fulfilled,(state, action)=>{
             state.job = action.payload

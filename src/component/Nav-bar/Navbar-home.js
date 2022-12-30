@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import '../../style/Navbar-home.css'
-import {useSelector} from "react-redux";
 
 function NavbarHome() {
     const navigate = useNavigate()

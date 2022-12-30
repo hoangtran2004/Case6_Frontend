@@ -4,7 +4,7 @@ export default function Banner() {
     return(
         <>
             <div className='container-fluid' style={{marginTop:'67px'}}>
-                <div className='row'>
+                <div className='row' style={{marginTop:'-0.4em'}}>
                     <div className='col-7 left-banner display-left-banner'>
                         <div className={''}>
                             <h2 className={'title-banner'}></h2>

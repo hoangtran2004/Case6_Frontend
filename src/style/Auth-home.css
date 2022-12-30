@@ -17,11 +17,12 @@
 
 .container-listJob .main {
     padding: 20px;
+    float: right;
 }
 
 .container-listJob .card-job {
     position: relative;
-    left: 22rem;
+    left: -1rem;
     border: solid 1px lightgrey;
     border-radius: 4px;
     height: 230px;
@@ -30,7 +31,7 @@
 }
 
 .container-listJob {
-    margin-left: 18px;
+    /*margin-left: 18px;*/
 }
 
 .container-listJob .card-logo {
@@ -47,6 +48,7 @@
     font-size: 17px;
     font-weight: 500;
     margin-top: 15px;
+
 }
 
 .companyName {

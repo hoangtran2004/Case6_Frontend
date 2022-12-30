@@ -31,9 +31,8 @@ export default function SideBar() {
                 <div className="row">
                     <div className="col-12 type-job">
                         <p style={{marginLeft:"14px", fontSize:"14px"}}>Loại công việc</p>
-
-
                     </div>
+                   
                 </div>
             </div>
 
