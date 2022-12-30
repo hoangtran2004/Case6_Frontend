@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {workLogin,workRegister} from "../../service/Work-service";
+import {workLogin, workRegister} from "../../service/Work-service";
 
 const initialState = {
     work: {}

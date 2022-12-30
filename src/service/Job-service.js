@@ -5,9 +5,14 @@ import axios from "axios";
 export const addJob = createAsyncThunk(
     'addJob',
     async (data)=>{
-        console.log(data)
         const res = await axios.post(`http://localhost:8080/job/`,data)
-        console.log(res)
+        return res.data
+    }
+)
+export const getJob = createAsyncThunk(
+    'getJob',
+    async ()=>{
+        const res = await axios.get(`http://localhost:8080/job/`)
         return res.data
     }
 )

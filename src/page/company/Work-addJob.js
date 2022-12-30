@@ -8,15 +8,13 @@ import {addJob} from "../../service/Job-service";
 export default function WorkAddJob() {
     const dispatch = useDispatch()
     let item = JSON.parse(localStorage.getItem('work'));
-    const [company, setCompany] = useState(item.company)
-
+    const [company, setCompany] = useState(item.company);
     let time = (new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
     let checkDate = (date, endDate) => {
         let arrDate = date.split("/")
         let arrEndDate = endDate.split("-").reverse()
-        console.log(arrDate)
-        console.log(arrEndDate)
+
         if (+arrEndDate[2] - +arrDate[2] < 0) {
             return false
         } else if (+arrEndDate[2] - +arrDate[2] === 0) {
