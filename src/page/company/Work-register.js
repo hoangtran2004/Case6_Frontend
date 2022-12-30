@@ -45,7 +45,9 @@ function WorkRegister() {
                                 email: '',
                                 nameCompany: '',
                                 phoneNumber: '',
-                                address: ''
+                                address: '',
+                                image:'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
+
                             }}
                                     validationSchema={SignupSchema}
                                     onSubmit={(values,{resetForm}) => {

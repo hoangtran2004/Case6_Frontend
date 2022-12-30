@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addJob} from "../../service/Job-service";
+import {addJob, getJob} from "../../service/Job-service";
 
 
 const initialState = {
@@ -12,6 +12,9 @@ const jobSlice = createSlice({
     reducers:{},
     extraReducers: builder => {
         builder.addCase(addJob.fulfilled,(state, action)=>{
+            state.job = action.payload
+        });
+        builder.addCase(getJob.fulfilled,(state, action)=>{
             state.job = action.payload
         })
     }

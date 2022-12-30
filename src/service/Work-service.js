@@ -15,11 +15,5 @@ export const workRegister = createAsyncThunk(
         return res.data
     }
 )
-export const workAddJob = createAsyncThunk(
-    'work/addJob',
-    async (data)=>{
-        const res = await axios.post(`http://localhost:8080/job`,data)
-        return res.data
-    }
-)
+
 

@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {workAddJob, workLogin, workRegister} from "../../service/Work-service";
+import {workLogin, workRegister} from "../../service/Work-service";
 
 const initialState = {
     work: {}
@@ -15,9 +15,6 @@ const workSlice = createSlice({
             localStorage.setItem('work',JSON.stringify(action.payload))
         })
         builder.addCase(workRegister.fulfilled,(state, action) => {
-            state.work =action.payload
-        })
-        builder.addCase(workAddJob.fulfilled,(state, action) => {
             state.work =action.payload
         })
     }
