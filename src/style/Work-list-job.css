@@ -1,0 +1,58 @@
+
+
+.container-listJobWork{
+    margin-top: 5rem;
+}
+.main{
+    padding: 20px;
+}
+
+.container-listJobWork .card-job-work{
+    max-width: 26.3333333% !important;
+    position: relative;
+    left: 2rem;
+    border: solid 1px lightgrey;
+    border-radius: 4px;
+    height: 230px;
+    margin-left: 65px;
+    margin-bottom: 35px;
+    float: left;
+}
+
+.container-listJobWork .card-logo-work{
+    height: 60px;
+    width: 40px;
+    object-fit: cover;
+}
+.card-description{
+    padding: 2px;
+    font-size: 14px;
+}
+.icon-description-work{
+    width: 15px;
+    height: 15px;
+    object-fit: cover;
+    margin-right: 5px;
+    margin-bottom: 12px;
+}
+.job-description-work{
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-left: 1.5rem;
+}
+.companyName-work{
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 400;
+    color: royalblue;
+    margin-left: 1.5rem;
+
+}

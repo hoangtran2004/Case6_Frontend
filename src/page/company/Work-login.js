@@ -17,15 +17,16 @@ function WorkLogin() {
             .required('Vui lòng nhập')
     })
 
-    const handleWorkLogin = async (values) =>{
-        let checkWorkLogin = await dispatch(workLogin(values))
+    const handleWorkLogin = async (values) => {
+        await dispatch(workLogin(values))
+        let tokenCompany = localStorage.getItem("tokenCompany")
         try {
-            if(checkWorkLogin){
+            if (tokenCompany) {
                 navigate('/work')
-            }else {
+            } else {
                 alert(" Tài khoản hoặc mật khẩu doanh nghiệp không chính xác")
             }
-        }catch (e){
+        } catch (e) {
             console.log(e)
         }
     }
@@ -59,7 +60,9 @@ function WorkLogin() {
                                                placeholder="Mật khẩu"/>
                                         <ErrorMessage name={'password'}/>
                                     </div>
-                                    <button type={'submit'} style={{maxWidth:"25rem"}} className="btn btn-primary size">Đăng nhập</button>
+                                    <button type={'submit'} style={{maxWidth: "25rem"}}
+                                            className="btn btn-primary size">Đăng nhập
+                                    </button>
                                 </Form>
                             </Formik>
                         </div>

@@ -4,11 +4,16 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategory} from "../../service/Category-service";
 import {addJob} from "../../service/Job-service";
+import {useNavigate} from "react-router-dom";
 
 export default function WorkAddJob() {
     const dispatch = useDispatch()
+    const navigate = useNavigate();
+
     let item = JSON.parse(localStorage.getItem('work'));
+
     const [company, setCompany] = useState(item.company);
+
     let time = (new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
     let checkDate = (date, endDate) => {
@@ -56,6 +61,7 @@ export default function WorkAddJob() {
         }
         else {
             await dispatch(addJob(value))
+            await navigate('/work')
         }
     }
 

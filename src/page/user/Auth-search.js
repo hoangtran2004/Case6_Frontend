@@ -5,19 +5,21 @@ export default function AuthSearch() {
     return (
         <>
             <div className="contain-search">
-                <Formik initialValues={''} onSubmit={() => {
+                <Formik initialValues={{
+                    search: ''
+                }} onSubmit={() => {
 
                 }}>
                     <Form>
                         <div className="row">
                             <div className="col-6 offset-3">
                                 <div className="form-group">
-                                    <Field type={'text'} name={'search'} value={''} placeholder={'Tìm kiếm việc làm...'} className={'form-control'}>
+                                    <Field type={'text'} name={'search'}  placeholder={'Tìm kiếm việc làm...'} className={'form-control'}>
                                     </Field>
                                 </div>
                             </div>
                             <div className="col-3">
-                                <button className="btn btn-primary">Tìm kiếm</button>
+                                <button type={'submit'} className="btn btn-primary">Tìm kiếm</button>
                             </div>
                         </div>
                   </Form>
