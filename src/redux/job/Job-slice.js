@@ -9,7 +9,7 @@ const initialState = {
 const jobSlice = createSlice({
     name: 'job',
     initialState,
-    reducers:{},
+    reducers: {},
     extraReducers: builder => {
         builder.addCase(addJob.fulfilled, (state, action) => {
             state.job = [...state.job, action.payload]
@@ -18,10 +18,10 @@ const jobSlice = createSlice({
             state.job = action.payload
         });
         builder.addCase(deleteJob.fulfilled, (state, action) => {
-            let newArr=[...state.job];
+            let newArr = [...state.job];
             console.log(action)
-            let index=newArr.findIndex(item=>item.id===action.payload);
-            newArr.splice(index,1)
+            let index = newArr.findIndex(item => item.id === action.payload);
+            newArr.splice(index, 1)
             state.job = newArr
         })
     }

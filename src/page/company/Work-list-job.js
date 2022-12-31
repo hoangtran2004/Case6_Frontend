@@ -11,7 +11,6 @@ function WorkListJob() {
     }, [])
 
     const work = JSON.parse(localStorage.getItem('work'))
-    // console.log('work',work)
     const job = useSelector(state => {
         return state.job.job
     }) || []
@@ -38,36 +37,25 @@ function WorkListJob() {
                                                     <p className="companyName-work">{item?.name}</p>
                                                 </div>
                                                 <div className="col-1">
-                                                    <button onClick={()=>{
-                                                        dispatch(deleteJob({id:item.jobId}))
+                                                    <button style={{background:'white',border:'none',marginLeft:'42px'}} onClick={() => {
+                                                        dispatch(deleteJob({id: item.jobId}))
                                                         dispatch(getJob())
-                                                    }} className={'btn btn-danger'} type={'submit'}>delete</button>
-                                                    {/*<img src="https://cdn-icons-png.flaticon.com/128/5028/5028066.png"*/}
-                                                    {/*     alt=""*/}
-                                                    {/*     style={{*/}
-                                                    {/*         height: '30px',*/}
-                                                    {/*         width: '30px',*/}
-                                                    {/*         objectFit: "cover",*/}
-                                                    {/*         marginLeft: '5px',*/}
-                                                    {/*         marginTop: '21px',*/}
-                                                    {/*         cursor:'pointer'*/}
-                                                    {/*     }} />*/}
+                                                    }} className={''} type={'submit'}>
+                                                        <img
+                                                            src="https://cdn-icons-png.flaticon.com/128/5028/5028066.png"
+                                                            alt=""
+                                                            style={{
+
+                                                                height: '30px',
+                                                                width: '30px',
+                                                                objectFit: "cover",
+                                                                marginLeft: '5px',
+                                                                marginTop: '21px',
+                                                                cursor: 'pointer'
+                                                            }}/></button>
+
 
                                                 </div>
-                                                {/*<div className="col-1">*/}
-                                                {/*    <img src="https://cdn-icons-png.flaticon.com/128/2990/2990019.png"*/}
-                                                {/*         alt=""*/}
-                                                {/*         style={{*/}
-                                                {/*             height: '30px',*/}
-                                                {/*             width: '30px',*/}
-                                                {/*             objectFit: "cover",*/}
-                                                {/*             marginLeft: '25px',*/}
-                                                {/*             marginTop: '21px',*/}
-                                                {/*             cursor:'pointer'*/}
-                                                {/*         }} onClick={()=>{}}/>*/}
-
-                                                {/*</div>*/}
-
                                             </div>
                                             <div className="row">
                                                 <div className="col-12">
