@@ -28,6 +28,7 @@
 .card-description{
     padding: 2px;
     font-size: 14px;
+    margin-top: -0.2em;
 }
 .icon-description-work{
     width: 15px;
@@ -55,5 +56,6 @@
     font-weight: 400;
     color: royalblue;
     margin-left: 1.5rem;
+    margin-top: -1em;
 
 }

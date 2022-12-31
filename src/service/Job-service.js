@@ -19,8 +19,18 @@ export const getJob = createAsyncThunk(
 export const deleteJob = createAsyncThunk(
     'deleteJob',
     async (payload) => {
-        console.log(payload)
+        console.log('delete',payload)
         const res = await axios.delete(`http://localhost:8080/job/` + payload.id)
+        console.log('delete',res)
         return payload.id
+    }
+)
+export const lockJob = createAsyncThunk(
+    'lockJob',
+    async (payload) => {
+        const res = await axios.get(`http://localhost:8080/job/` + payload.id)
+        console.log(payload)
+        return payload.id
+
     }
 )

@@ -9,9 +9,8 @@ import AuthRegister from "./page/user/Auth-register";
 import AuthListJob from "./page/user/Auth-listJob";
 import RouterWork from "./router/router-work";
 import WorkAddJob from "./page/company/Work-addJob";
-import Banner from "./component/Banner";
-import WorkListJob from "./page/company/Work-listJob";
 import WorkEditInformation from "./page/company/Work-editInformation";
+import WorkListJob from "./page/company/Work-list-job";
 function App() {
     return (
         <div>

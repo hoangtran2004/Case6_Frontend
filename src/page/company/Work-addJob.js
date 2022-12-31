@@ -95,7 +95,8 @@ export default function WorkAddJob() {
                                         companyId: company.companyId,
                                         status: 0,
                                         codeJob: '11111111',
-                                        statusTime: 1
+                                        statusTime: 1,
+                                        applicants:''
 
                                     }} onSubmit={(values, {validateForm}) => {
                                         handleAddJob(values).then()
@@ -117,6 +118,11 @@ export default function WorkAddJob() {
                                                 <label className={'name-item'}>Vị trí ứng tuyển</label>
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"vacancies"} require/>
+                                            </div>
+                                            <div className="form-group group-input">
+                                                <label className={'name-item'}>Số lượng ứng tuyển</label>
+                                                <Field type="number" className="form-control input-info-job"
+                                                       name={"applicants"} require/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <div className="row">
