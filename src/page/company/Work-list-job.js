@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react';
 import '../../style/Work-list-job.css'
 import {useDispatch, useSelector} from "react-redux";
-import {deleteJob, getJob, lockJob} from "../../service/Job-service";
+import {deleteJob, editJob, getJob, lockJob} from "../../service/Job-service";
 import Banner from "../../component/Banner";
+import {useNavigate, useParams} from "react-router-dom";
 
 function WorkListJob() {
-
-    const dispatch = useDispatch()
+    const {id} = useParams();
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getJob())
     }, [])
@@ -15,6 +16,12 @@ function WorkListJob() {
     const job = useSelector(state => {
         return state.job.job
     }) || []
+    const formEdit = ({id}) => {
+
+        navigate('edit-job/' + id)
+
+    }
+    let navigate = useNavigate();
 
     return (
         <>
@@ -30,7 +37,7 @@ function WorkListJob() {
                                             <div className="row">
                                                 <div className="col-1">
                                                     <img
-                                                        src="https://iweb.tatthanh.com.vn/pic/3/blog/images/image(2068).png"
+                                                        src={work.company.image}
                                                         alt="logo" className="card-logo-work"/>
                                                 </div>
                                                 <div className="col-9">
@@ -54,7 +61,10 @@ function WorkListJob() {
                                                             dispatch(getJob())
                                                         }}>Xóa
                                                         </button>
-                                                        <button className="dropdown-item" type="submit">Sửa
+                                                        <button className="dropdown-item" type="submit"
+                                                                onClick={(id) => {
+                                                                    formEdit({id: item?.jobId})
+                                                                }}>Sửa
 
                                                         </button>
                                                         <button className="dropdown-item" type="submit" onClick={() => {
