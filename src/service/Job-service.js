@@ -28,10 +28,9 @@ export const deleteJob = createAsyncThunk(
 export const lockJob = createAsyncThunk(
     'lockJob',
     async (payload) => {
-        const res = await axios.put(`http://localhost:8080/job/` + payload.id)
+        const res = await axios.put(`http://localhost:8080/job/status/` + payload.id)
         console.log(res)
         console.log(payload)
         return res.data
-
     }
 )
