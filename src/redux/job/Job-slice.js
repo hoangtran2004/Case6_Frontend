@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addJob, deleteJob, getJob, lockJob} from "../../service/Job-service";
+import {addJob, deleteJob, editJob, getJob, lockJob} from "../../service/Job-service";
 
 
 const initialState = {
@@ -25,6 +25,13 @@ const jobSlice = createSlice({
         });
         builder.addCase(lockJob.fulfilled, (state, action) => {
             console.log(action)
+            state.job= [...state.job, action.payload]
+
+        });
+        builder.addCase(editJob.fulfilled, (state, action) => {
+            console.log(action)
+            console.log(action)
+
             state.job= [...state.job, action.payload]
 
         });
