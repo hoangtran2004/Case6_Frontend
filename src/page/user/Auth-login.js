@@ -19,7 +19,6 @@ export default function AuthLogin() {
 
     const handleAuthLogin = async (value) => {
         let checkAuthLogin = await dispatch(authLogin(value))
-        console.log(checkAuthLogin)
         if(checkAuthLogin.payload.checkLogin === false){
             alert('Tài khoản hoặc mật khẩu không chính xác')
 

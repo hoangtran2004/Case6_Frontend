@@ -1,0 +1,25 @@
+.container-work-list-job{
+    margin-top: 4em;
+}
+.work-card-job .work-card-logo {
+    height: 60px;
+    width: 40px;
+    object-fit: cover;
+}
+.work-description {
+    padding: 2px;
+    font-size: 14px;
+}
+.work-companyName {
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 400;
+    color: royalblue;
+
+}
+.work-card-job{
+    margin-left: 5em;
+}

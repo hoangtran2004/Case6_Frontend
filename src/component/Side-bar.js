@@ -1,5 +1,5 @@
 import '../style/Side-bar.css'
-import {useLocation, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategory} from "../service/Category-service";
@@ -44,7 +44,7 @@ export default function SideBar() {
     return (
         <>
             <div className="container-sideBar">
-                <div className="row" style={{padding: '12px'}}>
+                <div className="row" style={{padding:'12px'}}>
                     <div className="col-12">
                         <p>Lọc tìm kiếm của bạn</p>
                         <hr/>
@@ -55,10 +55,10 @@ export default function SideBar() {
                         <p style={{marginLeft: "14px", fontSize: "14px"}}>Loại công việc</p>
                         {category.map((item, index) => (
                             <div>
-                                <input type={"checkbox"} name="categoryId" value={item.categoryId} onChange={(values) => {
+                                <input type={"checkbox"} name="categoryId" value={item.categoryId} style={{marginLeft:'13px'}} onChange={(values) => {
                                     // handleSearch(values)
                                 }}/>
-                                <label >{item.name}</label>
+                                <label style={{marginLeft:'5px'}}>{item.name}</label>
                             </div>
                         ))}
 

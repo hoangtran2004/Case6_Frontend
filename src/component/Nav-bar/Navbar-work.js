@@ -17,7 +17,7 @@ function NavbarWork(props) {
                             <Link to={'add-job'} className="add"> Thêm tin tuyển dụng</Link>
                         </li>
                         <li className="nav-item ">
-                            <Link to={'#'} className="edit">Sửa thông tin doanh nghiệp</Link>
+                            <Link to={'/work/edit'} className="edit">Sửa thông tin doanh nghiệp</Link>
                         </li>
                         <li className="nav-item ">
                             <button className={'logout'} onClick={() => {

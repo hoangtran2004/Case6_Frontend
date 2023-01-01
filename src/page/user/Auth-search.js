@@ -19,7 +19,7 @@ export default function AuthSearch() {
                                 </div>
                             </div>
                             <div className="col-3">
-                                <button type={'submit'} className="btn btn-primary">Tìm kiếm</button>
+                                <button className="btn btn-primary">Tìm kiếm</button>
                             </div>
                         </div>
                   </Form>

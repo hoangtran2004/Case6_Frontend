@@ -30,7 +30,7 @@ function WorkRegister() {
              navigate('/work/login')
          }
          else {
-
+            alert("Tài khoản gmail đã tồn tại")
          }
 
      }

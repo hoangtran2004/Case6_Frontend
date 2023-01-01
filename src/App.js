@@ -9,8 +9,8 @@ import AuthRegister from "./page/user/Auth-register";
 import AuthListJob from "./page/user/Auth-listJob";
 import RouterWork from "./router/router-work";
 import WorkAddJob from "./page/company/Work-addJob";
+import WorkEditInformation from "./page/company/Work-editInformation";
 import WorkListJob from "./page/company/Work-list-job";
-
 function App() {
     return (
         <div>
@@ -31,6 +31,8 @@ function App() {
                 <Route path={'/work/*'} element={<RouterWork/>}>
                     <Route path={''} element={<WorkListJob/>}></Route>
                     <Route path={'add-job'} element={<WorkAddJob/>}></Route>
+                    <Route path={'edit'} element={<WorkEditInformation/>}></Route>
+
                 </Route>
                 //router work end
             </Routes>
