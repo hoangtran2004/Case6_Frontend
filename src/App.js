@@ -12,6 +12,9 @@ import WorkAddJob from "./page/company/Work-addJob";
 import WorkEditInformation from "./page/company/Work-editInformation";
 import WorkListJob from "./page/company/Work-list-job";
 import WorkEditJob from "./page/company/Work-editJob";
+import SearchJob from "./page/user/Search-job";
+import AllJob from "./page/user/All-job";
+
 function App() {
     return (
         <div>
@@ -22,7 +25,10 @@ function App() {
                 <Route path={'auth/login'} element={<AuthLogin/>}></Route>
                 <Route path={'auth/register'} element={<AuthRegister/>}></Route>
                 <Route path={'/'} element={<HomeUser/>}>
-                    <Route path={''} element={<AuthListJob/>}></Route>
+                    <Route path={'/'} element={<AuthListJob/>}>
+                        <Route path={''} element={<AllJob/>}></Route>
+                        <Route path={'search'} element={<SearchJob></SearchJob>}/>
+                    </Route>
                 </Route>
                 //router user end
 
