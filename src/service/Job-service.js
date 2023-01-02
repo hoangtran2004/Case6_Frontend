@@ -11,7 +11,9 @@ export const addJob = createAsyncThunk(
 export const getJob = createAsyncThunk(
     'getJob',
     async () => {
+        console.log(111)
         const res = await axios.get(`http://localhost:8080/job/`)
+        console.log(res)
         return res.data
     }
 )

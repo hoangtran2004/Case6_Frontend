@@ -32,7 +32,6 @@ const jobSlice = createSlice({
             state.job = action.payload.job
         });
         builder.addCase(searchJob.fulfilled, (state, action) => {
-            console.log(action.payload)
           state.job = action.payload
         })
     }

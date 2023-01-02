@@ -13,7 +13,7 @@ export default function SearchJob() {
     )
     return (
         <>
-            {job.length === 0 ? <div>khong tim thay ket qua</div> : job.map((item, index) => (
+            {job?.length === 0 ? <div>khong tim thay ket qua</div> : job?.map((item, index) => (
                 <>
                     <div className="container-listJob">
                         <div className="row">
@@ -27,11 +27,11 @@ export default function SearchJob() {
                                                     alt="logo" className="card-logo"/>
                                             </div>
                                             <div className="col-7" style={{marginLeft: "15px"}}>
-                                                <p className="job-description">{item.title} </p>
-                                                <p className="companyName">{item.name} </p>
+                                                <p className="job-description">{item?.title} </p>
+                                                <p className="companyName">{item?.name} </p>
                                             </div>
                                             <div className="col-3">
-                                                <img src={item.image}
+                                                <img src={item?.image}
                                                      alt=""
                                                      style={{
                                                          height: '80px',
@@ -48,17 +48,17 @@ export default function SearchJob() {
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
                                                         alt=""
-                                                        className="icon-description"/>{item.addressWork}
+                                                        className="icon-description"/>{item?.addressWork}
                                                     </div>
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                                                         alt=""
-                                                        className="icon-description"/>VND {item.wageStart} - {item.wageEnd}
+                                                        className="icon-description"/>VND {item?.wageStart} - {item?.wageEnd}
                                                     </div>
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
                                                         alt=""
-                                                        className="icon-description"/>{item.experience} năm
+                                                        className="icon-description"/>{item?.experience} năm
                                                     </div>
                                                 </div>
                                             </div>
