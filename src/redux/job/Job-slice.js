@@ -29,11 +29,7 @@ const jobSlice = createSlice({
             state.job = action.payload.jobs
         });
         builder.addCase(editJob.fulfilled, (state, action) => {
-            console.log(action)
-            console.log(action)
-
-            state.job= [...state.job, action.payload]
-
+            state.job= action.payload.job
         });
     }
 })

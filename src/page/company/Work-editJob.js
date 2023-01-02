@@ -17,7 +17,6 @@ export default function WorkEditJob() {
         addressWork: '',
         vacancies: '',
         categoryId: '',
-        companyId: '',
         status: 0,
         codeJob: '11111111',
         statusTime: 1,
@@ -25,14 +24,8 @@ export default function WorkEditJob() {
     });
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const id=useParams()
-
-
-
-    let item = JSON.parse(localStorage.getItem('work'));
-
-    const [company, setCompany] = useState(item.company);
-
+    const jobId = useParams().id
+let companyId = JSON.parse(localStorage.getItem('work')).company.companyId
     let time = (new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
     let checkDate = (date, endDate) => {
@@ -58,32 +51,30 @@ export default function WorkEditJob() {
         }
     }
 
-
     useEffect(() => {
         dispatch(getCategory())
     }, [])
-
 
     const category = useSelector(state => {
         return state.category.category
     })
 
-    // const handleAddJob = async (value) => {
-    //     console.log(value.endDate)
-    //     if (value.wageStart > value.wageEnd) {
-    //         value.wageStart = ''
-    //         value.wageEnd = ''
-    //         alert('Nhập sai số lương')
-    //     }
-    //     if (!checkDate(time, value.endDate)) {
-    //         alert('Nhập sai ngày')
-    //     }
-    //     else {
-    //         dispatch(addJob(value)).then(() => {
-    //             navigate('/work')
-    //         })
-    //     }
-    // }
+    const handleEditJob = async (value) => {
+        console.log(value.endDate)
+        if (value.wageStart > value.wageEnd) {
+            value.wageStart = ''
+            value.wageEnd = ''
+            alert('Nhập sai số lương')
+        }
+        if (!checkDate(time, value.endDate)) {
+            alert('Nhập sai ngày')
+        }
+        else {
+            dispatch(editJob(value)).then(() => {
+                navigate('/work')
+            })
+        }
+    }
 
     return (
         <>
@@ -101,10 +92,9 @@ export default function WorkEditJob() {
                             <div className="col-12">
                                 <div className="form-add-job">
                                     <Formik initialValues={job} onSubmit={(values, {validateForm}) => {
-
-                                        dispatch(editJob({id:id},values)).then()
-                                        console.log(values)
-
+                                        values.jobId = jobId
+                                        values.companyId = companyId
+                                        handleEditJob(values).then()
                                     }} enableReinitialize={true}>
                                         <Form className="input-job">
                                             <div className="form-group group-input">
