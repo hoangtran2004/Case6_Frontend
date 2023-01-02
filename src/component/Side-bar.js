@@ -2,7 +2,7 @@ import '../style/Side-bar.css'
 import {useLocation, useNavigate,} from "react-router-dom";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {editJob, searchJob} from "../service/Job-service";
+import {editJob, getJob, searchJob} from "../service/Job-service";
 
 export default function SideBar() {
     let dispatch = useDispatch()
@@ -16,16 +16,17 @@ export default function SideBar() {
             let newQuery = `${query}${checkedName}=${checkedValue}&`
             setQuery(newQuery)
             navigate(newQuery.substring(0, newQuery.length - 1))
-            console.log(newQuery.substring(0, newQuery.length - 1), 'new')
             dispatch(searchJob(newQuery.substring(0, newQuery.length - 1)))
         } else {
             let str = `${checkedName}=${checkedValue}&`
             let newQuery = query.replace(str, '')
             setQuery(newQuery)
-            navigate(newQuery.substring(0, newQuery.length - 1))
-            dispatch(searchJob(newQuery.substring(0, newQuery.length - 1)))
             if (!newQuery.includes('&')) {
+                dispatch(getJob())
                 navigate('/')
+            } else {
+                navigate(newQuery.substring(0, newQuery.length - 1))
+                dispatch(searchJob(newQuery.substring(0, newQuery.length - 1)))
             }
         }
     };

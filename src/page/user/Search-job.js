@@ -13,7 +13,7 @@ export default function SearchJob() {
     )
     return (
         <>
-            {job.length === 0 ? <div>khong tim thay ket qua</div> : job.map((item, index) => (
+            {job=== undefined ? <h1>linhcho</h1>:job.length === 0 ? <div>khong tim thay ket qua</div> : job.map((item, index) => (
                 <>
                     <div className="container-listJob">
                         <div className="row">

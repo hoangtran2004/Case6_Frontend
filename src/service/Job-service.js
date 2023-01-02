@@ -45,3 +45,11 @@ export const searchJob = createAsyncThunk(
         return res.data
     }
 )
+
+export const searchJobInput = createAsyncThunk(
+    'searchJobInput',
+    async (data) => {
+        console.log(data)
+        return data
+    }
+)

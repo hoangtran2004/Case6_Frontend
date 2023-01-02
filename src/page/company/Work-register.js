@@ -47,13 +47,11 @@ function WorkRegister() {
                                 phoneNumber: '',
                                 address: '',
                                 image:'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
-
                             }}
                                     validationSchema={SignupSchema}
                                     onSubmit={(values,{resetForm}) => {
                                         handleWorkRegister(values)
                                         resetForm()
-                                        console.log(values)
                                     }}>
                                 <Form className="form-company">
                                     <h3>Đăng kí tài khoản doanh nghiệp</h3>
