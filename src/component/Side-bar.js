@@ -66,11 +66,6 @@ export default function SideBar() {
                         }/>
                         <label htmlFor="vehicle1">Ngành An toàn Thông tin.</label>
                         <br/>
-                        <input type={"checkbox"} name="categoryId" value={'4'} onChange={(values) =>
-                            handleSearch(values)
-                        }/>
-                        <label htmlFor="vehicle1"> tester</label>
-                        <br/>
                     </div>
                 </div>
             </div>
