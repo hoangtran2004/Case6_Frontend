@@ -44,17 +44,27 @@ export default function SideBar() {
                         <input type={"checkbox"} name="categoryId" value={'1'} onChange={(values) =>
                             handleSearch(values)
                         }/>
-                        <label for="vehicle1">việc làm IT</label>
+                        <label for="vehicle1">Ngành Công nghệ Thông tin.</label>
                         <br/>
                         <input type={"checkbox"} name="categoryId" value={'2'} onChange={(values) =>
                             handleSearch(values)
                         }/>
-                        <label htmlFor="vehicle1">Marketing</label>
+                        <label htmlFor="vehicle1">Ngành Khoa học Máy tính.</label>
                         <br/>
                         <input type={"checkbox"} name="categoryId" value={'3'} onChange={(values) =>
                             handleSearch(values)
                         }/>
-                        <label htmlFor="vehicle1">thương mại điện tử</label>
+                        <label htmlFor="vehicle1">Ngành Kỹ thuật Phần mềm.</label>
+                        <br/>
+                        <input type={"checkbox"} name="categoryId" value={'4'} onChange={(values) =>
+                            handleSearch(values)
+                        }/>
+                        <label htmlFor="vehicle1">Ngành Kỹ thuật Máy tính.</label>
+                        <br/>
+                        <input type={"checkbox"} name="categoryId" value={'4'} onChange={(values) =>
+                            handleSearch(values)
+                        }/>
+                        <label htmlFor="vehicle1">Ngành An toàn Thông tin.</label>
                         <br/>
                         <input type={"checkbox"} name="categoryId" value={'4'} onChange={(values) =>
                             handleSearch(values)

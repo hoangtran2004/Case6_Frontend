@@ -37,8 +37,7 @@ function NavbarHome() {
                             <>
                                 <p className={'name-user'}>{name}</p>
                                 <div>
-
-                                    <button className={'logout'} onClick={() => {
+                                    <button style={{left:'-3rem'}} className={'logout'} onClick={() => {
                                         localStorage.clear()
                                         navigate('/access-account')
                                     }}>Đăng xuất

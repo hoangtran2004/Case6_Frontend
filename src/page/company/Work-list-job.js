@@ -14,6 +14,7 @@ function WorkListJob() {
 
     const work = JSON.parse(localStorage.getItem('work'))
     const job = useSelector(state => {
+        console.log(state)
         return state.job.job
     }) || []
     const formEdit = ({id}) => {
