@@ -62,7 +62,6 @@ export default function WorkEditInformation() {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }

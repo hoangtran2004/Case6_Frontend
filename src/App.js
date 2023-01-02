@@ -19,7 +19,6 @@ function App() {
     return (
         <div>
             <Routes>
-
                 <Route path={'/access-account'} element={<AccessAccount/>}></Route>
                 //router user start
                 <Route path={'auth/login'} element={<AuthLogin/>}></Route>
