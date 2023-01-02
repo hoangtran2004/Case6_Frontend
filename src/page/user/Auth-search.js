@@ -1,29 +1,28 @@
 import '../../style/Auth-home.css'
-import {Field, Form, Formik} from "formik";
+import {useState} from "react";
+import {Link} from "react-router-dom";
 
 export default function AuthSearch() {
+    let [keySearch, setKeySearch] = useState()
     return (
         <>
             <div className="contain-search">
-                <Formik initialValues={{
-                    search: ''
-                }} onSubmit={() => {
-
-                }}>
-                    <Form>
-                        <div className="row">
-                            <div className="col-6 offset-3">
-                                <div className="form-group">
-                                    <Field type={'text'} name={'search'}  placeholder={'Tìm kiếm...'} className={'form-control'}>
-                                    </Field>
-                                </div>
-                            </div>
-                            <div className="col-3">
-                                <button className="btn btn-primary">Tìm kiếm</button>
+                <form action="" method={'GET'}>
+                    <div className="row">
+                        <div className="col-6 offset-3">
+                            <div className="form-group">
+                                <input type={'text'} name={'search'} placeholder={'Tìm kiếm...'}
+                                       className={'form-control'} onChange={(value) => {
+                                    setKeySearch(value.target.value)
+                                }}>
+                                </input>
                             </div>
                         </div>
-                  </Form>
-                </Formik>
+                        <div className="col-3">
+                            <Link to={`&key=${keySearch}`} className="btn btn-primary">Tìm kiếm</Link>
+                        </div>
+                    </div>
+                </form>
             </div>
         </>
     )
