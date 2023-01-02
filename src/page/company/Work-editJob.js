@@ -25,7 +25,7 @@ export default function WorkEditJob() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const jobId = useParams().id
-let companyId = JSON.parse(localStorage.getItem('work')).company.companyId
+    let companyId = JSON.parse(localStorage.getItem('work')).company.companyId
     let time = (new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
     let checkDate = (date, endDate) => {
@@ -68,8 +68,7 @@ let companyId = JSON.parse(localStorage.getItem('work')).company.companyId
         }
         if (!checkDate(time, value.endDate)) {
             alert('Nhập sai ngày')
-        }
-        else {
+        } else {
             dispatch(editJob(value)).then(() => {
                 navigate('/work')
             })
