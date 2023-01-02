@@ -1,6 +1,6 @@
 import '../../style/Auth-home.css'
 import {useDispatch, useSelector} from "react-redux";
-import {searchJobInput} from "../../service/Job-service";
+import {searchJob, searchJobInput} from "../../service/Job-service";
 import {Field, Form, Formik} from "formik";
 import {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
@@ -15,9 +15,23 @@ export default function AuthSearch() {
 
     let handleSearch = async (event) => {
         let newEvent = removeVietnameseTones(`${event.key}`).split(' ').join('+')
-        let newKey = `key=${event.key}`
-        await setKey(newKey)
-        console.log(search)
+        let newKey = `key=${newEvent}`
+        console.log(`${search}&${newKey}`)
+        if (search === '') {
+            navigate(`/search?${newKey}`)
+            await setKey(newKey)
+            dispatch(searchJob(`/search?${newKey}`))
+        } else {
+           if (search.includes(newKey)) {
+               navigate(search)
+           } else {
+               console.log(key)
+               navigate(`${search}&${newKey}`)
+               console.log(search, "url")
+               console.log(`${search}&${newKey}`)
+               dispatch(searchJob())
+           }
+        }
     }
 
     let removeVietnameseTones = (str) => {

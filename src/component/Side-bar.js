@@ -7,19 +7,34 @@ import {editJob, getJob, searchJob} from "../service/Job-service";
 export default function SideBar() {
     let dispatch = useDispatch()
     let navigate = useNavigate()
+    let search = useLocation().search
     const [query, setQuery] = useState('/search?');
     let handleSearch = (e) => {
         const checked = e.target.checked;
         const checkedValue = e.target.value;
         const checkedName = e.target.name;
         if (checked) {
-            let newQuery = `${query}${checkedName}=${checkedValue}&`
-            setQuery(newQuery)
-            navigate(newQuery.substring(0, newQuery.length - 1))
-            dispatch(searchJob(newQuery.substring(0, newQuery.length - 1)))
+            if (search === '') {
+                let newQuery = `/search?${checkedName}=${checkedValue}&`
+                navigate(newQuery.substring(0, newQuery.length - 1))
+                console.log(newQuery.substring(0, newQuery.length - 1))
+                dispatch(searchJob(newQuery.substring(0, newQuery.length - 1)))
+            } else {
+                let newQuery = `/search${search}`
+                if (newQuery.includes(`${checkedName}=${checkedValue}`)) {
+                    navigate(newQuery)
+                    dispatch(searchJob(newQuery))
+                } else {
+                    newQuery += `&${checkedName}=${checkedValue}&`
+                    setQuery(newQuery)
+                    navigate(newQuery.substring(0, newQuery.length - 1))
+                    dispatch(searchJob(newQuery.substring(0, newQuery.length - 1)))
+                }
+            }
         } else {
             let str = `${checkedName}=${checkedValue}&`
             let newQuery = query.replace(str, '')
+            newQuery = newQuery.replace(str, '')
             setQuery(newQuery)
             if (!newQuery.includes('&')) {
                 dispatch(getJob())
