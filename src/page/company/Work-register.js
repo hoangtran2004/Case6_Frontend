@@ -43,7 +43,7 @@ function WorkRegister() {
                         <div className="container-input display">
                             <Formik initialValues={{
                                 email: '',
-                                nameCompany: '',
+                                name: '',
                                 phoneNumber: '',
                                 address: '',
                                 image:'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
@@ -63,7 +63,7 @@ function WorkRegister() {
                                     </div>
                                     <div className="form-group">
                                         <label>Tên doanh nghiệp</label>
-                                        <Field type="text" required className="form-control size" name={'nameCompany'}
+                                        <Field type="text" required className="form-control size" name={'name'}
                                                placeholder="Tên doanh nghiệp"/>
                                         <ErrorMessage name={'nameCompany'}/>
                                     </div>

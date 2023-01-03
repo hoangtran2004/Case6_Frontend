@@ -1,19 +1,13 @@
 import AuthSearch from "./Auth-search";
 import SideBar from "../../component/Side-bar";
 import '../../style/Auth-home.css'
+import {Outlet} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getJob} from "../../service/Job-service";
-import {Outlet} from "react-router-dom";
 
 export default function AuthListJob() {
-    const dispatch = useDispatch();
-    useSelector(state => {
-        return state.job.job
-    })
-    useEffect(() => {
-        dispatch(getJob())
-    }, [])
+
     return (
         <>
             <AuthSearch></AuthSearch>
@@ -25,9 +19,9 @@ export default function AuthListJob() {
                         </div>
                     </div>
                     <div className="col-9 main">
-                        <div className="row">
+
                             <Outlet></Outlet>
-                        </div>
+
                     </div>
                 </div>
             </div>

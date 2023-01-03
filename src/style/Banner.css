@@ -32,6 +32,6 @@
 .banner-img{
     height: 60vh;
     object-fit: cover;
-    width: 36.4em;
+    width: 105%;
     margin-left: -1.1em!important;
 }

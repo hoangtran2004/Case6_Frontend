@@ -92,6 +92,7 @@ export default function WorkAddJob() {
                                         addressWork: company.address,
                                         vacancies: '',
                                         categoryId: '',
+                                        nameCategory: '',
                                         companyId: company.companyId,
                                         status: 0,
                                         codeJob: '11111111',
@@ -170,7 +171,7 @@ export default function WorkAddJob() {
                                                             <option disabled selected>Loại ngành nghề</option>
 
                                                             {category?.map((item, index) => (
-                                                                <option value={item.categoryId}>{item?.name}</option>
+                                                                <option value={item.categoryId} name={'nameCategory'}>{item?.nameCategory}</option>
                                                             ))}
                                                         </Field>
                                                     </div>
