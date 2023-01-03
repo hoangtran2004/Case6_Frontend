@@ -1,6 +1,6 @@
 import '../../style/Auth-home.css'
-import {useDispatch, useSelector} from "react-redux";
-import {searchJob, searchJobInput} from "../../service/Job-service";
+import {useDispatch} from "react-redux";
+import {searchJob} from "../../service/Job-service";
 import {Field, Form, Formik} from "formik";
 import {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
@@ -25,11 +25,8 @@ export default function AuthSearch() {
            if (search.includes(newKey)) {
                navigate(search)
            } else {
-               console.log(key)
                navigate(`${search}&${newKey}`)
-               console.log(search, "url")
-               console.log(`${search}&${newKey}`)
-               dispatch(searchJob())
+               dispatch(searchJob(`/search${search}&${newKey}`))
            }
         }
     }
