@@ -19,9 +19,9 @@ export default function AuthListJob() {
                         </div>
                     </div>
                     <div className="col-9 main">
-                        <div className="row">
+
                             <Outlet></Outlet>
-                        </div>
+
                     </div>
                 </div>
             </div>

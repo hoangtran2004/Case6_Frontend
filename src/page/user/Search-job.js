@@ -4,21 +4,22 @@ import {searchJob} from "../../service/Job-service";
 import {useEffect} from "react";
 
 export default function SearchJob() {
-    const job = useSelector(state => {
+    const jobs = useSelector(state => {
+
         return state.job.job
     })
     useEffect(() => {
-            console.log(job)
+            console.log(jobs)
         }, []
     )
     return (
         <>
-            {job?.length === 0 ? <div>khong tim thay ket qua</div> : job?.map((item, index) => (
-                <>
-                    <div className="container-listJob">
+            <div className="container-listJob">
+                <div className="row">
+                    <div className="col-12 main">
                         <div className="row">
-                            <div className="col-9 main">
-                                <div className="row">
+                            {jobs === undefined ? <h1>linhcho</h1>:jobs.length === 0 ? <div>khong tim thay ket qua</div> :
+                                jobs.map((item,index) => (
                                     <div className="col-5 card-job">
                                         <div className="row">
                                             <div className="col-1">
@@ -28,10 +29,10 @@ export default function SearchJob() {
                                             </div>
                                             <div className="col-7" style={{marginLeft: "15px"}}>
                                                 <p className="job-description">{item?.title} </p>
-                                                <p className="companyName">{item?.name} </p>
+                                                <p className="companyName">{item?.nameCategory} </p>
                                             </div>
                                             <div className="col-3">
-                                                <img src={item?.image}
+                                                <img src='https://cdn-icons-png.flaticon.com/128/3199/3199306.png'
                                                      alt=""
                                                      style={{
                                                          height: '80px',
@@ -48,17 +49,17 @@ export default function SearchJob() {
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
                                                         alt=""
-                                                        className="icon-description"/>{item?.addressWork}
+                                                        className="icon-description"/>{item.addressWork}
                                                     </div>
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                                                         alt=""
-                                                        className="icon-description"/>VND {item?.wageStart} - {item?.wageEnd}
+                                                        className="icon-description"/>VND {item.wageStart} - {item.wageEnd}
                                                     </div>
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
                                                         alt=""
-                                                        className="icon-description"/>{item?.experience} năm
+                                                        className="icon-description"/>{item.experience} năm
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,7 +67,8 @@ export default function SearchJob() {
                                         <div className="row" style={{marginTop: '23px'}}>
                                             <div className="col-12">
                                                 <p style={{fontSize: '12px'}}><img
-                                                    src="https://cdn-icons-png.flaticon.com/128/2088/2088617.png" alt=""
+                                                    src="https://cdn-icons-png.flaticon.com/128/2088/2088617.png"
+                                                    alt=""
                                                     style={{
                                                         width: '12px',
                                                         height: '12px',
@@ -76,12 +78,13 @@ export default function SearchJob() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                ))
+                            }
                         </div>
                     </div>
-                </>
-            ))}
+                </div>
+            </div>
+
         </>
     )
 }

@@ -11,9 +11,7 @@ export const addJob = createAsyncThunk(
 export const getJob = createAsyncThunk(
     'getJob',
     async () => {
-        console.log(111)
         const res = await axios.get(`http://localhost:8080/job/`)
-        console.log(res)
         return res.data
     }
 )
@@ -45,5 +43,12 @@ export const searchJob = createAsyncThunk(
     async (query) => {
         const res = await axios.get(`http://localhost:8080/job` + query)
         return res.data
+    }
+)
+
+export const searchJobInput = createAsyncThunk(
+    'searchJobInput',
+    async (data) => {
+        return data
     }
 )

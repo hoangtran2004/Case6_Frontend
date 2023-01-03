@@ -171,7 +171,7 @@ export default function WorkAddJob() {
                                                             <option disabled selected>Loại ngành nghề</option>
 
                                                             {category?.map((item, index) => (
-                                                                <option value={item.categoryId} name={'nameCategory'}>{item?.name}</option>
+                                                                <option value={item.categoryId} name={'nameCategory'}>{item?.nameCategory}</option>
                                                             ))}
                                                         </Field>
                                                     </div>
