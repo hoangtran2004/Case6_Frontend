@@ -5,13 +5,9 @@ import {useEffect} from "react";
 
 export default function SearchJob() {
     const jobs = useSelector(state => {
-
+        console.log(state, "search")
         return state.job.job
     })
-    useEffect(() => {
-            console.log(jobs)
-        }, []
-    )
     return (
         <>
             <div className="container-listJob">
