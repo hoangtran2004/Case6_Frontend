@@ -6,6 +6,7 @@ import {workEditInformation} from "../../service/Work-service";
 import {storage} from "../../firebase";
 import {getDownloadURL, listAll, ref, uploadBytes} from "firebase/storage";
 import {v4} from "uuid";
+import Swal from "sweetalert2";
 
 export default function WorkEditInformation() {
     let item = JSON.parse(localStorage.getItem('work'));
@@ -14,7 +15,17 @@ export default function WorkEditInformation() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [submitting, setSubmitting] = useState(false);
-
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
 
     const handleEdit = (values) => {
         let data = {
@@ -22,7 +33,11 @@ export default function WorkEditInformation() {
             companyId: companyId,
             image: img
         };
-        dispatch(workEditInformation(data))
+        dispatch(workEditInformation(data)).then(Toast.fire({
+            icon: 'success',
+            title: 'Chỉnh sửa thông tin thành công!',
+
+        }))
         navigate('/work')
     };
 
@@ -123,7 +138,7 @@ export default function WorkEditInformation() {
 
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                             </div>
-                                            <button type={'submit'} className="btn btn-primary">Sửa bài viết</button>
+                                            <button type={'submit'} className="btn btn-primary">Xác nhận</button>
                                         </Form>
                                     </Formik>
                                 </div>

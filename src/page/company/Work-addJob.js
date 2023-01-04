@@ -5,8 +5,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCategory} from "../../service/Category-service";
 import {addJob} from "../../service/Job-service";
 import {useNavigate} from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function WorkAddJob() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
@@ -50,16 +62,24 @@ export default function WorkAddJob() {
     })
 
     const handleAddJob = async (value) => {
-        console.log(value.endDate)
         if (value.wageStart > value.wageEnd) {
             value.wageStart = ''
             value.wageEnd = ''
-            alert('Nhập sai số lương')
-        }
-        if (!checkDate(time, value.endDate)) {
-            alert('Nhập sai ngày')
+            await Toast.fire({
+                icon: 'error',
+                title: 'Giá trị lương không hợp lệ!'
+            })
+        } else if (!checkDate(time, value.endDate)) {
+            await Toast.fire({
+                icon: 'error',
+                title: 'Ngày không hợp lệ!'
+            })
         } else {
             dispatch(addJob(value)).then(() => {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Tạo bài tuyển dụng thành công!'
+                })
                 navigate('/work')
             })
         }

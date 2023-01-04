@@ -12,7 +12,7 @@ export default function SearchJob() {
                     <div className="col-12 main">
                         <div className="row">
                             {jobs === undefined ? <h1>linhcho</h1> : jobs.length === 0 ?
-                                <div>khong tim thay ket qua</div> :
+                                <div>Không có dữ liệu!</div> :
                                 jobs.map((item, index) => (
                                     <div className="col-5 card-job">
                                         <div className="row">

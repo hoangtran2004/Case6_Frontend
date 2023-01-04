@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCategory} from "../../service/Category-service";
 import {useNavigate, useParams} from "react-router-dom";
 import {editJob} from "../../service/Job-service";
+import Swal from "sweetalert2";
 
 export default function WorkEditJob() {
     const [job, setJob] = useState({
@@ -22,6 +23,18 @@ export default function WorkEditJob() {
         statusTime: 1,
         applicants: ''
     });
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const jobId = useParams().id
@@ -64,12 +77,22 @@ export default function WorkEditJob() {
         if (value.wageStart > value.wageEnd) {
             value.wageStart = ''
             value.wageEnd = ''
-            alert('Nhập sai số lương')
+            await Toast.fire({
+                icon: 'error',
+                title: 'Giá trị lương không hợp lệ!'
+            })
         }
-        if (!checkDate(time, value.endDate)) {
-            alert('Nhập sai ngày')
+       else if (!checkDate(time, value.endDate)) {
+            await Toast.fire({
+                icon: 'error',
+                title: 'Ngày không hợp lệ!'
+            })
         } else {
             dispatch(editJob(value)).then(() => {
+                 Toast.fire({
+                    icon: 'success',
+                    title: 'Chỉnh sửa thành công!'
+                })
                 navigate('/work')
             })
         }
@@ -153,7 +176,7 @@ export default function WorkEditJob() {
                                                         <label className={'name-item'}>Thời gian ứng tuyển hiệu
                                                             lực</label>
                                                         <Field type="date" className="form-control input-info-wage"
-                                                               name={"endDate"} require/>
+                                                               name={"endDate"} min={time}/>
                                                     </div>
                                                     <div className="col-1"></div>
                                                     <div className="col-5" style={{marginTop: '0.7%'}}>

@@ -26,18 +26,8 @@ function WorkRegister() {
             .max(70, "Địa chỉ không hợp lệ!")
 
     });
-    const ToastSuccess = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    });
-    const ToastFail = Swal.mixin({
+
+    const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
@@ -53,13 +43,13 @@ function WorkRegister() {
     const handleWorkRegister = async (values) => {
         let checkRegister = await dispatch(workRegister(values));
         if (checkRegister.payload.checkRegister === true) {
-          await  ToastSuccess.fire({
+          await  Toast.fire({
                 icon: 'success',
                 title: 'Đăng kí thành công.'
             })
             navigate('/work/login')
         } else {
-           await ToastFail.fire({
+           await Toast.fire({
                 icon: 'error',
                 title: 'Tài khoản gmail đã tồn tại.'
             })
