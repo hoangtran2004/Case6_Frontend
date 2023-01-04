@@ -149,26 +149,27 @@ export default function WorkEditJob() {
                                             </div>
                                             <div className="form-group group-input" style={{marginBottom: '1em'}}>
                                                 <div className="row">
-                                                    <div className="col-6">
+                                                    <div className="col-5">
                                                         <label className={'name-item'}>Thời gian ứng tuyển hiệu
                                                             lực</label>
                                                         <Field type="date" className="form-control input-info-wage"
                                                                name={"endDate"} require/>
                                                     </div>
-                                                    <div className="col-6">
+                                                    <div className="col-1"></div>
+                                                    <div className="col-5" style={{marginTop: '0.7%'}}>
                                                         <label className={'name-item'}></label>
-                                                        <Field as="select" name="categoryId" className="form-select sel"
-                                                               aria-label="Default select example">
+                                                        <Field as="select" name="categoryId" className="form-select sel input-info-category"
+                                                               aria-label="Default select example" >
                                                             <option disabled selected>Loại ngành nghề</option>
 
                                                             {category?.map((item, index) => (
-                                                                <option value={item.categoryId}>{item?.name}</option>
+                                                                <option value={item.categoryId}>{item?.nameCategory}</option>
                                                             ))}
                                                         </Field>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="form-group group-input" style={{marginBottom: '1em'}}>
+                                            <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                             </div>
                                             <button type={'submit'} className="btn btn-primary">Sửa bài viết</button>
                                         </Form>

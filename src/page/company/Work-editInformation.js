@@ -121,7 +121,7 @@ export default function WorkEditInformation() {
                                                        name={"description"} require/>
                                             </div>
 
-                                            <div className="form-group group-input" style={{marginBottom: '1em'}}>
+                                            <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                             </div>
                                             <button type={'submit'} className="btn btn-primary">Sửa bài viết</button>
                                         </Form>

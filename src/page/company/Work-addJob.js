@@ -58,11 +58,10 @@ export default function WorkAddJob() {
         }
         if (!checkDate(time, value.endDate)) {
             alert('Nhập sai ngày')
-        }
-        else {
-             dispatch(addJob(value)).then(() => {
-                 navigate('/work')
-             })
+        } else {
+            dispatch(addJob(value)).then(() => {
+                navigate('/work')
+            })
         }
     }
 
@@ -97,7 +96,7 @@ export default function WorkAddJob() {
                                         status: 0,
                                         codeJob: '11111111',
                                         statusTime: 1,
-                                        applicants:''
+                                        applicants: ''
 
                                     }} onSubmit={(values, {validateForm}) => {
                                         handleAddJob(values).then()
@@ -132,16 +131,13 @@ export default function WorkAddJob() {
                                                         <Field type="number" className="form-control input-info-wage"
                                                                name={"wageStart"} require/>
                                                     </div>
+                                                    <div className="col-1"></div>
                                                     <div className="col-5">
                                                         <div className="form-group group-input">
-                                                            <label className={'name-item'} style={{
-                                                                position: 'relative',
-                                                                right: '-4.45rem'
-                                                            }}>Đến</label>
+                                                            <label className={'name-item'}>Đến</label>
                                                             <Field type="number"
                                                                    className="form-control input-info-wage"
-                                                                   name={"wageEnd"} require
-                                                                   style={{marginLeft: '4.4em'}}/>
+                                                                   name={"wageEnd"} require/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,28 +152,31 @@ export default function WorkAddJob() {
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"addressWork"} require/>
                                             </div>
-                                            <div className="form-group group-input" style={{marginBottom: '1em'}}>
+                                            <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">
-                                                    <div className="col-6">
+                                                    <div className="col-5">
                                                         <label className={'name-item'}>Thời gian ứng tuyển hiệu
                                                             lực</label>
                                                         <Field type="date" className="form-control input-info-wage"
+                                                               min={time}
                                                                name={"endDate"} require/>
                                                     </div>
-                                                    <div className="col-6">
+                                                    <div className="col-1"></div>
+                                                    <div className="col-5" style={{marginTop: '0.7%'}}>
                                                         <label className={'name-item'}></label>
-                                                        <Field as="select" name="categoryId" className="form-select sel"
+                                                        <Field as="select" name="categoryId"
+                                                               className="form-select sel input-info-category"
+                                                               style={{height: '53% !important'}}
                                                                aria-label="Default select example">
                                                             <option disabled selected>Loại ngành nghề</option>
 
                                                             {category?.map((item, index) => (
-                                                                <option value={item.categoryId} name={'nameCategory'}>{item?.nameCategory}</option>
+                                                                <option value={item.categoryId}
+                                                                        name={'nameCategory'}>{item?.nameCategory}</option>
                                                             ))}
                                                         </Field>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="form-group group-input" style={{marginBottom: '1em'}}>
                                             </div>
                                             <button type={'submit'} className="btn btn-primary">Đăng bài</button>
                                         </Form>
