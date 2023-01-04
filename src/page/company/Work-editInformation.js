@@ -62,7 +62,7 @@ export default function WorkEditInformation() {
     return (
         <>
             <div className="container-add-job">
-                <div className="row" style={{width: '100%'}}>
+                <div className="row" style={{width: '99%'}}>
                     <div className="col-8 offset-2">
                         <div className="row">
                             <div className="col-12">
@@ -74,9 +74,7 @@ export default function WorkEditInformation() {
                         <div className="row">
                             <div className="col-12">
                                 <div className="form-add-job">
-                                    <Formik initialValues={companyFind[0]
-
-                                    } onSubmit={(values) => {
+                                    <Formik initialValues={companyFind[0]} onSubmit={(values) => {
                                         handleEdit(values);
                                     }}>
                                         <Form className="input-job">

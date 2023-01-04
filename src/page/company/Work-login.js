@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {workLogin} from "../../service/Work-service";
+import Swal from "sweetalert2";
 
 function WorkLogin() {
     const dispatch = useDispatch()
@@ -18,13 +19,27 @@ function WorkLogin() {
     })
 
     const handleWorkLogin = async (values) => {
+        const ToastFail = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
         await dispatch(workLogin(values))
         let tokenCompany = localStorage.getItem("tokenCompany")
         try {
             if (tokenCompany) {
                 navigate('/work')
             } else {
-                alert(" Tài khoản hoặc mật khẩu doanh nghiệp không chính xác")
+                ToastFail.fire({
+                    icon: 'error',
+                    title: 'Tài khoản hoặc mật khẩu không chính xác!'
+                })
             }
         } catch (e) {
             console.log(e)
@@ -43,7 +58,6 @@ function WorkLogin() {
                             }}
                                     validationSchema={SignupSchema}
                                     onSubmit={(values) => {
-                                        console.log(values)
                                         handleWorkLogin(values).then()
                                     }}>
                                 <Form>

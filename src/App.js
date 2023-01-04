@@ -14,11 +14,13 @@ import WorkListJob from "./page/company/Work-list-job";
 import WorkEditJob from "./page/company/Work-editJob";
 import SearchJob from "./page/user/Search-job";
 import AllJob from "./page/user/All-job";
-
+import AuthJobDetail from "./page/user/Auth-jobDetail";
 function App() {
     return (
         <div>
             <Routes>
+                <Route path={'detail'} element={<AuthJobDetail/>}></Route>
+
                 <Route path={'/access-account'} element={<AccessAccount/>}></Route>
                 //router user start
                 <Route path={'auth/login'} element={<AuthLogin/>}></Route>

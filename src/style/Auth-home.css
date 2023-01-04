@@ -41,7 +41,7 @@
 }
 
 .job-description {
-    width: 300px;
+    width: 260px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

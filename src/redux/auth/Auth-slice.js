@@ -12,9 +12,13 @@ const authSlice = createSlice({
     reducers:{},
     extraReducers: builder => {
         builder.addCase(authLogin.fulfilled, (state, action)=>{
+            console.log(action)
             state.currentAuth = action.payload
-            localStorage.setItem('token',action.payload.token)
-            localStorage.setItem('name',action.payload.user.name)
+            if(action.payload.token){
+                localStorage.setItem('token',action.payload.token)
+                localStorage.setItem('name',action.payload.user.name)
+            }
+
         })
         builder.addCase(authRegister.fulfilled,(state, action)=>{
             state.currentAuth = action.payload
