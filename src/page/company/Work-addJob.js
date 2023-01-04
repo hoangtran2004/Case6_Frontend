@@ -49,6 +49,7 @@ export default function WorkAddJob() {
         return state.category.category
     })
 
+
     const handleAddJob = async (value) => {
         console.log(value.endDate)
         if (value.wageStart > value.wageEnd) {
@@ -123,7 +124,7 @@ export default function WorkAddJob() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Số lượng ứng tuyển</label>
                                                 <Field type="number" className="form-control input-info-job"
-                                                       name={"applicants"} require/>
+                                                       name={"applicants"} />
                                             </div>
                                             <div className="form-group group-input">
                                                 <div className="row">

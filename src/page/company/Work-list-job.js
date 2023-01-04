@@ -4,27 +4,42 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteJob, getJob, lockJob} from "../../service/Job-service";
 import Banner from "../../component/Banner";
 import {useNavigate, useParams} from "react-router-dom";
-import {workById} from "../../service/Work-service";
+import {findJobByIdWork, workById} from "../../service/Work-service";
 
 function WorkListJob() {
-    const {id} = useParams();
+
+    let navigate = useNavigate();
     let item = JSON.parse(localStorage.getItem('work'));
-    const [company, setCompany] = useState(item.company.companyId);
+    const [companyId, setCompanyId] = useState(item.company.companyId);
     const dispatch = useDispatch();
+    const {id} = useParams();
+
     useEffect(() => {
-        dispatch(getJob())
+        dispatch(findJobByIdWork(companyId))
     }, [])
     useEffect(() => {
-        dispatch(workById(company))
+        dispatch(workById(companyId))
     }, [])
+
+
     const work = JSON.parse(localStorage.getItem('work'))
+    console.log('work',work)
+
     const job = useSelector(state => {
+        console.log('state',state)
         return state.job.job
     }) || []
+
+    const formatter = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
+
+
     const formEdit = ({id}) => {
         navigate('edit-job/' + id)
     }
-    let navigate = useNavigate();
+
 
     return (
         <>
@@ -40,7 +55,7 @@ function WorkListJob() {
                                             <div className="row">
                                                 <div className="col-1">
                                                     <img
-                                                        src={item?.image}
+                                                        src={work?.company.image}
                                                         alt="logo" className="card-logo-work"/>
                                                 </div>
                                                 <div className="col-9">
@@ -91,7 +106,7 @@ function WorkListJob() {
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                                                             alt=""
-                                                            className="icon-description-work"/>{item?.wageStart} - {item?.wageEnd}
+                                                            className="icon-description-work"/>{formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
                                                         </div>
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
