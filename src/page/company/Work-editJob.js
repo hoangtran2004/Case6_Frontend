@@ -77,7 +77,7 @@ export default function WorkEditJob() {
 
     return (
         <>
-            <div className="container-add-job">
+            <div className="container-add-job" style={{width: '99%'}}>
                 <div className="row" style={{width: '100%'}}>
                     <div className="col-8 offset-2">
                         <div className="row">

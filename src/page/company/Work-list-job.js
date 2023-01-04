@@ -5,7 +5,7 @@ import {deleteJob, getJob, lockJob} from "../../service/Job-service";
 import Banner from "../../component/Banner";
 import {useNavigate, useParams} from "react-router-dom";
 import {workById} from "../../service/Work-service";
-
+import Swal from 'sweetalert2'
 function WorkListJob() {
     const {id} = useParams();
     let item = JSON.parse(localStorage.getItem('work'));
@@ -60,8 +60,27 @@ function WorkListJob() {
 
                                                     <div className="dropdown-menu dropdown-menu-right">
                                                         <button className="dropdown-item" type="submit" onClick={() => {
-                                                            dispatch(deleteJob({id: item?.jobId}))
-                                                            dispatch(getJob())
+                                                            Swal.fire({
+                                                                title: 'Bạn có chắc?',
+                                                                text: "Dữ liệu sẽ không thể khôi phục!",
+                                                                icon: 'warning',
+                                                                showCancelButton: true,
+                                                                confirmButtonColor: '#d33',
+                                                                cancelButtonColor: '#3085d6',
+                                                                confirmButtonText: 'Xóa',
+                                                                cancelButtonText:'Hủy'
+                                                            }).then((result) => {
+                                                                if (result.isConfirmed) {
+                                                                    dispatch(deleteJob({id: item?.jobId}))
+                                                                    Swal.fire(
+                                                                        'Đã xóa!',
+                                                                        'Bài tuyển dụng của bạn đã được xóa.',
+                                                                        'success'
+                                                                    )
+                                                                    dispatch(getJob())
+                                                                }
+                                                            })
+
                                                         }}>Xóa
                                                         </button>
                                                         <button className="dropdown-item" type="submit"

@@ -5,9 +5,11 @@ import * as Yup from "yup";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {workRegister} from "../../service/Work-service";
+import Swal from "sweetalert2";
+
 function WorkRegister() {
-    const dispatch=useDispatch();
-    const navigate=useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const SignupSchema = Yup.object().shape({
         email: Yup.string()
@@ -23,17 +25,47 @@ function WorkRegister() {
             .min(6, "Địa chỉ không hợp lệ!!")
             .max(70, "Địa chỉ không hợp lệ!")
 
+    });
+    const ToastSuccess = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
+    const ToastFail = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
     })
-     const handleWorkRegister=async (values)=>{
-        let checkRegister= await dispatch(workRegister(values))
-         if (checkRegister.payload.checkRegister===true){
-             navigate('/work/login')
-         }
-         else {
-            alert("Tài khoản gmail đã tồn tại")
-         }
 
-     }
+
+    const handleWorkRegister = async (values) => {
+        let checkRegister = await dispatch(workRegister(values));
+        if (checkRegister.payload.checkRegister === true) {
+          await  ToastSuccess.fire({
+                icon: 'success',
+                title: 'Đăng kí thành công.'
+            })
+            navigate('/work/login')
+        } else {
+           await ToastFail.fire({
+                icon: 'error',
+                title: 'Tài khoản gmail đã tồn tại.'
+            })
+        }
+
+    }
 
     return (
         <div className="container-Login">
@@ -46,10 +78,10 @@ function WorkRegister() {
                                 name: '',
                                 phoneNumber: '',
                                 address: '',
-                                image:'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
+                                image: 'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
                             }}
                                     validationSchema={SignupSchema}
-                                    onSubmit={(values,{resetForm}) => {
+                                    onSubmit={(values, {resetForm}) => {
                                         handleWorkRegister(values)
                                         resetForm()
                                     }}>

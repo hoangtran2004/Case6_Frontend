@@ -5,6 +5,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {authLogin} from "../../service/Auth-service";
+import Swal from "sweetalert2";
 
 export default function AuthLogin() {
     const navigate = useNavigate();
@@ -15,15 +16,29 @@ export default function AuthLogin() {
             .min(5, 'Tối thiểu 5 ký tự')
             .max(30, 'Tối đa 30 ký tự')
             .required('Vui lòng nhập')
+    });
+    const ToastFail = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
     })
 
     const handleAuthLogin = async (value) => {
         let checkAuthLogin = await dispatch(authLogin(value))
         if(checkAuthLogin.payload.checkLogin === false){
-            alert('Tài khoản hoặc mật khẩu không chính xác')
-
+           await ToastFail.fire({
+                icon: 'error',
+                title: 'Tài khoản hoặc mật khẩu không chính xác.'
+            })
         }else {
-            navigate('/')
+
+           await navigate('/')
         }
     }
     return (
