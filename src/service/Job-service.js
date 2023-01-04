@@ -41,9 +41,7 @@ export const editJob = createAsyncThunk(
 export const searchJob = createAsyncThunk(
     'searchJob',
     async (query) => {
-        console.log('aaa')
         const res = await axios.get(`http://localhost:8080/job` + query)
-        console.log(res)
         return res.data
     }
 )
