@@ -106,7 +106,7 @@ function WorkListJob() {
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                                                             alt=""
-                                                            className="icon-description-work"/>{formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
+                                                            className="icon-description-work"/>{formatter.format(item?.wageStart)} - {formatter.format(item?.wageEnd)}
                                                         </div>
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
