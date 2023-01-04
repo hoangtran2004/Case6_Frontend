@@ -53,16 +53,16 @@ function WorkListJob() {
                                     return (
                                         <div className="col-4 card-job-work">
                                             <div className="row">
-                                                <div className="col-1">
+                                                <div className="col-2">
                                                     <img
                                                         src={work?.company.image}
                                                         alt="logo" className="card-logo-work"/>
                                                 </div>
-                                                <div className="col-9">
+                                                <div className="col-8">
                                                     <p className="job-description-work">{item?.title}</p>
                                                     <p className="companyName-work">{item?.nameCategory}</p>
                                                 </div>
-                                                <div className="col-2" style={{marginLeft: '-1em'}}>
+                                                <div className="col-2" style={{marginLeft: '-1rem'}}>
                                                     <img src="https://cdn-icons-png.flaticon.com/128/3018/3018442.png"
                                                          alt="" style={{
                                                         height: '20px',

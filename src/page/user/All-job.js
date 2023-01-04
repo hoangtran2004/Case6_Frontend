@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getJob} from "../../service/Job-service";
-
+import '../../style/Auth-home.css'
 export default function AllJob() {
 
     const dispatch = useDispatch()
@@ -30,26 +30,16 @@ export default function AllJob() {
                                             return (
                                                 <div className="col-5 card-job">
                                                     <div className="row">
-                                                        <div className="col-1">
-                                                            <img
-                                                                src={item.image}
-                                                                alt="logo" className="card-logo"/>
+                                                        <div className="col-2">
+                                                            <img src="https://cdn.dribbble.com/users/60166/screenshots/17610068/media/4cbea5351f3f12a22dfb63c04658196d.jpg?compress=1&resize=400x300&vertical=top" alt="" className={'card-logo'}/>
+
                                                         </div>
                                                         <div className="col-7" style={{marginLeft: "15px"}}>
                                                             <p className="job-description">{item.title} </p>
-                                                            <p className="companyName">{item.nameCategory} </p>
+                                                            <p className="companyName">{item.name} </p>
                                                         </div>
                                                         <div className="col-3">
-                                                            <img
-                                                                src='https://cdn-icons-png.flaticon.com/128/3199/3199306.png'
-                                                                alt=""
-                                                                style={{
-                                                                    height: '80px',
-                                                                    width: '80px',
-                                                                    objectFit: "cover",
-                                                                    marginLeft: '30px',
-                                                                    marginTop: '21px'
-                                                                }}/>
+
                                                         </div>
                                                     </div>
                                                     <div className="row">

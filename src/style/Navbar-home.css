@@ -17,6 +17,7 @@ nav{
     right: 130px;
     color: black;
     line-height: 40px;
+    font-weight: 500;
 }
 .logout{
     border: none;
@@ -26,6 +27,8 @@ nav{
     margin-right: 0;
     color: black;
     right: 36px;
+    font-weight: 500;
+
 }
 .logout:hover{
     color: lightslategrey;
@@ -38,4 +41,7 @@ a:hover{
     width: 80px;
     height: 60px;
     object-fit: cover;
+}
+.active{
+    font-weight: 500;
 }
