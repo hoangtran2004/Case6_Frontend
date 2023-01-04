@@ -1,7 +1,4 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useLocation} from "react-router-dom";
-import {searchJob} from "../../service/Job-service";
-import {useEffect} from "react";
+import {useSelector} from "react-redux";
 
 export default function SearchJob() {
     const jobs = useSelector(state => {
@@ -14,13 +11,14 @@ export default function SearchJob() {
                 <div className="row">
                     <div className="col-12 main">
                         <div className="row">
-                            {jobs === undefined ? <h1>linhcho</h1>:jobs.length === 0 ? <div>khong tim thay ket qua</div> :
-                                jobs.map((item,index) => (
+                            {jobs === undefined ? <h1>linhcho</h1> : jobs.length === 0 ?
+                                <div>khong tim thay ket qua</div> :
+                                jobs.map((item, index) => (
                                     <div className="col-5 card-job">
                                         <div className="row">
                                             <div className="col-1">
                                                 <img
-                                                    src="https://iweb.tatthanh.com.vn/pic/3/blog/images/image(2068).png"
+                                                    src={item.image}
                                                     alt="logo" className="card-logo"/>
                                             </div>
                                             <div className="col-7" style={{marginLeft: "15px"}}>

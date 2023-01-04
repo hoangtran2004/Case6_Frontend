@@ -1,9 +1,14 @@
 import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import '../../style/Work-navbar.css'
+import {useDispatch} from "react-redux";
 function NavbarWork(props) {
-
-    const navigate = useNavigate()
+    const work = JSON.parse(localStorage.getItem('work'));
+    const navigate = useNavigate();
+    const dispatch=useDispatch();
+    const formEditInfoCompany = ({id}) => {
+        navigate('edit-company-information/' + id)
+    };
 
     return (
         <div>
@@ -17,9 +22,13 @@ function NavbarWork(props) {
                             <Link to={'add-job'} className="add"> Thêm tin tuyển dụng</Link>
                         </li>
                         <li className="nav-item ">
-                            <Link to={'/work/edit'} className="edit">Sửa thông tin doanh nghiệp</Link>
+                            <div onClick={() => {
+                                dispatch(formEditInfoCompany({id: work.company.companyId}))
+
+                            }} style={{cursor:'pointer'}}>Sửa thông tin doanh nghiệp
+                            </div>
                         </li>
-                        <li className="nav-item ">
+                        <li className="nav-item">
                             <button className={'logout'} onClick={() => {
                                 localStorage.clear()
                                 navigate('/access-account')

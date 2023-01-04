@@ -105,6 +105,11 @@ export default function SideBar() {
                         }/>
                         <label htmlFor="vehicle1">TP.Hồ Chí Minh</label>
                         <br/>
+                        <input type={"checkbox"} name="addressWork" value={'dangnang'} onChange={(values) =>
+                            handleSearch(values)
+                        }/>
+                        <label htmlFor="vehicle1">Đà Nẵng</label>
+                        <br/>
                     </div>
                 </div>
                 {/*search address end*/}

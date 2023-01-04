@@ -1,8 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {workLogin, workRegister} from "../../service/Work-service";
+import {workById, workEditInformation, workLogin, workRegister} from "../../service/Work-service";
 
 const initialState = {
-    work: {}
+    work: {},
+    workFind: {}
 }
 const workSlice = createSlice({
     name: "work",
@@ -19,6 +20,12 @@ const workSlice = createSlice({
         });
         builder.addCase(workRegister.fulfilled, (state, action) => {
             state.work = action.payload
+        });
+        builder.addCase(workEditInformation.fulfilled, (state, action) => {
+            state.job = action.payload.job
+        });
+        builder.addCase(workById.fulfilled, (state, action) => {
+            state.workFind = action.payload
         })
     }
 })

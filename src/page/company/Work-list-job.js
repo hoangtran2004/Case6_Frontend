@@ -1,20 +1,24 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../style/Work-list-job.css'
 import {useDispatch, useSelector} from "react-redux";
-import {deleteJob, editJob, getJob, lockJob} from "../../service/Job-service";
+import {deleteJob, getJob, lockJob} from "../../service/Job-service";
 import Banner from "../../component/Banner";
 import {useNavigate, useParams} from "react-router-dom";
+import {workById} from "../../service/Work-service";
 
 function WorkListJob() {
     const {id} = useParams();
+    let item = JSON.parse(localStorage.getItem('work'));
+    const [company, setCompany] = useState(item.company.companyId);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getJob())
     }, [])
-
+    useEffect(() => {
+        dispatch(workById(company))
+    }, [])
     const work = JSON.parse(localStorage.getItem('work'))
     const job = useSelector(state => {
-        console.log(state)
         return state.job.job
     }) || []
     const formEdit = ({id}) => {
@@ -36,7 +40,7 @@ function WorkListJob() {
                                             <div className="row">
                                                 <div className="col-1">
                                                     <img
-                                                        src={work.company.image}
+                                                        src={item?.image}
                                                         alt="logo" className="card-logo-work"/>
                                                 </div>
                                                 <div className="col-9">
