@@ -3,7 +3,7 @@ import {getCompany, workById, workEditInformation, workLogin, workRegister} from
 
 const initialState = {
     work: {},
-    workFind: {},
+    workFind: {}
 }
 const workSlice = createSlice({
     name: "work",
@@ -22,7 +22,7 @@ const workSlice = createSlice({
             state.work = action.payload
         });
         builder.addCase(workEditInformation.fulfilled, (state, action) => {
-            state.job = action.payload.job
+            state.workFind = action.payload.job
         });
         builder.addCase(workById.fulfilled, (state, action) => {
             state.workFind = action.payload

@@ -21,18 +21,19 @@ function NavbarWork(props) {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
 
-                        <li className="nav-item ">
-                            <Link to={'add-job'} className="add"> Thêm tin tuyển dụng</Link>
+                        <li className="nav-item add">
+                            <Link to={'add-job'} > Thêm tin tuyển dụng</Link>
                         </li>
-                        <li className="nav-item ">
+                        <li className="nav-item edit ">
                             <div onClick={() => {
                                 dispatch(formEditInfoCompany({id: work.company.companyId}))
 
-                            }} style={{cursor: 'pointer',fontSize:'17px'}}>Sửa thông tin doanh nghiệp
+                            }}>Sửa thông tin doanh nghiệp
                             </div>
                         </li>
-                        <li className="nav-item">
-                            <button className={'logout'} onClick={() => {
+
+                        <li className="nav-item logout">
+                            <button onClick={() => {
                                 localStorage.clear()
                                 navigate('/access-account')
                             }}>Đăng xuất

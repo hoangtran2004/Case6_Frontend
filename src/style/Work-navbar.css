@@ -1,22 +1,29 @@
 .work-navbar{
     height: 62px;
 }
-.add{
-    margin: 0 140px;
+.add a{
     color: black;
-    cursor: pointer;
     font-size: 18px;
+    font-weight: 500;
 }
 
 
-.edit{
+.edit div{
     position: relative;
-    left: 33rem;
-    color: black;
+    left: 32%;
+    font-size: 18px;
+    font-weight: 500;
+}
+.logout {
+    position: relative;
+    left: 35rem;
     font-size: 18px;
 }
-.logout{
+.logout button {
     position: relative;
-    left: 24rem;
+    border: none;
+    background: white;
+    font-weight: 500;
     font-size: 18px;
+    left: 14rem;
 }

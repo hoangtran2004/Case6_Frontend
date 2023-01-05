@@ -16,6 +16,7 @@ import SearchJob from "./page/user/Search-job";
 import AllJob from "./page/user/All-job";
 import AuthJobDetail from "./page/user/Auth-jobDetail";
 import AllCompany from "./page/user/All-company";
+
 function App() {
     return (
         <div>

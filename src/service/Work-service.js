@@ -25,13 +25,22 @@ export const workEditInformation = createAsyncThunk(
 export const workById = createAsyncThunk(
     'workById',
     async (id) => {
-        console.log('hihi')
-        console.log(id)
+
         const res = await axios.get(`http://localhost:8080/company/${id}`);
-        console.log(res)
+
         return res.data.companyFind
     }
 )
+
+export const findJobByIdWork = createAsyncThunk(
+    'findJobByIdWork',
+    async (id) => {
+        const res = await axios.get(`http://localhost:8080/job/company-job/${id}`);
+        console.log(res.data)
+        return res.data
+    }
+)
+
 export const getCompany = createAsyncThunk(
     'getCompany',
     async () => {

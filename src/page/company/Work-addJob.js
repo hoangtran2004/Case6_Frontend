@@ -6,7 +6,7 @@ import {getCategory} from "../../service/Category-service";
 import {addJob} from "../../service/Job-service";
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
-import {getCity} from "../../service/City-service";
+
 
 export default function WorkAddJob() {
     const Toast = Swal.mixin({
@@ -52,7 +52,6 @@ export default function WorkAddJob() {
         }
     }
 
-
     useEffect(() => {
         dispatch(getCategory())
     }, [])
@@ -62,7 +61,10 @@ export default function WorkAddJob() {
         return state.category.category
     })
 
+
     const handleAddJob = async (value) => {
+        value.addressWork = +value.addressWork
+        value.categoryId = +value.categoryId
         if (value.wageStart > value.wageEnd) {
             value.wageStart = ''
             value.wageEnd = ''
@@ -111,12 +113,11 @@ export default function WorkAddJob() {
                                         description: '',
                                         addressWork: company.address,
                                         vacancies: '',
-                                        categoryId: '',
+                                        categoryId: 0,
                                         nameCategory: '',
                                         companyId: company.companyId,
                                         status: 0,
-                                        codeJob: '11111111',
-                                        statusTime: 1,
+                                        statusTime: '',
                                         applicants: ''
 
                                     }} onSubmit={(values, {validateForm}) => {
@@ -128,29 +129,29 @@ export default function WorkAddJob() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Tiêu đề</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"title"} require/>
+                                                       name={"title"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Mô tả công việc</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"description"} require/>
+                                                       name={"description"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Vị trí ứng tuyển</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"vacancies"} require/>
+                                                       name={"vacancies"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Số lượng ứng tuyển</label>
                                                 <Field type="number" className="form-control input-info-job"
-                                                       name={"applicants"} require/>
+                                                       name={"applicants"}/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <div className="row">
                                                     <div className="col-5">
                                                         <label className={'name-item'}>Lương từ </label>
                                                         <Field type="number" className="form-control input-info-wage"
-                                                               name={"wageStart"} require/>
+                                                               name={"wageStart"} required/>
                                                     </div>
                                                     <div className="col-1"></div>
                                                     <div className="col-5">
@@ -158,7 +159,7 @@ export default function WorkAddJob() {
                                                             <label className={'name-item'}>Đến</label>
                                                             <Field type="number"
                                                                    className="form-control input-info-wage"
-                                                                   name={"wageEnd"} require/>
+                                                                   name={"wageEnd"} required/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,35 +167,43 @@ export default function WorkAddJob() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Kinh nghiệm</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"experience"} require/>
-                                            </div>
-                                            <div className="form-group group-input">
-                                                <label className={'name-item'}>Địa chỉ làm việc</label>
-                                                <Field type="text" className="form-control input-info-job"
-                                                       name={"addressWork"} require/>
+                                                       name={"experience"} required/>
                                             </div>
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">
-                                                    <div className="col-5">
+                                                    <div className="col-4">
                                                         <label className={'name-item'}>Thời gian ứng tuyển hiệu
                                                             lực</label>
-                                                        <Field type="date" className="form-control input-info-wage"
+                                                        <Field type="date" className="form-control input-info-time"
                                                                min={time}
-                                                               name={"endDate"} require/>
+                                                               name={"endDate"} required/>
                                                     </div>
-                                                    <div className="col-1"></div>
-                                                    <div className="col-5" style={{marginTop: '0.7%'}}>
+                                                    <div className="col-4">
                                                         <label className={'name-item'}></label>
                                                         <Field as="select" name="categoryId"
                                                                className="form-select sel input-info-category"
                                                                style={{height: '53% !important'}}
                                                                aria-label="Default select example">
                                                             <option disabled selected>Loại ngành nghề</option>
-
                                                             {category?.map((item, index) => (
-                                                                <option value={item.categoryId}
+                                                                <option value={+item?.categoryId}
                                                                         name={'nameCategory'}>{item?.nameCategory}</option>
                                                             ))}
+                                                        </Field>
+                                                    </div>
+                                                    <div className="col-4">
+                                                        <label className={'name-item'}></label>
+                                                        <Field as="select" name="statusTime"
+                                                               className="form-select sel input-info-category"
+                                                               style={{height: '53% !important'}}
+                                                               aria-label="Default select example">
+                                                            <option disabled selected>Thời gian làm việc</option>
+                                                            <option value={1}
+                                                                    name={'statusTime'}>Full time
+                                                            </option>
+                                                            <option value={0}
+                                                                    name={'statusTime'}>Part time
+                                                            </option>
                                                         </Field>
                                                     </div>
                                                 </div>

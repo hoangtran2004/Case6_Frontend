@@ -6,25 +6,39 @@ import Banner from "../../component/Banner";
 import {useNavigate, useParams} from "react-router-dom";
 import {workById} from "../../service/Work-service";
 import Swal from 'sweetalert2'
+import {findJobByIdWork} from "../../service/Work-service";
+
 function WorkListJob() {
     const {id} = useParams();
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
     let item = JSON.parse(localStorage.getItem('work'));
     const [company, setCompany] = useState(item.company.companyId);
-    const dispatch = useDispatch();
+    const work = JSON.parse(localStorage.getItem('work'))
+
     useEffect(() => {
         dispatch(getJob())
     }, [])
+
     useEffect(() => {
         dispatch(workById(company))
     }, [])
-    const work = JSON.parse(localStorage.getItem('work'))
+
+
     const job = useSelector(state => {
+        console.log(state)
         return state.job.job
     }) || []
+
     const formEdit = ({id}) => {
+        console.log(id)
         navigate('edit-job/' + id)
     }
-    let navigate = useNavigate();
+
+    const formatter = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
 
     return (
         <>
@@ -68,7 +82,7 @@ function WorkListJob() {
                                                                 confirmButtonColor: '#d33',
                                                                 cancelButtonColor: '#3085d6',
                                                                 confirmButtonText: 'Xóa',
-                                                                cancelButtonText:'Hủy'
+                                                                cancelButtonText: 'Hủy'
                                                             }).then((result) => {
                                                                 if (result.isConfirmed) {
                                                                     dispatch(deleteJob({id: item?.jobId}))
@@ -80,7 +94,6 @@ function WorkListJob() {
                                                                     dispatch(getJob())
                                                                 }
                                                             })
-
                                                         }}>Xóa
                                                         </button>
                                                         <button className="dropdown-item" type="submit"
@@ -105,12 +118,12 @@ function WorkListJob() {
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
                                                             alt=""
-                                                            className="icon-description-work"/>{item?.addressWork}
+                                                            className="icon-description-work"/>{item?.nameCity}
                                                         </div>
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                                                             alt=""
-                                                            className="icon-description-work"/>{item?.wageStart} - {item?.wageEnd}
+                                                            className="icon-description-work"/>{formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
                                                         </div>
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/639/639394.png"

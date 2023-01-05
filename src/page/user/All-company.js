@@ -20,11 +20,11 @@ function AllCompany() {
 
         <>
             <AuthSearchCompany></AuthSearchCompany>
-            <div className="row container-listJobWork">
+            <div className="row container-listJobWork" style={{marginTop:'-1%'}}>
                 <div className="col-12 main">
                     <div className="row">
                         {companies?.map((item)=>(
-                            <div className="col-4 card-job-work">
+                            <div className="col-5 card-job-work">
                                 <div className="row">
                                     <div className="col-2">
                                         <img
@@ -32,17 +32,27 @@ function AllCompany() {
                                             alt="logo" className="card-logo-work"/>
                                     </div>
                                     <div className="col-8">
-                                        <p className="job-description-work">{item?.title}</p>
-                                        <p className="companyName-work">{item?.name}</p>
+                                        <p className="job-description-work">{item?.name}</p>
+                                        <p className="companyName-work"></p>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-12">
-                                        <div className="card-description">
+                                        <div className="card-description" style={{marginTop:'5%'}}>
                                             <div className="work-description"><img
                                                 src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
                                                 alt=""
-                                                className="icon-description-work"/>{item?.address}
+                                                className="icon-description-work"/>{item?.nameCity}
+                                            </div>
+                                            <div className="work-description" style={{marginTop:'1%'}}><img
+                                                src="https://cdn-icons-png.flaticon.com/128/3296/3296467.png"
+                                                alt=""
+                                                className="icon-description-work"/>{item?.email}
+                                            </div>
+                                            <div className="work-description" style={{marginBottom:'5%',marginTop:'2%'}}><img
+                                                src="https://cdn-icons-png.flaticon.com/128/126/126509.png"
+                                                alt=""
+                                                className="icon-description-work"/>{item?.phoneNumber}
                                             </div>
                                         </div>
                                     </div>
