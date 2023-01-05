@@ -7,28 +7,32 @@ import {useLocation, useNavigate} from "react-router-dom";
 
 export default function AuthSearch() {
     const dispatch = useDispatch()
-    let [key, setKey] = useState()
-    let [param, setParam] = useState('')
-    let search = new useLocation().search
+    let search = useLocation().search.replace('?', '')
     let navigate = useNavigate()
 
 
     let handleSearch = async (event) => {
         let newEvent = removeVietnameseTones(`${event.key}`).split(' ').join('+')
-        let newKey = `key=${newEvent}`
-        console.log(`${search}&${newKey}`)
-        if (search === '') {
-            navigate(`/search?${newKey}`)
-            await setKey(newKey)
-            dispatch(searchJob(`/search?${newKey}`))
+        let arrParam = search.split('&')
+        if (search.includes('key=')) {
+            if (event.key) {
+                arrParam.splice(arrParam.length - 1, 1, `key=${newEvent}`)
+            } else {
+                console.log(1)
+                arrParam.splice(arrParam.length - 1, 1)
+            }
         } else {
-           if (search.includes(newKey)) {
-               navigate(search)
-           } else {
-               navigate(`${search}&${newKey}`)
-               dispatch(searchJob(`/search${search}&${newKey}`))
-           }
+            if (event.key) {
+                console.log(arrParam)
+                arrParam.push(`key=${newEvent}`)
+                arrParam = arrParam.filter(item => item !== '')
+            }
         }
+        dispatch(searchJob(arrParam.join('&')))
+        setTimeout(() => {
+            navigate(`/search?${arrParam.join('&')}`)
+        }, 1300)
+
     }
 
     let removeVietnameseTones = (str) => {
@@ -46,31 +50,27 @@ export default function AuthSearch() {
         return str.replace(/\s+/g, ' ');
     }
 
-    return (
-        <>
-            <div className="contain-search">
-                <Formik initialValues={{
-                    key: ''
-                }} onSubmit={(values) =>
-                    handleSearch(values)
-                }>
-                    <Form>
-                        <div className="row">
-                            <div className="col-6 offset-3">
-                                <div className="form-group">
-                                    <Field type={'text'} name={'key'}
-                                           placeholder={'Tìm kiếm việc làm theo tên, công ty...'}
-                                           className={'form-control'}>
-                                    </Field>
-                                </div>
-                            </div>
-                            <div className="col-3">
-                                <button type={'submit'} className="btn btn-primary">Tìm kiếm</button>
+    return (<>
+        <div className="contain-search">
+            <Formik initialValues={{
+                key: ''
+            }} onSubmit={(values) => handleSearch(values)}>
+                <Form>
+                    <div className="row">
+                        <div className="col-6 offset-3">
+                            <div className="form-group">
+                                <Field type={'text'} name={'key'}
+                                       placeholder={'Tìm kiếm việc làm theo tên, công ty...'}
+                                       className={'form-control'}>
+                                </Field>
                             </div>
                         </div>
-                    </Form>
-                </Formik>
-            </div>
-        </>
-    )
+                        <div className="col-3">
+                            <button type={'submit'} className="btn btn-primary">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </Form>
+            </Formik>
+        </div>
+    </>)
 }

@@ -7,10 +7,8 @@ export default function AllJob() {
     const dispatch = useDispatch()
 
     let work = JSON.parse(localStorage.getItem('work'))
-    console.log(work)
 
     let jobs = useSelector((state) => {
-        console.log(state)
         return state.job.job
     })
 

@@ -2,7 +2,6 @@ import {useSelector} from "react-redux";
 
 export default function SearchJob() {
     const jobs = useSelector(state => {
-        console.log(state, "search")
         return state.job.job
     })
     return (
