@@ -49,13 +49,13 @@ function WorkRegister() {
     const handleWorkRegister = async (values) => {
         let checkRegister = await dispatch(workRegister(values));
         if (checkRegister.payload.checkRegister === true) {
-          await  Toast.fire({
+            Toast.fire({
                 icon: 'success',
-                title: 'Đăng kí thành công.'
+                title: 'Đăng kí thành công.',
             })
             navigate('/work/login')
         } else {
-           await Toast.fire({
+            await Toast.fire({
                 icon: 'error',
                 title: 'Tài khoản gmail đã tồn tại.'
             })
@@ -73,13 +73,15 @@ function WorkRegister() {
                                 email: '',
                                 name: '',
                                 phoneNumber: '',
-                                nameCity: '',
+                                address: 0,
                                 image: 'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
                             }}
                                     validationSchema={SignupSchema}
                                     onSubmit={(values, {resetForm}) => {
                                         handleWorkRegister(values)
-                                        resetForm()
+                                        setTimeout(() => {
+                                            resetForm()
+                                        }, 3000)
                                     }}>
                                 <Form className="form-company">
                                     <h3>Đăng kí tài khoản doanh nghiệp</h3>
@@ -102,16 +104,16 @@ function WorkRegister() {
                                         <ErrorMessage name={'phoneNumber'}/>
                                     </div>
                                     <div className="form-group">
-                                        <label >Địa chỉ</label>
+                                        <label>Địa chỉ</label>
 
-                                        <Field as="select" name="categoryId"
+                                        <Field as="select" name="address"
                                                className="form-select sel select-city"
                                                style={{height: '53% !important'}}
                                                aria-label="Default select example">
 
                                             {city?.map((item, index) => (
                                                 <option value={item.cityId}
-                                                        name={'nameCity'}>{item?.nameCity}</option>
+                                                        name={'cityID'}>{item?.nameCity}</option>
                                             ))}
                                         </Field>
                                     </div>

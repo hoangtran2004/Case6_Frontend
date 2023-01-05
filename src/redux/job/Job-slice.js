@@ -37,7 +37,7 @@ const jobSlice = createSlice({
             state.job = newArr
         });
         builder.addCase(lockJob.fulfilled, (state, action) => {
-             state.job = action.payload.jobs.reverse()
+             state.job = action.payload.jobs
         });
         builder.addCase(editJob.fulfilled, (state, action) => {
             state.job = action.payload.job

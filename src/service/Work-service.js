@@ -25,6 +25,7 @@ export const workEditInformation = createAsyncThunk(
 export const workById = createAsyncThunk(
     'workById',
     async (id) => {
+        console.log(id)
         const res = await axios.get(`http://localhost:8080/company/${id}`);
         return res.data.companyFind
     }
