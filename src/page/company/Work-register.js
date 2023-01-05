@@ -73,11 +73,12 @@ function WorkRegister() {
                                 email: '',
                                 name: '',
                                 phoneNumber: '',
-                                nameCity: '',
+                                address: '',
                                 image: 'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
                             }}
                                     validationSchema={SignupSchema}
                                     onSubmit={(values, {resetForm}) => {
+                                        console.log(values.address)
                                         handleWorkRegister(values)
                                         resetForm()
                                     }}>
@@ -102,16 +103,14 @@ function WorkRegister() {
                                         <ErrorMessage name={'phoneNumber'}/>
                                     </div>
                                     <div className="form-group">
-                                        <label >Địa chỉ</label>
-
-                                        <Field as="select" name="categoryId"
-                                               className="form-select sel select-city"
+                                        <option disabled selected>Dia chi</option>
+                                        <Field as="select" name="address"
+                                               className="form-select sel input-info-category"
                                                style={{height: '53% !important'}}
                                                aria-label="Default select example">
-
                                             {city?.map((item, index) => (
-                                                <option value={item.cityId}
-                                                        name={'nameCity'}>{item?.nameCity}</option>
+                                                <option value={item?.cityId}
+                                                        name={'cityId'}>{item?.nameCity}</option>
                                             ))}
                                         </Field>
                                     </div>

@@ -6,6 +6,7 @@ export default function AllJob() {
 
     const dispatch = useDispatch()
     let jobs = useSelector((state) => {
+        console.log(state)
         return state.job.job
     })
 
