@@ -52,3 +52,10 @@ export const searchJobInput = createAsyncThunk(
         return data
     }
 )
+
+export const findJobById = createAsyncThunk(
+    'findJobById',
+    async (id) => {
+        return id
+    }
+)

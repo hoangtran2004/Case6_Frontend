@@ -15,6 +15,7 @@ import WorkEditJob from "./page/company/Work-editJob";
 import SearchJob from "./page/user/Search-job";
 import AllJob from "./page/user/All-job";
 import AuthJobDetail from "./page/user/Auth-jobDetail";
+import AllCompany from "./page/user/All-company";
 function App() {
     return (
         <div>
@@ -29,6 +30,7 @@ function App() {
                     <Route path={'/'} element={<AuthListJob/>}>
                         <Route path={''} element={<AllJob/>}></Route>
                         <Route path={'search'} element={<SearchJob></SearchJob>}/>
+                        <Route path={'list-work'} element={<AllCompany></AllCompany>}/>
                     </Route>
                 </Route>
                 //router user end

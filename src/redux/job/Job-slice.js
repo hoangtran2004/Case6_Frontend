@@ -1,11 +1,21 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addJob, deleteJob, editJob, getJob, lockJob, searchJob, searchJobInput} from "../../service/Job-service";
+import {
+    addJob,
+    deleteJob,
+    editJob,
+    findJobById,
+    getJob,
+    lockJob,
+    searchJob,
+    searchJobInput
+} from "../../service/Job-service";
 import {findJobByIdWork} from "../../service/Work-service";
 
 
 const initialState = {
     job: [],
     jobSearchInput: [],
+    jobCurrent: {}
 }
 
 const jobSlice = createSlice({
@@ -28,7 +38,7 @@ const jobSlice = createSlice({
         });
         builder.addCase(lockJob.fulfilled, (state, action) => {
             console.log(action.payload)
-            state.job = action.payload.jobs
+            state.job = action.payload.jobs.reverse()
         });
         builder.addCase(editJob.fulfilled, (state, action) => {
             state.job = action.payload.job
@@ -41,6 +51,12 @@ const jobSlice = createSlice({
         })
         builder.addCase(findJobByIdWork.fulfilled, (state, action) => {
             state.job = action.payload
+        })
+        builder.addCase(findJobById.fulfilled, (state, action) => {
+            console.log(action.payload)
+            let oneJob = state.job.filter(item=> item.jobId  == action.payload)
+            state.jobCurrent = oneJob[0]
+
         })
     }
 })

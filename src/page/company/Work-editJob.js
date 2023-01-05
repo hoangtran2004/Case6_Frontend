@@ -4,27 +4,27 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategory} from "../../service/Category-service";
 import {useNavigate, useParams} from "react-router-dom";
-import {editJob} from "../../service/Job-service";
+import {editJob, findJobById} from "../../service/Job-service";
+import Swal from "sweetalert2";
 
 export default function WorkEditJob() {
-    const [job, setJob] = useState({
-        title: '',
-        wageStart: '',
-        wageEnd: '',
-        experience: '',
-        endDate: '',
-        description: '',
-        addressWork: '',
-        vacancies: '',
-        categoryId: '',
-        status: 0,
-        codeJob: '11111111',
-        statusTime: 1,
-        applicants: ''
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
     });
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const jobId = useParams().id
+
+
     let companyId = JSON.parse(localStorage.getItem('work')).company.companyId
     let time = (new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
@@ -55,8 +55,22 @@ export default function WorkEditJob() {
         dispatch(getCategory())
     }, [])
 
+    useEffect(()=>{
+        dispatch(findJobById(jobId))
+    },[])
+
+
+    let oneJob = useSelector((state)=>{
+        console.log(state.job.jobCurrent)
+        return state.job.jobCurrent
+    })
+
     const category = useSelector(state => {
         return state.category.category
+    })
+    const job = useSelector(state => {
+        console.log(state.job.job)
+        return state.job.job
     })
 
     const handleEditJob = async (value) => {
@@ -64,12 +78,22 @@ export default function WorkEditJob() {
         if (value.wageStart > value.wageEnd) {
             value.wageStart = ''
             value.wageEnd = ''
-            alert('Nhập sai số lương')
+            await Toast.fire({
+                icon: 'error',
+                title: 'Giá trị lương không hợp lệ!'
+            })
         }
-        if (!checkDate(time, value.endDate)) {
-            alert('Nhập sai ngày')
+       else if (!checkDate(time, value.endDate)) {
+            await Toast.fire({
+                icon: 'error',
+                title: 'Ngày không hợp lệ!'
+            })
         } else {
             dispatch(editJob(value)).then(() => {
+                 Toast.fire({
+                    icon: 'success',
+                    title: 'Chỉnh sửa thành công!'
+                })
                 navigate('/work')
             })
         }
@@ -90,7 +114,8 @@ export default function WorkEditJob() {
                         <div className="row">
                             <div className="col-12">
                                 <div className="form-add-job">
-                                    <Formik initialValues={job} onSubmit={(values, {validateForm}) => {
+
+                                    <Formik initialValues={oneJob} onSubmit={(values, {validateForm}) => {
                                         values.jobId = jobId
                                         values.companyId = companyId
                                         handleEditJob(values).then()
@@ -153,7 +178,7 @@ export default function WorkEditJob() {
                                                         <label className={'name-item'}>Thời gian ứng tuyển hiệu
                                                             lực</label>
                                                         <Field type="date" className="form-control input-info-wage"
-                                                               name={"endDate"} require/>
+                                                               name={"endDate"} min={time}/>
                                                     </div>
                                                     <div className="col-1"></div>
                                                     <div className="col-5" style={{marginTop: '0.7%'}}>

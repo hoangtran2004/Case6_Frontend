@@ -2,7 +2,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getJob} from "../../service/Job-service";
 import '../../style/Auth-home.css'
-
 export default function AllJob() {
 
     const dispatch = useDispatch()
@@ -14,8 +13,14 @@ export default function AllJob() {
     const tokenUser = localStorage.getItem('token')
 
     useEffect(() => {
+
         dispatch(getJob())
     }, [])
+
+    const formatter = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
     return (
         <div>
             <div className="container-listJob" style={{marginTop: '-1.9%'}}>
@@ -56,7 +61,7 @@ export default function AllJob() {
                                                                 {tokenUser ? <div className="description"><img
                                                                     src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                                                                     alt=""
-                                                                    className="icon-description"/>VND {item.wageStart} - {item.wageEnd}
+                                                                    className="icon-description"/>VND {formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
                                                                 </div> : <></>}
 
                                                                 <div className="description"><img

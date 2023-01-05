@@ -5,8 +5,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCategory} from "../../service/Category-service";
 import {addJob} from "../../service/Job-service";
 import {useNavigate} from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function WorkAddJob() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
@@ -51,16 +63,24 @@ export default function WorkAddJob() {
 
 
     const handleAddJob = async (value) => {
-        console.log(value.endDate)
         if (value.wageStart > value.wageEnd) {
             value.wageStart = ''
             value.wageEnd = ''
-            alert('Nhập sai số lương')
-        }
-        if (!checkDate(time, value.endDate)) {
-            alert('Nhập sai ngày')
+            await Toast.fire({
+                icon: 'error',
+                title: 'Giá trị lương không hợp lệ!'
+            })
+        } else if (!checkDate(time, value.endDate)) {
+            await Toast.fire({
+                icon: 'error',
+                title: 'Ngày không hợp lệ!'
+            })
         } else {
             dispatch(addJob(value)).then(() => {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Tạo bài tuyển dụng thành công!'
+                })
                 navigate('/work')
             })
         }
@@ -108,17 +128,17 @@ export default function WorkAddJob() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Tiêu đề</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"title"} require/>
+                                                       name={"title"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Mô tả công việc</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"description"} require/>
+                                                       name={"description"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Vị trí ứng tuyển</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"vacancies"} require/>
+                                                       name={"vacancies"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Số lượng ứng tuyển</label>
@@ -130,7 +150,7 @@ export default function WorkAddJob() {
                                                     <div className="col-5">
                                                         <label className={'name-item'}>Lương từ </label>
                                                         <Field type="number" className="form-control input-info-wage"
-                                                               name={"wageStart"} require/>
+                                                               name={"wageStart"} required/>
                                                     </div>
                                                     <div className="col-1"></div>
                                                     <div className="col-5">
@@ -138,7 +158,7 @@ export default function WorkAddJob() {
                                                             <label className={'name-item'}>Đến</label>
                                                             <Field type="number"
                                                                    className="form-control input-info-wage"
-                                                                   name={"wageEnd"} require/>
+                                                                   name={"wageEnd"} required/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -146,12 +166,12 @@ export default function WorkAddJob() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Kinh nghiệm</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"experience"} require/>
+                                                       name={"experience"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Địa chỉ làm việc</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"addressWork"} require/>
+                                                       name={"addressWork"} required/>
                                             </div>
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">
@@ -160,7 +180,7 @@ export default function WorkAddJob() {
                                                             lực</label>
                                                         <Field type="date" className="form-control input-info-wage"
                                                                min={time}
-                                                               name={"endDate"} require/>
+                                                               name={"endDate"} required/>
                                                     </div>
                                                     <div className="col-1"></div>
                                                     <div className="col-5" style={{marginTop: '0.7%'}}>

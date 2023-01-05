@@ -26,12 +26,19 @@ function WorkListJob() {
 
 
     const job = useSelector(state => {
+        console.log(state)
         return state.job.job
     }) || []
 
     const formEdit = ({id}) => {
+        console.log(id)
         navigate('edit-job/' + id)
     }
+
+    const formatter = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
 
     return (
         <>
@@ -67,8 +74,26 @@ function WorkListJob() {
 
                                                     <div className="dropdown-menu dropdown-menu-right">
                                                         <button className="dropdown-item" type="submit" onClick={() => {
-                                                            dispatch(deleteJob({id: item?.jobId}))
-                                                            dispatch(getJob())
+                                                            Swal.fire({
+                                                                title: 'Bạn có chắc?',
+                                                                text: "Dữ liệu sẽ không thể khôi phục!",
+                                                                icon: 'warning',
+                                                                showCancelButton: true,
+                                                                confirmButtonColor: '#d33',
+                                                                cancelButtonColor: '#3085d6',
+                                                                confirmButtonText: 'Xóa',
+                                                                cancelButtonText:'Hủy'
+                                                            }).then((result) => {
+                                                                if (result.isConfirmed) {
+                                                                    dispatch(deleteJob({id: item?.jobId}))
+                                                                    Swal.fire(
+                                                                        'Đã xóa!',
+                                                                        'Bài tuyển dụng của bạn đã được xóa.',
+                                                                        'success'
+                                                                    )
+                                                                    dispatch(getJob())
+                                                                }
+                                                            })
                                                         }}>Xóa
                                                         </button>
                                                         <button className="dropdown-item" type="submit"
@@ -98,7 +123,7 @@ function WorkListJob() {
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                                                             alt=""
-                                                            className="icon-description-work"/>{item?.wageStart} - {item?.wageEnd}
+                                                            className="icon-description-work"/>{formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
                                                         </div>
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/639/639394.png"

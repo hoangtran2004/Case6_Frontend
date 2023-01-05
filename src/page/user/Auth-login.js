@@ -17,7 +17,7 @@ export default function AuthLogin() {
             .max(30, 'Tối đa 30 ký tự')
             .required('Vui lòng nhập')
     });
-    const ToastFail = Swal.mixin({
+    const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
@@ -32,12 +32,11 @@ export default function AuthLogin() {
     const handleAuthLogin = async (value) => {
         let checkAuthLogin = await dispatch(authLogin(value))
         if(checkAuthLogin.payload.checkLogin === false){
-           await ToastFail.fire({
+           await Toast.fire({
                 icon: 'error',
                 title: 'Tài khoản hoặc mật khẩu không chính xác.'
             })
         }else {
-
            await navigate('/')
         }
     }

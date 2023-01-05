@@ -19,7 +19,7 @@ function WorkLogin() {
     })
 
     const handleWorkLogin = async (values) => {
-        const ToastFail = Swal.mixin({
+        const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
@@ -36,7 +36,7 @@ function WorkLogin() {
             if (tokenCompany) {
                 navigate('/work')
             } else {
-                ToastFail.fire({
+                await Toast.fire({
                     icon: 'error',
                     title: 'Tài khoản hoặc mật khẩu không chính xác!'
                 })
