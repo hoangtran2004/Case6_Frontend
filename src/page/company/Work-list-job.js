@@ -118,7 +118,7 @@ function WorkListJob() {
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
                                                             alt=""
-                                                            className="icon-description-work"/>{item?.addressWork}
+                                                            className="icon-description-work"/>{item?.nameCity}
                                                         </div>
                                                         <div className="work-description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"

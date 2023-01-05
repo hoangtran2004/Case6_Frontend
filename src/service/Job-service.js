@@ -4,6 +4,7 @@ import axios from "axios";
 export const addJob = createAsyncThunk(
     'addJob',
     async (data) => {
+        console.log(data, 'data')
         await axios.post(`http://localhost:8080/job/`, data)
         return data
     }
@@ -33,6 +34,7 @@ export const lockJob = createAsyncThunk(
 export const editJob = createAsyncThunk(
     'editJob',
     async (data) => {
+        console.log(data)
         const res = await axios.put(`http://localhost:8080/job/${data.jobId}`, data)
         return res.data
     }

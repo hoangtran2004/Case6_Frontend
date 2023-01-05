@@ -7,6 +7,7 @@ import {addJob} from "../../service/Job-service";
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
 
+
 export default function WorkAddJob() {
     const Toast = Swal.mixin({
         toast: true,
@@ -51,7 +52,6 @@ export default function WorkAddJob() {
         }
     }
 
-
     useEffect(() => {
         dispatch(getCategory())
     }, [])
@@ -63,6 +63,8 @@ export default function WorkAddJob() {
 
 
     const handleAddJob = async (value) => {
+        value.addressWork = +value.addressWork
+        value.categoryId = +value.categoryId
         if (value.wageStart > value.wageEnd) {
             value.wageStart = ''
             value.wageEnd = ''
@@ -111,12 +113,11 @@ export default function WorkAddJob() {
                                         description: '',
                                         addressWork: company.address,
                                         vacancies: '',
-                                        categoryId: '',
+                                        categoryId: 0,
                                         nameCategory: '',
                                         companyId: company.companyId,
                                         status: 0,
-                                        codeJob: '11111111',
-                                        statusTime: 1,
+                                        statusTime: '',
                                         applicants: ''
 
                                     }} onSubmit={(values, {validateForm}) => {
@@ -143,7 +144,7 @@ export default function WorkAddJob() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Số lượng ứng tuyển</label>
                                                 <Field type="number" className="form-control input-info-job"
-                                                       name={"applicants"} />
+                                                       name={"applicants"}/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <div className="row">
@@ -168,11 +169,6 @@ export default function WorkAddJob() {
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"experience"} required/>
                                             </div>
-                                            <div className="form-group group-input">
-                                                <label className={'name-item'}>Địa chỉ làm việc</label>
-                                                <Field type="text" className="form-control input-info-job"
-                                                       name={"addressWork"} required/>
-                                            </div>
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">
                                                     <div className="col-4">
@@ -182,20 +178,6 @@ export default function WorkAddJob() {
                                                                min={time}
                                                                name={"endDate"} required/>
                                                     </div>
-                                                    <div className="col-4" >
-                                                        <label className={'name-item'}></label>
-                                                        <Field as="select" name="categoryId"
-                                                               className="form-select sel input-info-category"
-                                                               style={{height: '53% !important'}}
-                                                               aria-label="Default select example">
-                                                            <option disabled selected>Loại ngành nghề</option>
-
-                                                            {category?.map((item, index) => (
-                                                                <option value={item.categoryId}
-                                                                        name={'nameCategory'}>{item?.nameCategory}</option>
-                                                            ))}
-                                                        </Field>
-                                                    </div>
                                                     <div className="col-4">
                                                         <label className={'name-item'}></label>
                                                         <Field as="select" name="categoryId"
@@ -203,11 +185,25 @@ export default function WorkAddJob() {
                                                                style={{height: '53% !important'}}
                                                                aria-label="Default select example">
                                                             <option disabled selected>Loại ngành nghề</option>
-
                                                             {category?.map((item, index) => (
-                                                                <option value={item.categoryId}
+                                                                <option value={+item?.categoryId}
                                                                         name={'nameCategory'}>{item?.nameCategory}</option>
                                                             ))}
+                                                        </Field>
+                                                    </div>
+                                                    <div className="col-4">
+                                                        <label className={'name-item'}></label>
+                                                        <Field as="select" name="statusTime"
+                                                               className="form-select sel input-info-category"
+                                                               style={{height: '53% !important'}}
+                                                               aria-label="Default select example">
+                                                            <option disabled selected>Thời gian làm việc</option>
+                                                            <option value={1}
+                                                                    name={'statusTime'}>Full time
+                                                            </option>
+                                                            <option value={0}
+                                                                    name={'statusTime'}>Part time
+                                                            </option>
                                                         </Field>
                                                     </div>
                                                 </div>

@@ -101,8 +101,8 @@ export default function WorkEditInformation() {
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Tên viết tắt</label>
-                                                <Field type="text" className="form-control input-info-job"
-                                                       name={"abbreviatedName"} require/>
+                                                <Field required type="text" className="form-control input-info-job"
+                                                       name={"abbreviatedName"} />
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Số điện thoại</label>

@@ -32,7 +32,6 @@ function App() {
                     <Route path={'/'} element={<AuthListJob/>}>
                         <Route path={''} element={<AllJob/>}></Route>
                         <Route path={'search'} element={<SearchJob></SearchJob>}/>
-
                     </Route>
                 </Route>
                 //router user end

@@ -1,6 +1,6 @@
 import '../../style/Work-addJob.css'
 import {Field, Form, Formik} from "formik";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategory} from "../../service/Category-service";
 import {useNavigate, useParams} from "react-router-dom";
@@ -55,26 +55,37 @@ export default function WorkEditJob() {
         dispatch(getCategory())
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(findJobById(jobId))
-    },[])
+    }, [])
 
 
-    let oneJob = useSelector((state)=>{
-        console.log(state.job.jobCurrent)
+    let oneJob = useSelector((state) => {
         return state.job.jobCurrent
     })
 
     const category = useSelector(state => {
         return state.category.category
     })
-    const job = useSelector(state => {
-        console.log(state.job.job)
-        return state.job.job
-    })
 
     const handleEditJob = async (value) => {
-        console.log(value.endDate)
+        let newJob = {
+            jobId: +value.jobId,
+            title: value.title,
+            companyId: +value.companyId,
+            categoryId: +value.categoryId,
+            experience: value.experience,
+            description: value.description,
+            codeJob: +value.codeJob,
+            wageEnd: +value.wageEnd,
+            wageStart: +value.wageStart,
+            vacancies: value.vacancies,
+            endDate: value.endDate,
+            addressWork: +value.addressWork,
+            status: +value.status,
+            statusTime: value.statusTime,
+            applicants: value.applicants,
+        }
         if (value.wageStart > value.wageEnd) {
             value.wageStart = ''
             value.wageEnd = ''
@@ -82,15 +93,14 @@ export default function WorkEditJob() {
                 icon: 'error',
                 title: 'Giá trị lương không hợp lệ!'
             })
-        }
-       else if (!checkDate(time, value.endDate)) {
+        } else if (!checkDate(time, value.endDate)) {
             await Toast.fire({
                 icon: 'error',
                 title: 'Ngày không hợp lệ!'
             })
         } else {
-            dispatch(editJob(value)).then(() => {
-                 Toast.fire({
+            dispatch(editJob(newJob)).then(() => {
+                Toast.fire({
                     icon: 'success',
                     title: 'Chỉnh sửa thành công!'
                 })
@@ -116,37 +126,37 @@ export default function WorkEditJob() {
                                 <div className="form-add-job">
 
                                     <Formik initialValues={oneJob} onSubmit={(values, {validateForm}) => {
-                                        values.jobId = jobId
-                                        values.companyId = companyId
+                                        values.jobId = +jobId
+                                        values.companyId = +companyId
                                         handleEditJob(values).then()
                                     }} enableReinitialize={true}>
                                         <Form className="input-job">
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Tiêu đề</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"title"} require/>
+                                                       name={"title"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Mô tả công việc</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"description"} require/>
+                                                       name={"description"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Vị trí ứng tuyển</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"vacancies"} require/>
+                                                       name={"vacancies"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Số lượng ứng tuyển</label>
                                                 <Field type="number" className="form-control input-info-job"
-                                                       name={"applicants"} require/>
+                                                       name={"applicants"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <div className="row">
                                                     <div className="col-5">
                                                         <label className={'name-item'}>Lương từ </label>
                                                         <Field type="number" className="form-control input-info-wage"
-                                                               name={"wageStart"} require/>
+                                                               name={"wageStart"} required/>
                                                     </div>
                                                     <div className="col-5">
                                                         <div className="form-group group-input">
@@ -156,7 +166,7 @@ export default function WorkEditJob() {
                                                             }}>Đến</label>
                                                             <Field type="number"
                                                                    className="form-control input-info-wage"
-                                                                   name={"wageEnd"} require
+                                                                   name={"wageEnd"} required
                                                                    style={{marginLeft: '4.4em'}}/>
                                                         </div>
                                                     </div>
@@ -166,11 +176,6 @@ export default function WorkEditJob() {
                                                 <label className={'name-item'}>Kinh nghiệm</label>
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"experience"} require/>
-                                            </div>
-                                            <div className="form-group group-input">
-                                                <label className={'name-item'}>Địa chỉ làm việc</label>
-                                                <Field type="text" className="form-control input-info-job"
-                                                       name={"addressWork"} require/>
                                             </div>
                                             <div className="form-group group-input" style={{marginBottom: '1em'}}>
                                                 <div className="row">
@@ -183,12 +188,14 @@ export default function WorkEditJob() {
                                                     <div className="col-1"></div>
                                                     <div className="col-5" style={{marginTop: '0.7%'}}>
                                                         <label className={'name-item'}></label>
-                                                        <Field as="select" name="categoryId" className="form-select sel input-info-category"
-                                                               aria-label="Default select example" >
+                                                        <Field as="select" name="categoryId"
+                                                               className="form-select sel input-info-category"
+                                                               aria-label="Default select example">
                                                             <option disabled selected>Loại ngành nghề</option>
 
                                                             {category?.map((item, index) => (
-                                                                <option value={item.categoryId}>{item?.nameCategory}</option>
+                                                                <option
+                                                                    value={item.categoryId}>{item?.nameCategory}</option>
                                                             ))}
                                                         </Field>
                                                     </div>

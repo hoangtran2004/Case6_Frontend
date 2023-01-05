@@ -88,7 +88,7 @@ export default function SideBar() {
                     </div>
                 </div>
                 {/*search category end*/}
-                {/*search address start*/}
+                {/*search city start*/}
                 <div className="row" style={{padding: '12px'}}>
                     <div className="col-12">
                         <hr/>
@@ -116,7 +116,7 @@ export default function SideBar() {
                         </div>
                     </div>
                 </div>
-                {/*search address end*/}
+                {/*search city end*/}
             </div>
         </>
     )
