@@ -1,10 +1,21 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {addJob, deleteJob, editJob, getJob, lockJob, searchJob, searchJobInput} from "../../service/Job-service";
+import {
+    addJob,
+    deleteJob,
+    editJob,
+    findJobById,
+    getJob,
+    lockJob,
+    searchJob,
+    searchJobInput
+} from "../../service/Job-service";
+import {findJobByIdWork} from "../../service/Work-service";
 
 
 const initialState = {
     job: [],
-    jobSearchInput: []
+    jobSearchInput: [],
+    jobCurrent: {}
 }
 
 const jobSlice = createSlice({
@@ -26,17 +37,24 @@ const jobSlice = createSlice({
             state.job = newArr
         });
         builder.addCase(lockJob.fulfilled, (state, action) => {
-            console.log(action.payload)
-            state.job = action.payload.jobs.reverse()
+             state.job = action.payload.jobs
         });
         builder.addCase(editJob.fulfilled, (state, action) => {
             state.job = action.payload.job
         });
         builder.addCase(searchJob.fulfilled, (state, action) => {
-          state.job = action.payload
+            state.job = action.payload
         })
-        builder.addCase(searchJobInput.fulfilled,(state, action)=>{
+        builder.addCase(searchJobInput.fulfilled, (state, action) => {
             state.jobSearchInput = action.payload
+        })
+        builder.addCase(findJobByIdWork.fulfilled, (state, action) => {
+            state.job = action.payload
+        })
+        builder.addCase(findJobById.fulfilled, (state, action) => {
+            console.log(action.payload)
+            let oneJob = state.job.filter(item=> item.jobId  == action.payload)
+            state.jobCurrent = oneJob[0]
         })
     }
 })

@@ -4,27 +4,54 @@ import '../../style/Auth-register.css'
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {authRegister} from "../../service/Auth-service";
+import Swal from "sweetalert2";
 
 function AuthRegister() {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
     const handleRegister = async (values) => {
         if (values.name.length < 8) {
-            alert("Tên người dùng phải từ 8 ký tự")
+            await Toast.fire({
+                icon: 'error',
+                title: 'Tên người dùng phải từ 8 ký tự!'
+            })
 
         } else if (values.password.length < 8) {
-            alert(" Mật khẩu của bạn quá ngắn hãy nhập lại")
+            await Toast.fire({
+                icon: 'error',
+                title: 'Mật khẩu của bạn phải trên 8 kí tự!'
+            })
 
         } else if (values.password !== values.repeatPassword) {
-            alert('Mật khẩu không hợp lệ')
+            await Toast.fire({
+                icon: 'error',
+                title: 'Mật khẩu không chính xác!'
+            })
         } else {
             let checkRegister = await dispatch(authRegister(values))
             if (checkRegister.payload.checkRegister === true) {
+                await Toast.fire({
+                    icon: 'success',
+                    title: 'Đăng kí tài khoản thành công!'
+                })
                 navigate('/auth/login')
             } else {
-                alert("Email đã được sử dụng")
+                await Toast.fire({
+                    icon: 'warning',
+                    title: 'Tài khoản gmail đã được sử dụng!'
+                })
             }
         }
     }

@@ -3,6 +3,8 @@
     border-radius: 4px;
     width: 330px;
     margin-left: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
 }
 .container-sideBar p{
     font-weight: 400;
@@ -15,4 +17,11 @@
 
 hr {
     /*margin-bottom: 0rem !important;*/
+}
+.filter-job{
+margin-left: 4%;
+
+}
+.filter-job label {
+    margin-left: 2%;
 }

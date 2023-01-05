@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import '../../style/Auth-login.css'
 import * as Yup from "yup";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {workRegister} from "../../service/Work-service";
+import Swal from "sweetalert2";
+import {getCity} from "../../service/City-service";
+
 function WorkRegister() {
-    const dispatch=useDispatch();
-    const navigate=useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const SignupSchema = Yup.object().shape({
         email: Yup.string()
@@ -19,21 +22,46 @@ function WorkRegister() {
         phoneNumber: Yup.string()
             .min(6, "Số điện thoại không hợp lệ!")
             .max(30, "Số điện thoại không hợp lệ!"),
-        address: Yup.string()
-            .min(6, "Địa chỉ không hợp lệ!!")
-            .max(70, "Địa chỉ không hợp lệ!")
 
+    });
+
+    useEffect(() => {
+        dispatch(getCity())
+    }, [])
+
+    const city = useSelector(state => {
+        console.log(state.city.city)
+        return state.city.city
     })
-     const handleWorkRegister=async (values)=>{
-        let checkRegister= await dispatch(workRegister(values))
-         if (checkRegister.payload.checkRegister===true){
-             navigate('/work/login')
-         }
-         else {
-            alert("Tài khoản gmail đã tồn tại")
-         }
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
 
-     }
+
+    const handleWorkRegister = async (values) => {
+        let checkRegister = await dispatch(workRegister(values));
+        if (checkRegister.payload.checkRegister === true) {
+            Toast.fire({
+                icon: 'success',
+                title: 'Đăng kí thành công.',
+            })
+            navigate('/work/login')
+        } else {
+            await Toast.fire({
+                icon: 'error',
+                title: 'Tài khoản gmail đã tồn tại.'
+            })
+        }
+
+    }
 
     return (
         <div className="container-Login">
@@ -45,13 +73,15 @@ function WorkRegister() {
                                 email: '',
                                 name: '',
                                 phoneNumber: '',
-                                address: '',
-                                image:'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
+                                address: 0,
+                                image: 'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
                             }}
                                     validationSchema={SignupSchema}
-                                    onSubmit={(values,{resetForm}) => {
+                                    onSubmit={(values, {resetForm}) => {
                                         handleWorkRegister(values)
-                                        resetForm()
+                                        setTimeout(() => {
+                                            resetForm()
+                                        }, 3000)
                                     }}>
                                 <Form className="form-company">
                                     <h3>Đăng kí tài khoản doanh nghiệp</h3>
@@ -75,9 +105,17 @@ function WorkRegister() {
                                     </div>
                                     <div className="form-group">
                                         <label>Địa chỉ</label>
-                                        <Field type="text" required className="form-control size" name={'address'}
-                                               placeholder="Địa chỉ"/>
-                                        <ErrorMessage name={'address'}/>
+
+                                        <Field as="select" name="address"
+                                               className="form-select sel select-city"
+                                               style={{height: '53% !important'}}
+                                               aria-label="Default select example">
+
+                                            {city?.map((item, index) => (
+                                                <option value={item.cityId}
+                                                        name={'cityID'}>{item?.nameCity}</option>
+                                            ))}
+                                        </Field>
                                     </div>
                                     <button type={'submit'} className="btn btn-primary size">Đăng kí</button>
                                 </Form>

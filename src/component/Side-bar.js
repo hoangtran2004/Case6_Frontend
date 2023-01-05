@@ -40,16 +40,14 @@ export default function SideBar() {
             }
         }
         dispatch(searchJob(newArrQuery.join('&')))
-        setTimeout(() => {
-            navigate(`/search?${newArrQuery.join('&')}`)
-        }, 1300)
+        navigate(`/search?${newArrQuery.join('&')}`)
     };
     useEffect(() => {
         dispatch(searchJob(search))
         for (const [key, value] of queryParams) {
             console.log({key, value}) // {key: 'term', value: 'pizza'} {key: 'location', value: 'Bangalore'}
         }
-    }, [])
+    }, [search])
     return (<>
         <div className="container-sideBar">
             {/*search category start*/}

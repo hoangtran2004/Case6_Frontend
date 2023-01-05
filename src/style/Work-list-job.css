@@ -2,6 +2,7 @@
 
 .container-listJobWork{
     margin-top: 5rem;
+    width: 99%;
 }
 .main{
     padding: 20px;
@@ -14,21 +15,24 @@
     left: 2rem;
     border: solid 1px lightgrey;
     border-radius: 4px;
-    height: 230px;
-    margin-left: 65px;
-    margin-bottom: 35px;
+    height: 100%;
+    margin-left: 5%;
+    margin-bottom: 3%;
     float: left;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
 }
 
 .container-listJobWork .card-logo-work{
-    height: 60px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
 }
 .card-description{
     padding: 2px;
     font-size: 14px;
     margin-top: -0.2em;
+
 }
 .icon-description-work{
     width: 15px;
@@ -38,7 +42,8 @@
 
 }
 .job-description-work{
-    width: 300px;
+    display: block;
+    width: 200px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -58,4 +63,7 @@
     margin-left: 1.5rem;
     margin-top: -1em;
 
+}
+.container-listJobWork .card-job-work:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px
 }

@@ -29,10 +29,7 @@ export default function AuthSearch() {
             }
         }
         dispatch(searchJob(arrParam.join('&')))
-        setTimeout(() => {
-            navigate(`/search?${arrParam.join('&')}`)
-        }, 1300)
-
+        navigate(`/search?${arrParam.join('&')}`)
     }
 
     let removeVietnameseTones = (str) => {
@@ -50,27 +47,42 @@ export default function AuthSearch() {
         return str.replace(/\s+/g, ' ');
     }
 
-    return (<>
-        <div className="contain-search">
-            <Formik initialValues={{
-                key: ''
-            }} onSubmit={(values) => handleSearch(values)}>
-                <Form>
-                    <div className="row">
-                        <div className="col-6 offset-3">
-                            <div className="form-group">
-                                <Field type={'text'} name={'key'}
-                                       placeholder={'Tìm kiếm việc làm theo tên, công ty...'}
-                                       className={'form-control'}>
-                                </Field>
+    return (
+        <>
+            <div className="contain-search">
+                <Formik initialValues={{
+                    key: ''
+                }} onSubmit={(values) =>
+                    handleSearch(values)
+                }>
+                    <Form>
+                        <div className="row">
+                            <div className="col-3">
+                                <h1>aaaaaaaaaaaa</h1>
+                            </div>
+                            <div className="col-9">
+                                <div className="row">
+                                    <div className="col-9">
+                                        <div className="form-group">
+                                            <Field type={'text'} name={'key'}
+                                                   placeholder={'Tìm kiếm việc làm theo tên, công ty...'}
+                                                   className={'form-control'}
+                                                   style={{width: '95%', marginLeft: '6.5%', backgroundColor: 'white'}}>
+                                            </Field>
+                                        </div>
+                                    </div>
+                                    <div className="col-3">
+                                        <button type={'submit'} className="btn btn-primary"
+                                                style={{marginLeft: '6%', width: '40%'}}>Tìm kiếm
+                                        </button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                        <div className="col-3">
-                            <button type={'submit'} className="btn btn-primary">Tìm kiếm</button>
-                        </div>
-                    </div>
-                </Form>
-            </Formik>
-        </div>
-    </>)
+                    </Form>
+                </Formik>
+            </div>
+        </>
+    )
 }

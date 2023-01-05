@@ -1,5 +1,6 @@
 .container-work-list-job{
-    margin-top: 4em;
+    margin-top: 5%;
+    width: 85% !important;
 }
 .work-card-job .work-card-logo {
     height: 60px;
