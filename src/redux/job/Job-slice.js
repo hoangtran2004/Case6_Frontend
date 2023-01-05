@@ -56,7 +56,6 @@ const jobSlice = createSlice({
             console.log(action.payload)
             let oneJob = state.job.filter(item=> item.jobId  == action.payload)
             state.jobCurrent = oneJob[0]
-
         })
     }
 })

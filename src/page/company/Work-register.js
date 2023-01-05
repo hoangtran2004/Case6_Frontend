@@ -21,10 +21,6 @@ function WorkRegister() {
         phoneNumber: Yup.string()
             .min(6, "Số điện thoại không hợp lệ!")
             .max(30, "Số điện thoại không hợp lệ!"),
-        address: Yup.string()
-            .min(6, "Địa chỉ không hợp lệ!!")
-            .max(70, "Địa chỉ không hợp lệ!")
-
     });
 
     const Toast = Swal.mixin({
@@ -42,8 +38,9 @@ function WorkRegister() {
 
     const handleWorkRegister = async (values) => {
         let checkRegister = await dispatch(workRegister(values));
+        console.log(checkRegister)
         if (checkRegister.payload.checkRegister === true) {
-          await  Toast.fire({
+          await Toast.fire({
                 icon: 'success',
                 title: 'Đăng kí thành công.'
             })
@@ -96,6 +93,8 @@ function WorkRegister() {
                                         <ErrorMessage name={'phoneNumber'}/>
                                     </div>
                                     <div className="form-group">
+
+
                                         <label>Địa chỉ</label>
                                         <Field type="text" required className="form-control size" name={'address'}
                                                placeholder="Địa chỉ"/>

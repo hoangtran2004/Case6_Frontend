@@ -175,15 +175,28 @@ export default function WorkAddJob() {
                                             </div>
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">
-                                                    <div className="col-5">
+                                                    <div className="col-4">
                                                         <label className={'name-item'}>Thời gian ứng tuyển hiệu
                                                             lực</label>
-                                                        <Field type="date" className="form-control input-info-wage"
+                                                        <Field type="date" className="form-control input-info-time"
                                                                min={time}
                                                                name={"endDate"} required/>
                                                     </div>
-                                                    <div className="col-1"></div>
-                                                    <div className="col-5" style={{marginTop: '0.7%'}}>
+                                                    <div className="col-4" >
+                                                        <label className={'name-item'}></label>
+                                                        <Field as="select" name="categoryId"
+                                                               className="form-select sel input-info-category"
+                                                               style={{height: '53% !important'}}
+                                                               aria-label="Default select example">
+                                                            <option disabled selected>Loại ngành nghề</option>
+
+                                                            {category?.map((item, index) => (
+                                                                <option value={item.categoryId}
+                                                                        name={'nameCategory'}>{item?.nameCategory}</option>
+                                                            ))}
+                                                        </Field>
+                                                    </div>
+                                                    <div className="col-4">
                                                         <label className={'name-item'}></label>
                                                         <Field as="select" name="categoryId"
                                                                className="form-select sel input-info-category"
