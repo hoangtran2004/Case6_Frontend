@@ -21,9 +21,6 @@ function WorkRegister() {
         phoneNumber: Yup.string()
             .min(6, "Số điện thoại không hợp lệ!")
             .max(30, "Số điện thoại không hợp lệ!"),
-        address: Yup.string()
-            .min(6, "Địa chỉ không hợp lệ!!")
-            .max(70, "Địa chỉ không hợp lệ!")
 
     });
 

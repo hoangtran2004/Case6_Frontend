@@ -23,24 +23,29 @@ export default function AuthJobDetail() {
         <div>
             <div className='row'>
                 <div className="col-1">
-                    <img id='img' src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg"
-                         width="50" height="50" style={{float: 'right'}}/>
+                    <img id='img' src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg" style={{float: 'right'}} alt={''}/>
                 </div>
                 <div className="col-7">
                     <h6>PROJECT COORDINATOR - FRENCH</h6>
                     <a href='#'><h6>Hiventy Asia</h6></a>
                     <div style={{margin: 10}}>
-                        <p style={{height: 10}}><i className="fa-solid fa-dollar-sign"/> IDR100 - 200/Tháng</p>
-                        <p style={{height: 10}}><i className="fa-solid fa-building"></i> Management</p>
-                        <p style={{height: 10}}><i className="fa-solid fa-hourglass"></i> Full time</p>
+                        <p style={{height: 10}}><img
+                            src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
+                            alt=""
+                            className="icon-description-work"/> IDR100 - 200/Tháng</p>
+                        <p style={{height: 10}}><img
+                            src="https://cdn-icons-png.flaticon.com/128/2942/2942842.png"
+                            alt=""
+                            className="icon-description-work"/> Management</p>
+                        <p style={{height: 10}}><img
+                            src="https://cdn-icons-png.flaticon.com/128/439/439398.png"
+                            alt=""
+                            className="icon-description-work"/>Full time</p>
                         <div style={{marginTop: 50}}>
                             <button id='btn1' data-toggle="modal"
                                     data-target="#staticBackdrop"
-                                    style={{backgroundColor: '#017eb7', color: "white"}}>Apply
+                                    style={{backgroundColor: '#017eb7', color: "white"}}>Gửi hồ sơ
                             </button>
-                            <button id='btn1'><i className="fa-regular fa-bookmark" style={{marginRight: 10}}/>Lưu lại
-                            </button>
-                            <button id='btn1'><i className="fa-regular fa-share-from-square"></i>Chia sẻ</button>
                         </div>
 
                         <div className="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
@@ -84,20 +89,11 @@ export default function AuthJobDetail() {
                             </div>
                         </div>
                     </div>
-                    <div style={{margin: 10}}>
-                        <hr style={{width: 600}}/>
-                        <h6>Skills</h6>
-                    </div>
                     <div>
-
-                        <button id='btn'>Code khỏe</button>
-                        <button id='btn'>Nhanh nhạy</button>
-                        <button id='btn'>Xàm lồn</button>
-                        <br/>
                         <h6 style={{marginTop: 30}}>Chi tiết công việc PROJECT COORDINATOR - FRENCH tại Hiventy
                             Asia</h6>
                         <br/>
-                        <h6>Job description</h6>
+                        <h6>Mô tả công việc</h6>
                         <p>- Plan the work schedule and the workflow.
                             - Negotiate freelancers’ fees, when necessary.
                             - Assign tasks to resources and follow-up.
@@ -119,10 +115,9 @@ export default function AuthJobDetail() {
                         </button>
                     </div>
                     <div className="card" style={{}}>
-                        <h6 style={{textAlign: "center"}}>Giới thiệu về công ty</h6>
+                        <h6 style={{textAlign: "center", marginTop: '2%'}}>Giới thiệu về công ty</h6>
                         <div className="card-body">
-                            <img id='img' src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg"
-                                 width="50" height="50"/>
+                            <img id='img' src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg" alt={''}/>
                             <h5 className="card-title">Sex company</h5>
                             <h6 className="card-subtitle mb-2 text-muted" style={{marginRight: 10}}>Media Production ||
                                 51-200 nhân viên</h6>
@@ -154,51 +149,27 @@ export default function AuthJobDetail() {
                     </div>
                 </div>
                 <div className="col-4">
-                    <h6>Các công việc hot</h6>
+                    <h6>Các công việc khác của công ty</h6>
                     <div className="card" id='card'>
                         <div className="card-body">
                             <img id='img'
-                                 src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg"
-                                 width="50" height="50"/>
+                                 src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg" alt={''}/>
                             <h5 className="card-title">Sex company</h5>
                             <h6 className="card-subtitle mb-2 text-muted">Hcm city,Vietnam</h6>
 
-                            <p className="card-text"><i className="fa-solid fa-building"/> Package</p>
-                            <p className="card-text"><i className="fa-solid fa-briefcase"/>
+                            <p className="card-text"><img
+                                src="https://cdn-icons-png.flaticon.com/128/4300/4300058.png"
+                                alt=""
+                                className="icon-description-work"/> Công ty</p>
+                            <p className="card-text"><img
+                                src="https://cdn-icons-png.flaticon.com/128/3885/3885079.png"
+                                alt=""
+                                className="icon-description-work"/>
                                 <a href="#" className="card-link"> 1 vị trí đang tuyển</a></p>
-                            <p className="card-text" id='word'><i className="fa-regular fa-clock"/> Hoạt động 20
-                                phút
-                                trước</p>
-                        </div>
-                    </div>
-                    <div className="card" id='card'>
-                        <div className="card-body">
-                            <img id='img'
-                                 src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg"
-                                 width="50" height="50"/>
-                            <h5 className="card-title">Sex company</h5>
-                            <h6 className="card-subtitle mb-2 text-muted">Hcm city,Vietnam</h6>
-
-                            <p className="card-text"><i className="fa-solid fa-building"/> Package</p>
-                            <p className="card-text"><i className="fa-solid fa-briefcase"/>
-                                <a href="#" className="card-link"> 1 vị trí đang tuyển</a></p>
-                            <p className="card-text" id='word'><i className="fa-regular fa-clock"/> Hoạt động 20
-                                phút
-                                trước</p>
-                        </div>
-                    </div>
-                    <div className="card" id='card'>
-                        <div className="card-body">
-                            <img id='img'
-                                 src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg"
-                                 width="50" height="50"/>
-                            <h5 className="card-title">Sex company</h5>
-                            <h6 className="card-subtitle mb-2 text-muted">Hcm city,Vietnam</h6>
-
-                            <p className="card-text"><i className="fa-solid fa-building"/> Package</p>
-                            <p className="card-text"><i className="fa-solid fa-briefcase"/>
-                                <a href="#" className="card-link"> 1 vị trí đang tuyển</a></p>
-                            <p className="card-text" id='word'><i className="fa-regular fa-clock"/> Hoạt động 20
+                            <p className="card-text" id='word'><img
+                                src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
+                                alt=""
+                                className="icon-description-work"/> Hoạt động 20
                                 phút
                                 trước</p>
                         </div>

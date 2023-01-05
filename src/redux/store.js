@@ -11,5 +11,6 @@ export const store = configureStore({
         auth: authReducer,
         category: categoryReducer,
         job: jobReducer
+
     }
 })

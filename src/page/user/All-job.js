@@ -26,7 +26,7 @@ export default function AllJob() {
                                                 <div className="col-5 card-job">
                                                     <div className="row">
                                                         <div className="col-2">
-                                                            <img src="https://cdn.dribbble.com/users/60166/screenshots/17610068/media/4cbea5351f3f12a22dfb63c04658196d.jpg?compress=1&resize=400x300&vertical=top" alt="" className={'card-logo'}/>
+                                                            <img src={item.image} alt="" className={'card-logo'}/>
 
                                                         </div>
                                                         <div className="col-7" style={{marginLeft: "15px"}}>
