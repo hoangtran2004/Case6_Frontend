@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import '../../style/Auth-login.css'
 import * as Yup from "yup";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {workRegister} from "../../service/Work-service";
 import Swal from "sweetalert2";
+import {getCity} from "../../service/City-service";
 
 function WorkRegister() {
     const dispatch = useDispatch();
@@ -24,6 +25,14 @@ function WorkRegister() {
 
     });
 
+    useEffect(() => {
+        dispatch(getCity())
+    }, [])
+
+    const city = useSelector(state => {
+        console.log(state.city.city)
+        return state.city.city
+    })
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -64,7 +73,7 @@ function WorkRegister() {
                                 email: '',
                                 name: '',
                                 phoneNumber: '',
-                                address: '',
+                                nameCity: '',
                                 image: 'https://www.palmkvistmaleri.se/wp-content/uploads/2018/02/default.jpg',
                             }}
                                     validationSchema={SignupSchema}
@@ -93,10 +102,18 @@ function WorkRegister() {
                                         <ErrorMessage name={'phoneNumber'}/>
                                     </div>
                                     <div className="form-group">
-                                        <label>Địa chỉ</label>
-                                        <Field type="text" required className="form-control size" name={'address'}
-                                               placeholder="Địa chỉ"/>
-                                        <ErrorMessage name={'address'}/>
+                                        <label >Địa chỉ</label>
+
+                                        <Field as="select" name="categoryId"
+                                               className="form-select sel select-city"
+                                               style={{height: '53% !important'}}
+                                               aria-label="Default select example">
+
+                                            {city?.map((item, index) => (
+                                                <option value={item.cityId}
+                                                        name={'nameCity'}>{item?.nameCity}</option>
+                                            ))}
+                                        </Field>
                                     </div>
                                     <button type={'submit'} className="btn btn-primary size">Đăng kí</button>
                                 </Form>

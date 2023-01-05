@@ -3,6 +3,7 @@ import workReducer from "./work/Work-slice";
 import authReducer from "./auth/Auth-slice";
 import categoryReducer from "./category/Category-slice";
 import jobReducer from "./job/Job-slice";
+import cityReducer from "./city/City-slice";
 
 
 export const store = configureStore({
@@ -10,7 +11,7 @@ export const store = configureStore({
         work: workReducer,
         auth: authReducer,
         category: categoryReducer,
-        job: jobReducer
-
+        job: jobReducer,
+        city: cityReducer
     }
 })

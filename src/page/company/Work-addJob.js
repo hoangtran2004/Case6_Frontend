@@ -6,6 +6,7 @@ import {getCategory} from "../../service/Category-service";
 import {addJob} from "../../service/Job-service";
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
+import {getCity} from "../../service/City-service";
 
 export default function WorkAddJob() {
     const Toast = Swal.mixin({
