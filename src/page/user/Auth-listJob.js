@@ -2,9 +2,7 @@ import AuthSearch from "./Auth-search";
 import SideBar from "../../component/Side-bar";
 import '../../style/Auth-home.css'
 import {Outlet} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {getJob} from "../../service/Job-service";
+
 
 export default function AuthListJob() {
 

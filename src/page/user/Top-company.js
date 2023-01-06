@@ -1,23 +1,26 @@
 import React, {useEffect} from 'react';
-import '../../style/Work-list-job.css'
 import AuthSearchCompany from "./Auth-searchCompany";
 import {useDispatch, useSelector} from "react-redux";
-import {getCompany} from "../../service/Work-service";
+import {getTopCompany} from "../../service/Work-service";
+import {useNavigate} from "react-router-dom";
 
-function AllCompany() {
+function TopCompany(props) {
 
-    const dispatch = useDispatch()
-
-    const company = useSelector(state => {
-        console.log('state',state)
-        return state.work.work.company
-    })
+    const dispatch = useDispatch();
+    const navigate=useNavigate()
 
     useEffect(()=>{
-        dispatch(getCompany())
-
+        dispatch(getTopCompany())
     },[])
 
+    const topCompany = useSelector(state => {
+        console.log(state)
+        return state.work.work.company
+    })
+    const detailCompany = ({id}) => {
+        console.log(id)
+        navigate('/detail-company/' + id)
+    }
 
     return (
         <>
@@ -25,13 +28,15 @@ function AllCompany() {
             <div className="row container-listJobWork" style={{marginTop:"-1.5%"}}>
                 <div className="col-12 main">
                     <div className="row">
-                        {company && company.map((item,index)=>(
+                        {topCompany&&topCompany.map((item)=>(
                             <div className="col-4 card-job-work">
                                 <div className="row">
                                     <div className="col-2">
                                         <img
                                             src={item?.image}
-                                            alt="logo" className="card-logo-work"/>
+                                            alt="logo" className="card-logo-work" onClick={()=>{
+                                                detailCompany({id:item?.companyId})
+                                        }}/>
                                     </div>
                                     <div className="col-8">
                                         <p className="job-description-work">{item?.name}</p>
@@ -58,7 +63,7 @@ function AllCompany() {
                                             <div className="work-description"><img
                                                 src="https://cdn-icons-png.flaticon.com/128/3885/3885079.png"
                                                 alt=""
-                                                className="icon-description-work"/>{item?.numberStaff} nhân sự
+                                                className="icon-description-work"/>Nhu cầu tuyển dụng :{item?.total} nhân sự
 
                                             </div>
                                         </div>
@@ -70,25 +75,26 @@ function AllCompany() {
                                 <div className="row" style={{marginTop: '15px'}}>
                                     <div className="col-12">
                                         <p style={{fontSize: '12px'}}><img
-                                            src="https://cdn-icons-png.flaticon.com/128/2088/2088617.png"
+                                            src=""
                                             alt=""
                                             style={{
                                                 width: '12px',
                                                 height: '12px',
                                                 objectFit: 'cover',
                                                 marginRight: '5px'
-                                            }}/>Thời gian ứng tuyển : 48 giờ </p>
+                                            }}/></p>
                                     </div>
                                 </div>
                             </div>
-                        ))}
 
+                        ))}
                     </div>
                 </div>
             </div>
 
         </>
+
     );
 }
 
-export default AllCompany;
+export default TopCompany;
