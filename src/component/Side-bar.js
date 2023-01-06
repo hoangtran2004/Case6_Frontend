@@ -1,14 +1,51 @@
 import '../style/Side-bar.css'
 import {useLocation, useNavigate, useParams, useSearchParams,} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {editJob, getJob, searchJob} from "../service/Job-service";
+import {getCity} from "../service/City-service";
+import {getCategory} from "../service/Category-service";
 
 export default function SideBar() {
     let dispatch = useDispatch()
     let navigate = useNavigate()
     let search = useLocation().search.replace('?', '')
     const queryParams = new URLSearchParams(search)
+    let cityQuery = []
+    let categoryQuery = []
+    useEffect(() => {
+        dispatch(searchJob(search))
+    }, [search])
+
+    useEffect(() => {
+        dispatch(getCity());
+        dispatch(getCategory());
+    }, [])
+    let getArrParams = () => {
+        let map = [];
+        for (const [key, value] of queryParams) {
+            map.push({key, value})
+        }
+        return map
+    }
+    let cities = useSelector((state) => {
+        return state.city.city
+    })
+    let categories = useSelector(state => {
+        return state.category.category
+    })
+    let checkQuery = (key) => {
+        return getArrParams().filter((item) => {
+            return item.key === `${key}`
+        })
+    }
+    if (checkQuery('addressWork').length !== 0) {
+        cityQuery = checkQuery('addressWork')[0].value.split(',')
+    }
+    if (checkQuery("categoryId").length !== 0) {
+        categoryQuery = checkQuery("categoryId")[0].value.split(',')
+    }
+
     let handleSearch = async (e) => {
         const checked = e.target.checked;
         const key = e.target.name;
@@ -40,16 +77,26 @@ export default function SideBar() {
             }
         }
         dispatch(searchJob(newArrQuery.join('&')))
-        navigate(`/search?${newArrQuery.join('&')}`)
-    };
-    useEffect(() => {
-        dispatch(searchJob(search))
-        for (const [key, value] of queryParams) {
-            console.log({key, value}) // {key: 'term', value: 'pizza'} {key: 'location', value: 'Bangalore'}
+        if (newArrQuery.join('&') !== '') {
+            navigate(`/search?${newArrQuery.join('&')}`)
+        } else {
+            navigate("/")
         }
-    }, [search])
+    };
+
+    let printCheckbox = (name, value, nameCB, check, id) => {
+        return (<>
+            <input checked={check} id={id} type={"checkbox"} name={name} value={value}
+                   onChange={(values) => handleSearch(values)}/>
+            <label htmlFor={id}>
+                {nameCB}
+            </label>
+            <br/>
+        </>)
+    }
+
     return (<>
-        <div className="container-sideBar">
+        <div className="container-sideBar" style={{marginTop : 90}}>
             {/*search category start*/}
             <div className="row" style={{padding: '12px'}}>
                 <div className="col-12">
@@ -59,21 +106,8 @@ export default function SideBar() {
             </div>
             <div className="row">
                 <div className="col-12 type-job">
-                    <p style={{marginLeft: "14px", fontSize: "14px"}}>Loại công việc</p>
-                    <input type={"checkbox"} name="categoryId" value={'1'}
-                           onChange={(values) => handleSearch(values)}/>
-                    <label for="vehicle1">
-                        Ngành Công nghệ Thông tin
-                    </label>
-                    <br/>
-                    <input type={"checkbox"} name="categoryId" value={'2'}
-                           onChange={(values) => handleSearch(values)}/>
-                    <label htmlFor="vehicle1">Ngành Khoa học Máy tính.</label>
-                    <br/>
-                    <input type={"checkbox"} name="categoryId" value={'3'}
-                           onChange={(values) => handleSearch(values)}/>
-                    <label htmlFor="vehicle1">Ngành Kỹ thuật Phần mềm.</label>
-                    <br/>
+                    <p style={{marginLeft: "14px", fontSize: "14px"}}>Ngành</p>
+                    {categories.map((item) => (categoryQuery.includes(`${item.categoryId}`) ? printCheckbox('categoryId', `${item.categoryId}`, `${item.nameCategory}`, true, `${item.categoryId}${item.nameCategory}`) : printCheckbox('categoryId', `${item.categoryId}`, `${item.nameCategory}`, false, `${item.categoryId}${item.nameCategory}`)))}
                 </div>
             </div>
             {/*search category end*/}

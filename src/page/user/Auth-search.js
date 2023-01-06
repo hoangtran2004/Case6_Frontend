@@ -2,14 +2,12 @@ import '../../style/Auth-home.css'
 import {useDispatch} from "react-redux";
 import {searchJob} from "../../service/Job-service";
 import {Field, Form, Formik} from "formik";
-import {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 
 export default function AuthSearch() {
     const dispatch = useDispatch()
     let search = useLocation().search.replace('?', '')
     let navigate = useNavigate()
-
 
     let handleSearch = async (event) => {
         let newEvent = removeVietnameseTones(`${event.key}`).split(' ').join('+')
@@ -18,18 +16,20 @@ export default function AuthSearch() {
             if (event.key) {
                 arrParam.splice(arrParam.length - 1, 1, `key=${newEvent}`)
             } else {
-                console.log(1)
                 arrParam.splice(arrParam.length - 1, 1)
             }
         } else {
             if (event.key) {
-                console.log(arrParam)
                 arrParam.push(`key=${newEvent}`)
                 arrParam = arrParam.filter(item => item !== '')
             }
         }
         dispatch(searchJob(arrParam.join('&')))
-        navigate(`/search?${arrParam.join('&')}`)
+        if (arrParam.join('&') !== '') {
+            navigate(`/search?${arrParam.join('&')}`)
+        } else {
+            navigate("/")
+        }
     }
 
     let removeVietnameseTones = (str) => {
@@ -57,9 +57,6 @@ export default function AuthSearch() {
                 }>
                     <Form>
                         <div className="row">
-                            <div className="col-3">
-                                <h1>aaaaaaaaaaaa</h1>
-                            </div>
                             <div className="col-9">
                                 <div className="row">
                                     <div className="col-9">
@@ -73,7 +70,7 @@ export default function AuthSearch() {
                                     </div>
                                     <div className="col-3">
                                         <button type={'submit'} className="btn btn-primary"
-                                                style={{marginLeft: '6%', width: '40%'}}>Tìm kiếm
+                                                style={{marginLeft: '6%'}}>Tìm kiếm
                                         </button>
                                     </div>
                                 </div>
