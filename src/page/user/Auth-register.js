@@ -41,11 +41,11 @@ function AuthRegister() {
             })
         } else {
             let checkRegister = await dispatch(authRegister(values))
+            Toast.fire({
+                icon: 'success',
+                title: 'Đăng kí tài khoản thành công!'
+            })
             if (checkRegister.payload.checkRegister === true) {
-                await Toast.fire({
-                    icon: 'success',
-                    title: 'Đăng kí tài khoản thành công!'
-                })
                 navigate('/auth/login')
             } else {
                 await Toast.fire({

@@ -120,15 +120,15 @@ export default function SideBar() {
             <div className="row">
                 <div className="col-12 type-job">
                     <p style={{marginLeft: "14px", fontSize: "14px"}}>Địa điểm làm viêc</p>
-                    <input type={"checkbox"} name="addressWork" value={'hanoi'}
+                    <input type={"checkbox"} name="addressWork" value={'1'}
                            onChange={(values) => handleSearch(values)}/>
                     <label htmlFor="vehicle1">Hà Nội</label>
                     <br/>
-                    <input type={"checkbox"} name="addressWork" value={'HCM'}
+                    <input type={"checkbox"} name="addressWork" value={'2'}
                            onChange={(values) => handleSearch(values)}/>
                     <label htmlFor="vehicle1">TP.Hồ Chí Minh</label>
                     <br/>
-                    <input type={"checkbox"} name="addressWork" value={'dangnang'}
+                    <input type={"checkbox"} name="addressWork" value={'3'}
                            onChange={(values) => handleSearch(values)}/>
                     <label htmlFor="vehicle1">Đà Nẵng</label>
                     <br/>

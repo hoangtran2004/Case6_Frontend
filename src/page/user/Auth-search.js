@@ -74,7 +74,6 @@ export default function AuthSearch() {
                                         </button>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </Form>

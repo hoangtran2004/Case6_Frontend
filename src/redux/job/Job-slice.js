@@ -14,7 +14,7 @@ import {findJobByIdWork} from "../../service/Work-service";
 
 const initialState = {
     job: [],
-    jobSearchInput: [],
+    jobSearch: [],
     jobCurrent: {},
     jobEnd:[]
 }
@@ -44,7 +44,7 @@ const jobSlice = createSlice({
             state.job = action.payload.job
         });
         builder.addCase(searchJob.fulfilled, (state, action) => {
-            state.job = action.payload
+            state.jobSearch = action.payload
         })
         builder.addCase(searchJobInput.fulfilled, (state, action) => {
             state.jobSearchInput = action.payload
