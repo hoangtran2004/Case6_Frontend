@@ -31,6 +31,10 @@ function NavbarHome() {
                                     <Link className="nav-link" to="/list-work">Danh sách công ty <span
                                         className="sr-only">(current)</span></Link>
                                 </li>
+                                <li className="nav-item active">
+                                    <Link className="nav-link" to="/top-work">Top công ty<span
+                                        className="sr-only">(current)</span></Link>
+                                </li>
                             </ul>
                         </div>
                         {token ?

@@ -16,11 +16,14 @@ import SearchJob from "./page/user/Search-job";
 import AllJob from "./page/user/All-job";
 import AuthJobDetail from "./page/user/Auth-jobDetail";
 import AllCompany from "./page/user/All-company";
+import TopCompany from "./page/user/Top-company";
+import AuthCompanyDetail from "./page/user/Auth-companyDetail";
 function App() {
     return (
         <div>
             <Routes>
                 <Route path={'detail'} element={<AuthJobDetail/>}></Route>
+
 
                 <Route path={'/access-account'} element={<AccessAccount/>}></Route>
                 //router user start
@@ -28,6 +31,8 @@ function App() {
                 <Route path={'auth/register'} element={<AuthRegister/>}></Route>
                 <Route path={'/'} element={<HomeUser/>}>
                     <Route path={'list-work'} element={<AllCompany></AllCompany>}/>
+                    <Route path={'top-work'} element={<TopCompany></TopCompany>}/>
+                    <Route path={'detail-company/:id'} element={<AuthCompanyDetail/>}></Route>
 
                     <Route path={'/'} element={<AuthListJob/>}>
                         <Route path={''} element={<AllJob/>}></Route>
