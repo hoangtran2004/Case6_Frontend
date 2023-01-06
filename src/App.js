@@ -26,7 +26,7 @@ function App() {
                 <Route path={'auth/register'} element={<AuthRegister/>}></Route>
                 <Route path={'/'} element={<HomeUser/>}>
                     <Route path={'list-work'} element={<AllCompany></AllCompany>}/>
-                    <Route path={'detail-work/:id'} element={<AuthJobDetail></AuthJobDetail>}/>
+                    <Route path={'job-detail/:id'} element={<AuthJobDetail></AuthJobDetail>}/>
                     <Route path={'/'} element={<AuthListJob/>}>
                         <Route path={''} element={<AllJob/>}></Route>
                         <Route path={'search'} element={<SearchJob></SearchJob>}/>

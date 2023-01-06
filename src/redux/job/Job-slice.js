@@ -1,8 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {
     addJob,
-    deleteJob,
-    editJob,
+    deleteJob, detailJob,
+    editJob, findAllJobOfCompany,
     findJobById,
     getJob,
     lockJob,
@@ -55,6 +55,14 @@ const jobSlice = createSlice({
             console.log(action.payload)
             let oneJob = state.job.filter(item=> item.jobId  == action.payload)
             state.jobCurrent = oneJob[0]
+        })
+        builder.addCase(detailJob.fulfilled, (state, action) => {
+            state.jobCurrent = action.payload[0]
+        })
+        builder.addCase(findAllJobOfCompany.fulfilled, (state, action) => {
+            console.log("action other job",action)
+            console.log('state other job',state)
+            state.job = action.payload
         })
     }
 })

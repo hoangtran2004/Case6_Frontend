@@ -13,11 +13,11 @@ export default function AllJob() {
 
     const tokenUser = localStorage.getItem('token');
     const detailJob = ({id}) => {
+        console.log(id)
         navigate('job-detail/' + id)
     }
 
     useEffect(() => {
-
         dispatch(getJob())
     }, [])
 

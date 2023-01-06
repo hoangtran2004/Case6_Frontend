@@ -110,7 +110,7 @@ export default function WorkAddJob() {
                                         wageEnd: '',
                                         experience: '',
                                         endDate: '',
-                                        description: '',
+                                        jobDescription: '',
                                         addressWork: company.address,
                                         vacancies: '',
                                         categoryId: 0,
@@ -134,7 +134,7 @@ export default function WorkAddJob() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Mô tả công việc</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"description"} required/>
+                                                       name={"jobDescription"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Vị trí ứng tuyển</label>

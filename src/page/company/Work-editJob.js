@@ -75,7 +75,7 @@ export default function WorkEditJob() {
             companyId: +value.companyId,
             categoryId: +value.categoryId,
             experience: value.experience,
-            description: value.description,
+            jobDescription: value.jobDescription,
             codeJob: +value.codeJob,
             wageEnd: +value.wageEnd,
             wageStart: +value.wageStart,
@@ -139,7 +139,7 @@ export default function WorkEditJob() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Mô tả công việc</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"description"} required/>
+                                                       name={"jobDescription"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Vị trí ứng tuyển</label>
