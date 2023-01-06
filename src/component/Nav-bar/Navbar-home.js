@@ -28,7 +28,7 @@ function NavbarHome() {
                                         className="sr-only">(current)</span></Link>
                                 </li>
                                 <li className="nav-item active">
-                                    <Link className="nav-link" to="/list-work">Danh sách công ty <span
+                                    <Link className="nav-link" to="/companies">Danh sách công ty <span
                                         className="sr-only">(current)</span></Link>
                                 </li>
                                 <li className="nav-item active">
