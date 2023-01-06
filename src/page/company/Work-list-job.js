@@ -21,7 +21,7 @@ function WorkListJob() {
 
     const job = useSelector(state => {
         console.log(state)
-        return state.job.job
+        return state.job.jobEnd
     }) || []
 
     const formEdit = ({id}) => {

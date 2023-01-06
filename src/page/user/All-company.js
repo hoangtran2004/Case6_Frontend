@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import '../../style/Work-list-job.css'
 import AuthSearchCompany from "./Auth-searchCompany";
+import {useDispatch, useSelector} from "react-redux";
 
 function AllCompany() {
+    const dispatch = useDispatch()
+
+    const company = useSelector(state => {
+        console.log(state)
+        return state
+    })
+
+    useEffect(()=>{
+
+    })
+
     return (
         <>
             <AuthSearchCompany></AuthSearchCompany>
