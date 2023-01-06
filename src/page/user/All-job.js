@@ -2,14 +2,19 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getJob} from "../../service/Job-service";
 import '../../style/Auth-home.css'
-export default function AllJob() {
+import {useNavigate} from "react-router-dom";
 
+export default function AllJob() {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     let jobs = useSelector((state) => {
         return state.job.job
     })
 
-    const tokenUser = localStorage.getItem('token')
+    const tokenUser = localStorage.getItem('token');
+    const detailJob = ({id}) => {
+        navigate('job-detail/' + id)
+    }
 
     useEffect(() => {
 
@@ -30,7 +35,9 @@ export default function AllJob() {
                                 jobs.map((item) => {
                                         if (item.status === 0) {
                                             return (
-                                                <div className="col-5 card-job">
+                                                <div className="col-5 card-job" onClick={()=>{
+                                                    detailJob({id:item?.jobId})
+                                                }}>
                                                     <div className="row">
                                                         <div className="col-2">
                                                             <img src={item.image} alt="" className={'card-logo'}/>

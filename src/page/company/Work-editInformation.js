@@ -97,7 +97,7 @@ export default function WorkEditInformation() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Tên công ty</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"name"} require/>
+                                                       name={"name"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Tên viết tắt</label>
@@ -107,12 +107,12 @@ export default function WorkEditInformation() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Số điện thoại</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"phoneNumber"} require/>
+                                                       name={"phoneNumber"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Số nhân viên</label>
                                                 <Field type="number" className="form-control input-info-job"
-                                                       name={"numberStaff"} require/>
+                                                       name={"numberStaff"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Ảnh</label><br/>
@@ -127,12 +127,12 @@ export default function WorkEditInformation() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Địa chỉ</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"address"} require/>
+                                                       name={"address"} required/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Mô tả</label>
                                                 <Field type="text" className="form-control input-info-job"
-                                                       name={"description"} require/>
+                                                       name={"description"} required/>
                                             </div>
 
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>

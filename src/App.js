@@ -20,15 +20,13 @@ function App() {
     return (
         <div>
             <Routes>
-                <Route path={'detail'} element={<AuthJobDetail/>}></Route>
-
                 <Route path={'/access-account'} element={<AccessAccount/>}></Route>
                 //router user start
                 <Route path={'auth/login'} element={<AuthLogin/>}></Route>
                 <Route path={'auth/register'} element={<AuthRegister/>}></Route>
                 <Route path={'/'} element={<HomeUser/>}>
                     <Route path={'list-work'} element={<AllCompany></AllCompany>}/>
-
+                    <Route path={'detail-work/:id'} element={<AuthJobDetail></AuthJobDetail>}/>
                     <Route path={'/'} element={<AuthListJob/>}>
                         <Route path={''} element={<AllJob/>}></Route>
                         <Route path={'search'} element={<SearchJob></SearchJob>}/>
