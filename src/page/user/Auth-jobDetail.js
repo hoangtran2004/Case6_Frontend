@@ -1,7 +1,14 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "../../style/Auth-job-detail.css"
+import {useDispatch, useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
+import {detailJob, findAllJobOfCompany, getJob} from "../../service/Job-service";
 
 export default function AuthJobDetail() {
+    const dispatch = useDispatch();
+    const jobId = useParams().id;
+
+
     function myFunction(dot, more, btn) {
         let dots = document.getElementById(dot);
         let moreText = document.getElementById(more);
@@ -19,28 +26,49 @@ export default function AuthJobDetail() {
         }
     }
 
+    useEffect(() => {
+        dispatch(detailJob(jobId))
+        dispatch(getJob())
+    }, []);
+
+
+    let job = useSelector(state => {
+        console.log('state job', state)
+        return state.job.jobCurrent
+    });
+
+
+    let otherJob = useSelector(state => {
+        return state.job.job
+    })
+
+
+
+
+
     return (
         <div>
-            <div className='row'>
+            <div className='row' style={{marginTop: '10%'}}>
                 <div className="col-1">
-                    <img id='img' src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg" style={{float: 'right'}} alt={''}/>
+                    <img id='img' src={job?.image}
+                         style={{float: 'right'}} alt={''}/>
                 </div>
                 <div className="col-7">
-                    <h6>PROJECT COORDINATOR - FRENCH</h6>
-                    <a href='#'><h6>Hiventy Asia</h6></a>
+                    <h6>{job?.title}</h6>
+                    <a href='#'><h6>{job?.nameCity}</h6></a>
                     <div style={{margin: 10}}>
                         <p style={{height: 10}}><img
                             src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                             alt=""
-                            className="icon-description-work"/> IDR100 - 200/Tháng</p>
+                            className="icon-description-work"/> {job?.wageStart} - {job?.wageEnd}/Tháng</p>
                         <p style={{height: 10}}><img
                             src="https://cdn-icons-png.flaticon.com/128/2942/2942842.png"
                             alt=""
-                            className="icon-description-work"/> Management</p>
+                            className="icon-description-work"/> {job?.vacancies}</p>
                         <p style={{height: 10}}><img
                             src="https://cdn-icons-png.flaticon.com/128/439/439398.png"
                             alt=""
-                            className="icon-description-work"/>Full time</p>
+                            className="icon-description-work"/>{job?.vacancies === 0 ? "Full time" : "Part time"}</p>
                         <div style={{marginTop: 50}}>
                             <button id='btn1' data-toggle="modal"
                                     data-target="#staticBackdrop"
@@ -62,7 +90,7 @@ export default function AuthJobDetail() {
                                             Job</h5>
                                     </div>
                                     <div className="modal-body">
-                                        <h6>Hồ sơ xin việc*</h6>
+                                        <h6>Hồ sơ xin việc</h6>
                                         <button type="button" id='btn12'>Đăng tải hồ sơ của tôi</button>
                                         <div id='style1'>
                                             <h6>Lưu ý : đảm bảo hồ sơ xin việc của bạn sử dụng ngôn ngữ trùng khớp với
@@ -90,25 +118,11 @@ export default function AuthJobDetail() {
                         </div>
                     </div>
                     <div>
-                        <h6 style={{marginTop: 30}}>Chi tiết công việc PROJECT COORDINATOR - FRENCH tại Hiventy
+                        <h6 style={{marginTop: 30}}>Chi tiết công việc {job?.title} tại {job?.name}
                             Asia</h6>
                         <br/>
                         <h6>Mô tả công việc</h6>
-                        <p>- Plan the work schedule and the workflow.
-                            - Negotiate freelancers’ fees, when necessary.
-                            - Assign tasks to resources and follow-up.
-                            - Prepare all the necessar<span id="dots">...</span>
-                            <btn id="more">y documents: project briefing, guidelines, etc.
-                                - Ensure that each production step is properly implemented.
-                                - Ensure that all deadlines are met.
-                                - Check the quality of the files produced.
-                                - Keep a record of each project and each client’s details.
-                                - Other assistance-related tasks as assigned by the management.
-                                Ms. Vy DINH
-                                M : +84 28.62.81.87.35
-                                215/F9 Nguyen Van Huong - Thao Dien – HCMC - Việt Nam
-                            </btn>
-                        </p>
+                        <p>{job.jobDescription}</p>
                         <button onClick={() => {
                             myFunction('dots', 'more', 'myBtn')
                         }} id="myBtn" style={{backgroundColor: 'white', border: 'none', color: 'blue'}}>Xem thêm
@@ -117,63 +131,60 @@ export default function AuthJobDetail() {
                     <div className="card" style={{}}>
                         <h6 style={{textAlign: "center", marginTop: '2%'}}>Giới thiệu về công ty</h6>
                         <div className="card-body">
-                            <img id='img' src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg" alt={''}/>
-                            <h5 className="card-title">Sex company</h5>
-                            <h6 className="card-subtitle mb-2 text-muted" style={{marginRight: 10}}>Media Production ||
-                                51-200 nhân viên</h6>
-                            <p>Hiventy Asia, created in 2009, is the Asian branch of Hiventy Group, which was founded in
-                                1984 in Paris, France. Hiventy Group provides audiovisual technical services in 4 main
-                                areas:
-                                Localization
-                                Post-production
-                                Content delivery
-                                Film restoration
-                                Hiventy Asia handles the coordi<span id="change">...</span>
-                                <btn id="mText">nation of high-end dubbing and subtitling works into more than 25
-                                    languages, while the group manages more than 75. For our content localization
-                                    services, we rely on our in-house dubbing studios and offices in France, Poland,
-                                    Vietnam, Singapore, Kenya ad Nigeria, highly selected partner dubbing studios all
-                                    over the world, and a large network of skilled and in-house trained translators and
-                                    linguist specialists. Among our recognitions: Official partner of the Cannes Film
-                                    Festival, Netflix Preferred Partner, and iTunes Preferred Encoding House.
-                                </btn>
+                            <img id='img' src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg"
+                                 alt={''}/>
+                            <h5 className="card-title">{job?.name}</h5>
+                            <h6 className="card-subtitle mb-2 text-muted" style={{marginRight: 10}}>{job?.name} ||
+                                {job?.staffNumber} nhân viên</h6>
+                            <p>
+                                {job?.description}
                             </p>
                             <button onClick={() => {
                                 myFunction('change', 'mText', 'btnText')
                             }} id="btnText" style={{backgroundColor: 'white', border: 'none', color: 'blue'}}>Xem thêm
                             </button>
                             <h6>Địa chỉ văn phòng</h6>
-                            <p>215/F9 Nguyen Van Huong - Thao Dien, District 2 Ho Chi Minh City</p>
+                            <p>{job?.nameCity}</p>
 
                         </div>
                     </div>
                 </div>
                 <div className="col-4">
                     <h6>Các công việc khác của công ty</h6>
-                    <div className="card" id='card'>
-                        <div className="card-body">
-                            <img id='img'
-                                 src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg" alt={''}/>
-                            <h5 className="card-title">Sex company</h5>
-                            <h6 className="card-subtitle mb-2 text-muted">Hcm city,Vietnam</h6>
+                    {otherJob && otherJob.map((item, index) => {
+                        for (let i = 0; i < otherJob.length; i++) {
+                            if (job.companyId === item.companyId ){
+                                return (
+                                    <div className="card" id='card'>
+                                        <div className="card-body">
+                                            <img id='img'
+                                                 src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg"
+                                                 alt={''}/>
+                                            <h5 className="card-title">{item?.title}</h5>
+                                            <h6 className="card-subtitle mb-2 text-muted">{item?.nameCity},Việt Nam</h6>
 
-                            <p className="card-text"><img
-                                src="https://cdn-icons-png.flaticon.com/128/4300/4300058.png"
-                                alt=""
-                                className="icon-description-work"/> Công ty</p>
-                            <p className="card-text"><img
-                                src="https://cdn-icons-png.flaticon.com/128/3885/3885079.png"
-                                alt=""
-                                className="icon-description-work"/>
-                                <a href="#" className="card-link"> 1 vị trí đang tuyển</a></p>
-                            <p className="card-text" id='word'><img
-                                src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
-                                alt=""
-                                className="icon-description-work"/> Hoạt động 20
-                                phút
-                                trước</p>
-                        </div>
-                    </div>
+                                            <p className="card-text"><img
+                                                src="https://cdn-icons-png.flaticon.com/128/4300/4300058.png"
+                                                alt=""
+                                                className="icon-description-work"/>{}</p>
+                                            <p className="card-text"><img
+                                                src="https://cdn-icons-png.flaticon.com/128/3885/3885079.png"
+                                                alt=""
+                                                className="icon-description-work"/>
+                                                <a href="#" className="card-link">Số lượng ứng tuyển
+                                                    :{item?.applicants}</a>
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+                                )
+                            }
+                        }
+
+
+
+                    })}
                 </div>
 
             </div>
