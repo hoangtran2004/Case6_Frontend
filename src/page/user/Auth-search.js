@@ -20,7 +20,7 @@ export default function AuthSearch() {
         if (search === '') {
             navigate(`/search?${newKey}`)
             await setKey(newKey)
-            dispatch(searchJob(`/search?${newKey}`))
+            dispatch(searchJob(`/se arch?${newKey}`))
         } else {
            if (search.includes(newKey)) {
                navigate(search)
