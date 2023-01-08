@@ -63,7 +63,6 @@ export default function WorkAddJob() {
 
 
     const handleAddJob = async (value) => {
-        console.log(value)
         value.categoryId = +value.categoryId
         if (value.wageStart > value.wageEnd) {
             value.wageStart = ''
@@ -111,7 +110,7 @@ export default function WorkAddJob() {
                                         experience: '',
                                         endDate: '',
                                         jobDescription: '',
-                                        addressWork: '',
+                                        addressWork:'',
                                         vacancies: '',
                                         categoryId: 0,
                                         nameCategory: '',
@@ -165,14 +164,14 @@ export default function WorkAddJob() {
                                                 </div>
                                             </div>
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Địa chỉ làm việc</label>
-                                                <Field type="text" className="form-control input-info-job"
-                                                       name={"addressWork"} required/>
-                                            </div>
-                                            <div className="form-group group-input">
                                                 <label className={'name-item'}>Kinh nghiệm</label>
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"experience"} required/>
+                                            </div>
+                                            <div className="form-group group-input">
+                                                <label className={'name-item'}>Địa chỉ làm việc</label>
+                                                <Field type="text" className="form-control input-info-job"
+                                                       name={"addressWork"} required/>
                                             </div>
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">

@@ -8,6 +8,7 @@ export default function AllJob() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     let jobs = useSelector((state) => {
+        console.log('state',state)
         return state.job.job
     })
 
@@ -57,12 +58,12 @@ export default function AllJob() {
                                                                 <div className="description"><img
                                                                     src="https://cdn-icons-png.flaticon.com/128/3850/3850259.png"
                                                                     alt=""
-                                                                    className="icon-description"/>{item.nameCategory}
+                                                                    className="icon-description"/>{item?.nameCategory}
                                                                 </div>
                                                                 <div className="description"><img
                                                                     src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
                                                                     alt=""
-                                                                    className="icon-description"/>{item.nameCity}
+                                                                    className="icon-description"/>{item?.nameCity}
                                                                 </div>
                                                                 {tokenUser ? <div className="description"><img
                                                                     src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
@@ -73,7 +74,7 @@ export default function AllJob() {
                                                                 <div className="description"><img
                                                                     src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
                                                                     alt=""
-                                                                    className="icon-description"/>{item.experience} năm
+                                                                    className="icon-description"/>{item.experience}
                                                                 </div>
                                                             </div>
                                                         </div>

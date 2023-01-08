@@ -132,7 +132,7 @@ export default function WorkEditJob() {
                                     }} enableReinitialize={true}>
                                         <Form className="input-job">
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Tiêu đề</label>
+                                                <label className={'name-item'}> Tiêu đề</label>
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"title"} required/>
                                             </div>

@@ -36,7 +36,7 @@ function TopCompany(props) {
                                             src={item?.image}
                                             alt="logo" className="card-logo-work" onClick={()=>{
                                                 detailCompany({id:item?.companyId})
-                                        }}/>
+                                        }} style={{cursor:'pointer'}}/>
                                     </div>
                                     <div className="col-8">
                                         <p className="job-description-work">{item?.name}</p>

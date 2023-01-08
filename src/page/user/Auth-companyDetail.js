@@ -7,15 +7,12 @@ import {workById} from "../../service/Work-service";
 export default function AuthCompanyDetail() {
     const dispatch=useDispatch();
     const idCompany=useParams().id
-
      useEffect(()=>{
          dispatch(workById(idCompany))
-
      },[])
-
     let company=useSelector(state => {
-        console.log(state)
-        return state.work.work
+        console.log('state',state)
+        return state.work.workFind
     })
     return (
         <div>
@@ -23,8 +20,8 @@ export default function AuthCompanyDetail() {
                 <div className="col-1"></div>
                 <div className="col-10">
                     <img className="card-img-top"
-                         src={company?.image}
-                         alt="Card image cap" style={{width: '100%', height: 400}}/>
+                         src="https://cdn.pixabay.com/photo/2015/10/29/14/32/business-1012449_1280.jpghttps://cdn.pixabay.com/photo/2015/10/29/14/32/business-1012449_1280.jpg"
+                         alt="Card image cap" style={{width: '100%', height: 400,objectFit:"cover"}}/>
                 </div>
                 <div className="col-1"></div>
             </div>
