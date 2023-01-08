@@ -31,7 +31,7 @@ function WorkLogin() {
             }
         });
         await dispatch(workLogin(values))
-        let tokenCompany = localStorage.getItem("tokenCompany")
+        let tokenCompany = localStorage.getItem("tokenCompany");
         try {
             if (tokenCompany) {
                 navigate('/work')

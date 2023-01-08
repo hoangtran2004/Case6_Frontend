@@ -14,13 +14,12 @@ function WorkListJob() {
     let companyId = item.company.companyId
 
     useEffect(() => {
-        dispatch(getJob())
         dispatch(findJobByIdWork(companyId))
     }, [])
 
     const job = useSelector(state => {
-        console.log(state)
-        return state.job.job
+        console.log('st', state)
+        return state.job.jobEnd
     }) || []
 
     const formEdit = ({id}) => {
@@ -153,6 +152,7 @@ function WorkListJob() {
                                         </div>
                                     </div>
                                 )
+
                             })
                         }
                     </div>

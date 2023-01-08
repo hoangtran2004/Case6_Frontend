@@ -34,7 +34,7 @@ export default function AllJob() {
                         <div className="row">
                             {jobs === undefined ? <></> :
                                 jobs.map((item) => {
-                                        if (item.status === 0) {
+
                                             return (
                                                 <div className="col-5 card-job" onClick={()=>{
                                                     detailJob({id:item?.jobId})
@@ -94,7 +94,6 @@ export default function AllJob() {
                                                     </div>
                                                 </div>
                                             )
-                                        }
                                     }
                                 )
                             }
