@@ -30,7 +30,7 @@ function App() {
                 <Route path={'auth/login'} element={<AuthLogin/>}></Route>
                 <Route path={'auth/register'} element={<AuthRegister/>}></Route>
                 <Route path={'/'} element={<HomeUser/>}>
-                    <Route path={'list-work'} element={<AllCompany></AllCompany>}/>
+                    <Route path={'companies'} element={<AllCompany></AllCompany>}/>
                     <Route path={'job-detail/:id'} element={<AuthJobDetail></AuthJobDetail>}/>
                     <Route path={'top-work'} element={<TopCompany></TopCompany>}/>
                     <Route path={'detail-company/:id'} element={<AuthCompanyDetail/>}></Route>

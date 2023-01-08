@@ -11,7 +11,8 @@ import Swal from "sweetalert2";
 export default function WorkEditInformation() {
     let item = JSON.parse(localStorage.getItem('work'));
     const [companyId, setCompanyId] = useState(item.company.companyId);
-    const [companyInfo, setCompanyInfo] = useState();
+    const [companyInfo, setCompanyInfo] = useState(item.company);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [submitting, setSubmitting] = useState(false);
@@ -49,6 +50,7 @@ export default function WorkEditInformation() {
     const imagesListRef = ref(storage, "images/");
 
     let companyFind = useSelector((state) => {
+        console.log(state)
         return state.work.workFind
     })
 
@@ -90,7 +92,7 @@ export default function WorkEditInformation() {
                         <div className="row">
                             <div className="col-12">
                                 <div className="form-add-job">
-                                    <Formik initialValues={companyFind[0]} onSubmit={(values) => {
+                                    <Formik initialValues={companyFind} onSubmit={(values) => {
                                         handleEdit(values);
                                     }}>
                                         <Form className="input-job">

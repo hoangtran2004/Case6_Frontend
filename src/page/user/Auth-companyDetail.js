@@ -2,14 +2,17 @@ import '../../style/Auth-detail-company.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
-import {findWorkById} from "../../service/Work-service";
+import {workById} from "../../service/Work-service";
 
 export default function AuthCompanyDetail() {
     const dispatch=useDispatch();
     const idCompany=useParams().id
+
      useEffect(()=>{
-         dispatch(findWorkById(idCompany))
+         dispatch(workById(idCompany))
+
      },[])
+
     let company=useSelector(state => {
         console.log(state)
         return state.work.work
@@ -38,11 +41,11 @@ export default function AuthCompanyDetail() {
                             <div className="col-10">
                                 <div className="card-body">
                                     <h4><strong>{company?.name}</strong></h4>
-                                    <h7>This is a wider card with supporting text below as a
+                                    <h6>This is a wider card with supporting text below as a
                                         natural
                                         lead-in to
                                         additional content. This content is a little bit longer.
-                                    </h7>
+                                    </h6>
                                 </div>
                                 <div className="card-body" style={{marginTop: -20}}>
                                     <div className="row">

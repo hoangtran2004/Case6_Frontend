@@ -6,7 +6,6 @@ function RouterWork() {
     let token = localStorage.getItem("tokenCompany")
     let navigate = useNavigate()
     useEffect(() => {
-        console.log(token)
         if (!token) {
             navigate('/work/login')
         }
