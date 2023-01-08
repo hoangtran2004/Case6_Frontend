@@ -14,7 +14,6 @@ function WorkListJob() {
     let companyId = item.company.companyId
 
     useEffect(() => {
-        console.log(companyId)
         dispatch(getJob())
         dispatch(findJobByIdWork(companyId))
     }, [])
@@ -25,7 +24,6 @@ function WorkListJob() {
     }) || []
 
     const formEdit = ({id}) => {
-        console.log(id)
         navigate('edit-job/' + id)
     }
 

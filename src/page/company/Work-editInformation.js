@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Field, Form, Formik} from "formik";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {workEditInformation} from "../../service/Work-service";
+import {workById, workEditInformation} from "../../service/Work-service";
 import {storage} from "../../firebase";
 import {getDownloadURL, listAll, ref, uploadBytes} from "firebase/storage";
 import {v4} from "uuid";
 import Swal from "sweetalert2";
+import {getCity} from "../../service/City-service";
 
 export default function WorkEditInformation() {
     let item = JSON.parse(localStorage.getItem('work'));
@@ -15,6 +16,7 @@ export default function WorkEditInformation() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [submitting, setSubmitting] = useState(false);
+    const idCompany = useParams().id
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -40,7 +42,17 @@ export default function WorkEditInformation() {
         }))
         navigate('/work')
     };
+    useEffect(() => {
+        dispatch(workById(idCompany))
+    }, [])
+    useEffect(() => {
+        dispatch(getCity())
+    }, [])
 
+    const city = useSelector(state => {
+        console.log(state)
+        return state.city.city
+    })
     const [imageUrls, setImageUrls] = useState([]);
 
     const [img, setImg] = useState("");
@@ -49,6 +61,7 @@ export default function WorkEditInformation() {
     const imagesListRef = ref(storage, "images/");
 
     let companyFind = useSelector((state) => {
+        console.log('state edit', state.work)
         return state.work.workFind
     })
 
@@ -90,7 +103,7 @@ export default function WorkEditInformation() {
                         <div className="row">
                             <div className="col-12">
                                 <div className="form-add-job">
-                                    <Formik initialValues={companyFind[0]} onSubmit={(values) => {
+                                    <Formik initialValues={companyFind} onSubmit={(values) => {
                                         handleEdit(values);
                                     }}>
                                         <Form className="input-job">
@@ -102,7 +115,7 @@ export default function WorkEditInformation() {
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Tên viết tắt</label>
                                                 <Field required type="text" className="form-control input-info-job"
-                                                       name={"abbreviatedName"} />
+                                                       name={"abbreviatedName"}/>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Số điện thoại</label>
@@ -126,8 +139,14 @@ export default function WorkEditInformation() {
 
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Địa chỉ</label>
-                                                <Field type="text" className="form-control input-info-job"
-                                                       name={"address"} required/>
+                                                <Field as="select" name="address"
+                                                       className="form-control input-info-job"
+                                                       style={{height: '53% !important'}}
+                                                       aria-label="Default select example">
+
+                                                    {city?.map((item, index) => (<option value={item.cityId}
+                                                                                         name={'cityID'}>{item?.nameCity}</option>))}
+                                                </Field>
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Mô tả</label>

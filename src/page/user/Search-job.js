@@ -2,10 +2,9 @@ import {useSelector} from "react-redux";
 
 export default function SearchJob() {
     const jobs = useSelector(state => {
-        console.log("search",state)
-        return state.job.job
+        return state.job.jobSearch
     })
-
+    console.log({jobs})
     const tokenUser = localStorage.getItem('token')
 
     return (
@@ -14,7 +13,7 @@ export default function SearchJob() {
                 <div className="row">
                     <div className="col-12 main">
                         <div className="row">
-                            {jobs === undefined ? <h1>linhcho</h1> : jobs.length === 0 ?
+                            {jobs === undefined ? <h1>vui lòng chờ</h1> : jobs.length === 0 ?
                                 <div style={{marginLeft:"5%"}}>Không có kết quả tìm kiếm</div> :
                                 jobs.map((item, index) => (
                                     <div className="col-5 card-job" style={{marginTop:'-2%'}}>

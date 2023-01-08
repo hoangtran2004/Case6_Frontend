@@ -14,8 +14,9 @@ import {findJobByIdWork} from "../../service/Work-service";
 
 const initialState = {
     job: [],
-    jobSearchInput: [],
-    jobCurrent: {}
+    jobSearch: [],
+    jobCurrent: {},
+    jobEnd:[]
 }
 
 const jobSlice = createSlice({
@@ -31,25 +32,26 @@ const jobSlice = createSlice({
             state.job = [...action.payload.job].reverse()
         });
         builder.addCase(deleteJob.fulfilled, (state, action) => {
-            let newArr = [...state.job];
+            let newArr = [...state.jobEnd];
             let index = newArr.findIndex(item => item.jobId === action.payload);
             newArr.splice(index, 1)
-            state.job = newArr
+            state.jobEnd = newArr
         });
         builder.addCase(lockJob.fulfilled, (state, action) => {
-             state.job = action.payload.jobs
+             state.jobEnd = action.payload.jobs
         });
         builder.addCase(editJob.fulfilled, (state, action) => {
             state.job = action.payload.job
         });
         builder.addCase(searchJob.fulfilled, (state, action) => {
-            state.job = action.payload
+            state.jobSearch = action.payload
         })
         builder.addCase(searchJobInput.fulfilled, (state, action) => {
             state.jobSearchInput = action.payload
         })
         builder.addCase(findJobByIdWork.fulfilled, (state, action) => {
-            state.job = action.payload
+            console.log(action)
+            state.jobEnd = action.payload
         })
         builder.addCase(findJobById.fulfilled, (state, action) => {
             console.log(action.payload)
