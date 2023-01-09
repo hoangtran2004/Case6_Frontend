@@ -35,6 +35,7 @@ const workSlice = createSlice({
 
         });
         builder.addCase(workById.fulfilled, (state, action) => {
+            console.log(action)
             state.workFind = action.payload[0]
         });
         builder.addCase(getCompany.fulfilled, (state, action) => {

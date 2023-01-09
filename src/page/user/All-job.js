@@ -32,7 +32,7 @@ export default function AllJob() {
                         <div className="row">
                             {jobs === undefined ? <></> :
                                 jobs.map((item) => {
-
+                                    let date = item.endDate.split('-').reverse()
                                         return (
                                             <div className="col-5 card-job" onClick={() => {
                                                 detailJob({id: item?.jobId})
@@ -72,7 +72,7 @@ export default function AllJob() {
                                                             <div className="description"><img
                                                                 src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
                                                                 alt=""
-                                                                className="icon-description"/>{item.experience === 0 ? "Dưới một năm" : item.experience === 1 ? "Từ 1-3 năm" : item.experience === 2 ? "Từ 3-5 năm" : "Trên 5 năm"}
+                                                                className="icon-description"/>{item.experience === 0 ? "Dưới 1 năm" : item.experience === 1 ? "Từ 1-3 năm" : item.experience === 2 ? "Từ 3-5 năm" : "Trên 5 năm"}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -87,7 +87,8 @@ export default function AllJob() {
                                                                 height: '12px',
                                                                 objectFit: 'cover',
                                                                 marginRight: '5px'
-                                                            }}/>Thời gian ứng tuyển : 48 giờ </p>
+                                                            }}/>Thời gian hiệu lực {date[0]}-{date[1]}-{date[2]}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>

@@ -74,7 +74,7 @@ function WorkLogin() {
                                                placeholder="Mật khẩu"/>
                                         <ErrorMessage name={'password'}/>
                                     </div>
-                                    <button type={'submit'} style={{maxWidth: "25rem"}}
+                                    <button type={'submit'} style={{maxWidth: "22rem"}}
                                             className="btn btn-primary size">Đăng nhập
                                     </button>
                                 </Form>

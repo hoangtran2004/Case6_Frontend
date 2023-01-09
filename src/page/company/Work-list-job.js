@@ -41,6 +41,8 @@ function WorkListJob() {
                     <div className="row">
                         {
                             job?.map((item, index) => {
+                                let date = item.endDate.split('-').reverse()
+
                                 return (
                                     <div className="col-4 card-job-work">
                                         <div className="row">
@@ -149,7 +151,7 @@ function WorkListJob() {
                                                         height: '12px',
                                                         objectFit: 'cover',
                                                         marginRight: '5px'
-                                                    }}/>Thời gian ứng tuyển : 48 giờ </p>
+                                                    }}/>Thời gian hiệu lực {date[0]}-{date[1]}-{date[2]} </p>
                                             </div>
                                         </div>
                                     </div>

@@ -112,7 +112,7 @@ function WorkRegister() {
                                                                              name={'cityID'}>{item?.nameCity}</option>))}
                                     </Field>
                                 </div>
-                                <button type={'submit'} className="btn btn-primary size">Đăng kí</button>
+                                <button type={'submit'} className="btn btn-primary size" style={{width:'22rem'}}>Đăng kí</button>
                             </Form>
                         </Formik>
                     </div>
