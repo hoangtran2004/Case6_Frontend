@@ -24,26 +24,29 @@ export default function AllJob() {
     const formatter = new Intl.NumberFormat('vi-VN', {
         style: 'currency', currency: 'VND',
     });
-    return (<div>
-        <div className="container-listJob" style={{marginTop: '-1.9%'}}>
-            <div className="row">
-                <div className="col-12 main">
-                    <div className="row">
-                        {jobs === undefined ? <></> : jobs.map((item) => {
+    return (
+        <div>
+            <div className="container-listJob" style={{marginTop: '-1.9%'}}>
+                <div className="row">
+                    <div className="col-12 main">
+                        <div className="row">
+                            {jobs === undefined ? <></> :
+                                jobs.map((item) => {
 
-                            return (<div className="col-5 card-job" onClick={() => {
-                                detailJob({id: item?.jobId})
-                            }}>
-                                <div className="row">
-                                    <div className="col-2">
-                                        <img src={item.image} alt="" className={'card-logo'}/>
+                                        return (
+                                            <div className="col-5 card-job" onClick={() => {
+                                                detailJob({id: item?.jobId})
+                                            }}>
+                                                <div className="row">
+                                                    <div className="col-2">
+                                                        <img src={item.image} alt="" className={'card-logo'}/>
 
-                                    </div>
-                                    <div className="col-7" style={{marginLeft: "15px"}}>
-                                        <p className="job-description">{item.title} </p>
-                                        <p className="companyName">{item.name} </p>
-                                    </div>
-                                    <div className="col-3">
+                                                    </div>
+                                                    <div className="col-7" style={{marginLeft: "15px"}}>
+                                                        <p className="job-description">{item.title} </p>
+                                                        <p className="companyName">{item.name} </p>
+                                                    </div>
+                                                    <div className="col-3">
 
                                     </div>
                                 </div>
