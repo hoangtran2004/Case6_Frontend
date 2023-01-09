@@ -43,9 +43,6 @@ export default function AuthJobDetail() {
     })
 
 
-
-
-
     return (
         <div>
             <div className='row' style={{marginTop: '10%'}}>
@@ -131,7 +128,7 @@ export default function AuthJobDetail() {
                     <div className="card" style={{}}>
                         <h6 style={{textAlign: "center", marginTop: '2%'}}>Giới thiệu về công ty</h6>
                         <div className="card-body">
-                            <img id='img' src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg"
+                            <img id='img' src={job?.image}
                                  alt={''}/>
                             <h5 className="card-title">{job?.name}</h5>
                             <h6 className="card-subtitle mb-2 text-muted" style={{marginRight: 10}}>{job?.name} ||
@@ -153,20 +150,21 @@ export default function AuthJobDetail() {
                     <h6>Các công việc khác của công ty</h6>
                     {otherJob && otherJob.map((item, index) => {
                         for (let i = 0; i < otherJob.length; i++) {
-                            if (job.companyId === item.companyId ){
+                            if (job.companyId === item.companyId) {
                                 return (
                                     <div className="card" id='card'>
                                         <div className="card-body">
                                             <img id='img'
-                                                 src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-56.jpg"
+                                                 src={job?.image}
                                                  alt={''}/>
                                             <h5 className="card-title">{item?.title}</h5>
                                             <h6 className="card-subtitle mb-2 text-muted">{item?.nameCity},Việt Nam</h6>
 
                                             <p className="card-text"><img
-                                                src="https://cdn-icons-png.flaticon.com/128/4300/4300058.png"
+                                                src="https://cdn-icons-png.flaticon.com/128/439/439398.png"
                                                 alt=""
-                                                className="icon-description-work"/>{item?.statusTime}</p>
+                                                className="icon-description-work"/>{item?.statusTime === 0 ? "Full time" : "Part time"}
+                                            </p>
                                             <p className="card-text"><img
                                                 src="https://cdn-icons-png.flaticon.com/128/3885/3885079.png"
                                                 alt=""
@@ -181,7 +179,6 @@ export default function AuthJobDetail() {
                                 )
                             }
                         }
-
 
 
                     })}
