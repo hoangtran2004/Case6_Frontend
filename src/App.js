@@ -18,9 +18,10 @@ import AuthJobDetail from "./page/user/Auth-jobDetail";
 import AllCompany from "./page/user/All-company";
 import TopCompany from "./page/user/Top-company";
 import AuthCompanyDetail from "./page/user/Auth-companyDetail";
+import {Cv} from "./page/cv/Cv";
+
 function App() {
-    return (
-        <div>
+    return (<div>
             <Routes>
                 <Route path={'detail'} element={<AuthJobDetail/>}></Route>
 
@@ -34,7 +35,7 @@ function App() {
                     <Route path={'job-detail/:id'} element={<AuthJobDetail></AuthJobDetail>}/>
                     <Route path={'top-work'} element={<TopCompany></TopCompany>}/>
                     <Route path={'detail-company/:id'} element={<AuthCompanyDetail/>}></Route>
-
+                    <Route path={"/my-cv"} element={<Cv/>}></Route>
                     <Route path={'/'} element={<AuthListJob/>}>
                         <Route path={''} element={<AllJob/>}></Route>
                         <Route path={'search'} element={<SearchJob></SearchJob>}/>
@@ -53,8 +54,7 @@ function App() {
                 </Route>
                 //router work end
             </Routes>
-        </div>
-    );
+        </div>);
 }
 
 export default App;

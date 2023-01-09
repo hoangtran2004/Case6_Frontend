@@ -1,9 +1,14 @@
 import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 export default function SearchJob() {
+    const navigate=useNavigate()
     const jobs = useSelector(state => {
         return state.job.jobSearch
-    })
+    });
+    const detailJob = ({id}) => {
+        navigate('/job-detail/' + id)
+    }
 
     const tokenUser = localStorage.getItem('token')
     const formatter = new Intl.NumberFormat('vi-VN', {
@@ -19,7 +24,9 @@ export default function SearchJob() {
                             {jobs === undefined ? <h1>vui lòng chờ</h1> : jobs.length === 0 ?
                                 <div style={{marginLeft:"5%"}}>Không có kết quả tìm kiếm</div> :
                                 jobs.map((item, index) => (
-                                    <div className="col-5 card-job" style={{marginTop:'-2%'}}>
+                                    <div className="col-5 card-job" style={{marginTop:'-2%'}} onClick={() => {
+                                        detailJob({id: item?.jobId})
+                                    }}>
                                         <div className="row">
                                             <div className="col-2">
                                                 <img

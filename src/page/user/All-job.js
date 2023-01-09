@@ -48,26 +48,26 @@ export default function AllJob() {
                                                     </div>
                                                     <div className="col-3">
 
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-12">
-                                                        <div className="card-description">
-                                                            <div className="description"><img
-                                                                src="https://cdn-icons-png.flaticon.com/128/3850/3850259.png"
-                                                                alt=""
-                                                                className="icon-description"/>{item?.nameCategory}
-                                                            </div>
-                                                            <div className="description"><img
-                                                                src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
-                                                                alt=""
-                                                                className="icon-description"/>{item?.nameCity}
-                                                            </div>
-                                                            {tokenUser ? <div className="description"><img
-                                                                src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
-                                                                alt=""
-                                                                className="icon-description"/>VND {formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
-                                                            </div> : <></>}
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-12">
+                                        <div className="card-description">
+                                            <div className="description"><img
+                                                src="https://cdn-icons-png.flaticon.com/128/3850/3850259.png"
+                                                alt=""
+                                                className="icon-description"/>{item?.nameCategory}
+                                            </div>
+                                            <div className="description"><img
+                                                src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
+                                                alt=""
+                                                className="icon-description"/>{item?.nameCity}
+                                            </div>
+                                            {tokenUser ? <div className="description"><img
+                                                src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
+                                                alt=""
+                                                className="icon-description"/>VND {formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
+                                            </div> : <></>}
 
                                                             <div className="description"><img
                                                                 src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
