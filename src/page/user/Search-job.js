@@ -54,7 +54,7 @@ export default function SearchJob() {
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
                                                         alt=""
-                                                        className="icon-description"/>{item.experience} năm
+                                                        className="icon-description"/>{item.experience === 0 ? "Dưới một năm" : item.experience === 1 ? "Từ 1-3 năm" : item.experience === 2 ? "Từ 3-5 năm" : "Trên 5 năm"}
                                                     </div>
                                                 </div>
                                             </div>

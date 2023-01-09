@@ -12,6 +12,7 @@ function WorkListJob() {
     let navigate = useNavigate();
     let item = JSON.parse(localStorage.getItem('work'));
     let companyId = item.company.companyId
+    console.log(companyId)
 
     useEffect(() => {
         dispatch(getJob())
@@ -19,6 +20,7 @@ function WorkListJob() {
     }, [])
 
     const job = useSelector(state => {
+        console.log(state)
         return state.job.jobEnd
     })
 
