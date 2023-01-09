@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCategory} from "../../service/Category-service";
 import {useNavigate, useParams} from "react-router-dom";
-import {editJob, findJobById} from "../../service/Job-service";
+import {detailJob, editJob, findJobById} from "../../service/Job-service";
 import Swal from "sweetalert2";
 
 export default function WorkEditJob() {
@@ -56,13 +56,14 @@ export default function WorkEditJob() {
     }, [])
 
     useEffect(() => {
-        dispatch(findJobById(jobId))
+        dispatch(detailJob(jobId))
     }, [])
 
 
     let oneJob = useSelector((state) => {
         return state.job.jobCurrent
     })
+    console.log('one job',oneJob)
 
     const category = useSelector(state => {
         return state.category.category
@@ -81,7 +82,7 @@ export default function WorkEditJob() {
             wageStart: +value.wageStart,
             vacancies: value.vacancies,
             endDate: value.endDate,
-            addressWork: +value.addressWork,
+            addressWork: value.addressWork,
             status: +value.status,
             statusTime: value.statusTime,
             applicants: value.applicants,
@@ -132,7 +133,7 @@ export default function WorkEditJob() {
                                     }} enableReinitialize={true}>
                                         <Form className="input-job">
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}> Tiêu đề</label>
+                                                <label className={'name-item'}>Tiêu đề</label>
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"title"} required/>
                                             </div>

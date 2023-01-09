@@ -38,11 +38,8 @@ export default function AuthCompanyDetail() {
                             <div className="col-10">
                                 <div className="card-body">
                                     <h4><strong>{company?.name}</strong></h4>
-                                    <h6>This is a wider card with supporting text below as a
-                                        natural
-                                        lead-in to
-                                        additional content. This content is a little bit longer.
-                                    </h6>
+                                    <p>Tên viết tắt : {company?.abbreviatedName}
+                                    </p>
                                 </div>
                                 <div className="card-body" style={{marginTop: -20}}>
                                     <div className="row">

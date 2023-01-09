@@ -23,7 +23,7 @@ function NavbarWork(props) {
                     <ul className="navbar-nav">
 
                         <li className="nav-item add">
-                            <Link to={'add-job'} > Thêm tin tuyển dụng</Link>
+                            <Link to={'add-job'} className={'text-navbar'}> Thêm tin tuyển dụng</Link>
                         </li>
                         <li className="nav-item edit ">
                             <div onClick={() => {

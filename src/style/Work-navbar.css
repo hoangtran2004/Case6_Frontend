@@ -7,13 +7,14 @@
     font-weight: 500;
 }
 
-
 .edit div{
     position: relative;
     left: 32%;
     font-size: 18px;
     font-weight: 500;
 }
+
+
 .logout {
     position: relative;
     left: 35rem;
@@ -25,7 +26,7 @@
     background: white;
     font-weight: 500;
     font-size: 18px;
-    left: 14rem;
+    left: 150%;
 }
 .edit{
     cursor: pointer;

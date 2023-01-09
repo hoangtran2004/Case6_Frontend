@@ -25,7 +25,8 @@ export default function WorkAddJob() {
 
     let item = JSON.parse(localStorage.getItem('work'));
 
-    const [company, setCompany] = useState(item.company);
+    const company = item.company;
+
 
     let time = (new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
@@ -165,13 +166,28 @@ export default function WorkAddJob() {
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Kinh nghiệm</label>
-                                                <Field type="text" className="form-control input-info-job"
-                                                       name={"experience"} required/>
+                                                <Field as="select" name="experience"
+                                                       className="form-control input-info-job"
+                                                       style={{height: '53% !important'}}
+                                                       aria-label="Default select example">
+                                                    <option disabled={true} selected={true}>Kinh nghiệm</option>
+                                                        <option value="0" name={'experience'}>Dưới 1 năm</option>
+                                                        <option value="1" name={'experience'}>Từ 1-3 năm</option>
+                                                        <option value="2" name={'experience'}>Từ 3-5 năm</option>
+                                                        <option value="3" name={'experience'}>Trên 5 năm</option>
+                                                </Field>
                                             </div>
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Địa chỉ làm việc</label>
-                                                <Field type="text" className="form-control input-info-job"
-                                                       name={"addressWork"} required/>
+                                                <label className={'name-item'}>Địa chỉ</label>
+                                                <Field as="select" name="addressWork"
+                                                       className="form-control input-info-job"
+                                                       style={{height: '53% !important'}}
+                                                       aria-label="Default select example">
+                                                    <option value="1" name={'addressWork'}>Hà Nội</option>
+                                                    <option value="2" name={'addressWork'}>TP Hồ Chí Minh</option>
+                                                    <option value="3" name={'addressWork'}>Đà Nẵng</option>
+                                                    <option value="4" name={'addressWork'}>Khác</option>
+                                                </Field>
                                             </div>
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">
