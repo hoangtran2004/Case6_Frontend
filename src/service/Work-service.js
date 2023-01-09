@@ -19,13 +19,13 @@ export const workEditInformation = createAsyncThunk(
     'work/edit',
     async (data) => {
         const res = await axios.put(`http://localhost:8080/company/update/${data.companyId}`, data);
+        console.log(res)
         return res
     }
 )
 export const workById = createAsyncThunk(
     'workById',
     async (id) => {
-        console.log(id)
         const res = await axios.get(`http://localhost:8080/company/${id}`);
         return res.data.companyFind
     }
@@ -34,7 +34,6 @@ export const workById = createAsyncThunk(
 export const findJobByIdWork = createAsyncThunk(
     'findJobByIdWork',
     async (id) => {
-        console.log('id service',id)
         const res = await axios.get(`http://localhost:8080/job/company-job/${id}`);
         return res.data
     }
@@ -49,7 +48,9 @@ export const getCompany = createAsyncThunk(
 export const searchCompany = createAsyncThunk(
     'searchCompany',
     async (data) => {
+        console.log(data)
         const res = await axios.post(`http://localhost:8080/company/search`,data)
+        console.log('res search',res)
         return res.data
     }
 )
@@ -57,13 +58,6 @@ export const getTopCompany = createAsyncThunk(
     'getTop10Company',
     async () => {
         const res = await axios.get(`http://localhost:8080/company/top-companies`)
-        return res.data
-    }
-)
-export const findWorkById= createAsyncThunk(
-    'findWorkById',
-    async (id) => {
-        const res = await axios.get(`http://localhost:8080/company/${id}`);
         return res.data
     }
 )

@@ -2,17 +2,17 @@ import '../../style/Auth-detail-company.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
-import {findWorkById} from "../../service/Work-service";
+import {workById} from "../../service/Work-service";
 
 export default function AuthCompanyDetail() {
     const dispatch=useDispatch();
     const idCompany=useParams().id
      useEffect(()=>{
-         dispatch(findWorkById(idCompany))
+         dispatch(workById(idCompany))
      },[])
     let company=useSelector(state => {
-        console.log(state)
-        return state.work.work
+        console.log('state',state)
+        return state.work.workFind
     })
     return (
         <div>
@@ -20,8 +20,8 @@ export default function AuthCompanyDetail() {
                 <div className="col-1"></div>
                 <div className="col-10">
                     <img className="card-img-top"
-                         src={company?.image}
-                         alt="Card image cap" style={{width: '100%', height: 400}}/>
+                         src="https://cdn.pixabay.com/photo/2015/10/29/14/32/business-1012449_1280.jpghttps://cdn.pixabay.com/photo/2015/10/29/14/32/business-1012449_1280.jpg"
+                         alt="Card image cap" style={{width: '100%', height: 400,objectFit:"cover"}}/>
                 </div>
                 <div className="col-1"></div>
             </div>
@@ -38,11 +38,8 @@ export default function AuthCompanyDetail() {
                             <div className="col-10">
                                 <div className="card-body">
                                     <h4><strong>{company?.name}</strong></h4>
-                                    <h7>This is a wider card with supporting text below as a
-                                        natural
-                                        lead-in to
-                                        additional content. This content is a little bit longer.
-                                    </h7>
+                                    <p>Tên viết tắt : {company?.abbreviatedName}
+                                    </p>
                                 </div>
                                 <div className="card-body" style={{marginTop: -20}}>
                                     <div className="row">
@@ -86,7 +83,6 @@ export default function AuthCompanyDetail() {
                                     <h6 className="card-title"><strong>Giới thiệu</strong></h6>
                                     <hr/>
                                     <p>{company.description}</p>
-                                    <h6><strong>Văn hóa doanh nghiệp</strong></h6>
                                     <hr/>
                                     <h6 style={{marginTop: 10}}><strong>Địa chỉ văn phòng</strong></h6>
                                     <hr/>
@@ -106,7 +102,7 @@ export default function AuthCompanyDetail() {
                             <div className="card">
                                 <div className="card-body" style={{boxShadow: ' 0 4px 8px 0 rgba(0,0,0,0.1)'}}>
                                     <h5 className="card-title"><strong>Thư viện ảnh công ty</strong></h5>
-                                    <h7 className="card-text">Công ty chưa thêm bất kỳ hình ảnh nào.</h7>
+                                    <p className="card-text">Công ty chưa thêm bất kỳ hình ảnh nào.</p>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {
-    findJobByIdWork, findWorkById,
+    findJobByIdWork,
     getCompany, getTopCompany, searchCompany,
     workById,
     workEditInformation,
@@ -30,10 +30,12 @@ const workSlice = createSlice({
             state.work = action.payload
         });
         builder.addCase(workEditInformation.fulfilled, (state, action) => {
+            console.log('state',state)
             state.workFind = action.payload.job
+
         });
         builder.addCase(workById.fulfilled, (state, action) => {
-            state.workFind = action.payload
+            state.workFind = action.payload[0]
         });
         builder.addCase(getCompany.fulfilled, (state, action) => {
             state.work = action.payload
@@ -44,10 +46,6 @@ const workSlice = createSlice({
         builder.addCase(getTopCompany.fulfilled,(state, action)=>{
             state.work = action.payload
         });
-        builder.addCase(findWorkById.fulfilled,(state, action)=>{
-            console.log(action.payload)
-            state.work = action.payload.companyFind[0]
-        })
     }
 })
 

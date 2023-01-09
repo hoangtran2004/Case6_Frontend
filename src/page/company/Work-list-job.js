@@ -19,12 +19,10 @@ function WorkListJob() {
     }, [])
 
     const job = useSelector(state => {
-        console.log(state)
         return state.job.jobEnd
     })
 
     const formEdit = ({id}) => {
-        console.log(id)
         navigate('edit-job/' + id)
     }
 
