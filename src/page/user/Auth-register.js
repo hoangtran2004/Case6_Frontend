@@ -108,7 +108,7 @@ function AuthRegister() {
                                             <Field type="text" className="form-control size" name={'phone'}
                                                    placeholder="Số điện thoại"/>
                                         </div>
-                                        <button type={'submit'} className="btn btn-primary size">Đăng Ký</button>
+                                        <button type={'submit'} className="btn btn-primary size" style={{width:'22rem'}}>Đăng Ký</button>
                                     </Form>
                                 </Formik>
                             </div>

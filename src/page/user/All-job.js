@@ -17,8 +17,6 @@ export default function AllJob() {
         navigate('job-detail/' + id)
     }
 
-    console.log(jobs)
-
     useEffect(() => {
         dispatch(getJob())
     }, [])
@@ -42,6 +40,7 @@ export default function AllJob() {
                                                 <div className="row">
                                                     <div className="col-2">
                                                         <img src={item.image} alt="" className={'card-logo'}/>
+
                                                     </div>
                                                     <div className="col-7" style={{marginLeft: "15px"}}>
                                                         <p className="job-description">{item.title} </p>
@@ -73,7 +72,7 @@ export default function AllJob() {
                                                             <div className="description"><img
                                                                 src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
                                                                 alt=""
-                                                                className="icon-description"/>{item.experience === 0 ? "Dưới một năm" : item.experience === 1 ? "Từ 1-3 năm" : item.experience === 2 ? "Từ 3-5 năm" : "Trên 5 năm"}
+                                                                className="icon-description"/>{item.experience === 0 ? "Dưới 1 năm" : item.experience === 1 ? "Từ 1-3 năm" : item.experience === 2 ? "Từ 3-5 năm" : "Trên 5 năm"}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -95,7 +94,7 @@ export default function AllJob() {
                                         )
                                     }
                                 )
-                            }
+                            })}
                         </div>
                     </div>
                 </div>

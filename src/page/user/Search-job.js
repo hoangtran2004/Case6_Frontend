@@ -6,6 +6,9 @@ export default function SearchJob() {
     })
 
     const tokenUser = localStorage.getItem('token')
+    const formatter = new Intl.NumberFormat('vi-VN', {
+        style: 'currency', currency: 'VND',
+    });
 
     return (
         <>
@@ -47,7 +50,7 @@ export default function SearchJob() {
                                                         <div className="description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                                                             alt=""
-                                                            className="icon-description"/>VND {item.wageStart} - {item.wageEnd}
+                                                            className="icon-description"/>VND  {formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
                                                         </div>
                                                         : <></>
                                                     }

@@ -53,8 +53,8 @@ export default function SideBar() {
             return item.key === `${key}`
         })
     }
-    if (checkQuery('addressWork').length !== 0) {
-        cityQuery = checkQuery('addressWork')[0].value.split(',')
+    if (checkQuery('address').length !== 0) {
+        cityQuery = checkQuery('address')[0].value.split(',')
     }
     if (checkQuery("categoryId").length !== 0) {
         categoryQuery = checkQuery("categoryId")[0].value.split(',')
@@ -185,7 +185,7 @@ export default function SideBar() {
             <div className="row">
                 <div className="col-12 type-job">
                     <p style={{marginLeft: "14px", fontSize: "14px"}}>Địa điểm làm viêc</p>
-                    {cities.map((item) => (cityQuery.includes(`${item.cityId}`) ? printCheckbox('addressWork', `${item.cityId}`, `${item.nameCity}`, true, `${item.cityId}${item.nameCity}`) : printCheckbox('addressWork', `${item.cityId}`, `${item.nameCity}`, false, `${item.cityId}${item.nameCity}`)))}
+                    {cities.map((item) => (cityQuery.includes(`${item.cityId}`) ? printCheckbox('address', `${item.cityId}`, `${item.nameCity}`, true, `${item.cityId}${item.nameCity}`) : printCheckbox('address', `${item.cityId}`, `${item.nameCity}`, false, `${item.cityId}${item.nameCity}`)))}
                 </div>
             </div>
             {/*search address end*/}
