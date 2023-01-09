@@ -19,6 +19,7 @@ const workSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(workLogin.fulfilled, (state, action) => {
             state.work = action.payload
+            console.log(action, 22222)
             if (action.payload.token) {
                 localStorage.setItem("tokenCompany", action.payload.token)
                 localStorage.setItem('work', JSON.stringify(action.payload))

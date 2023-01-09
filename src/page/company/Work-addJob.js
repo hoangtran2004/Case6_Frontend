@@ -25,7 +25,8 @@ export default function WorkAddJob() {
 
     let item = JSON.parse(localStorage.getItem('work'));
 
-    const [company, setCompany] = useState(item.company);
+    const company = item.company;
+
 
     let time = (new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
@@ -120,7 +121,6 @@ export default function WorkAddJob() {
                                         applicants: ''
 
                                     }} onSubmit={(values, {validateForm}) => {
-                                        console.log(values)
                                         handleAddJob(values).then()
                                         validateForm().then()
 

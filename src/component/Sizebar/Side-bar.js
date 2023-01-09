@@ -190,42 +190,42 @@ export default function SideBar() {
             </div>
             {/*search address end*/}
             {/*search by money start*/}
-            {/*<div className="row" style={{padding: '12px'}}>*/}
-            {/*    <div className="col-12">*/}
-            {/*        <hr/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<div className="row">*/}
-            {/*    <div className="col-12 type-job">*/}
-            {/*        <span style={{marginLeft: "14px", fontSize: "14px"}}>Mức lương</span>*/}
-            {/*        <div className="switch">*/}
-            {/*            <input id="switch-1" type="checkbox" onClick={(event) => handleRange(event.target.checked)}*/}
-            {/*                   name={'price'}*/}
-            {/*                   className="switch-input"/>*/}
-            {/*            <label htmlFor="switch-1" className="switch-label">Switch</label>*/}
-            {/*        </div>*/}
-            {/*        <div className="wrapper col-12">*/}
-            {/*            <div className="price-input">*/}
-            {/*                <div className="filed">*/}
-            {/*                    <spap>Từ</spap>*/}
-            {/*                    <input type="number" className="input-min" value="0"/><span>tr</span>*/}
-            {/*                </div>*/}
-            {/*                <div style={{width: 40}}></div>*/}
-            {/*                <div className="filed">*/}
-            {/*                    <spap>đến</spap>*/}
-            {/*                    <input type="number" className="input-max" value="0"/><span>tr</span>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*            <div className="slider">*/}
-            {/*                <div className="progress"></div>*/}
-            {/*            </div>*/}
-            {/*            <div className="range-input">*/}
-            {/*                <input type="range" className="range-min" min="0" max="50" step="1"/>*/}
-            {/*                <input type="range" className="range-max" min="0" max="50" step="1"/>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div className="row" style={{padding: '12px'}}>
+                <div className="col-12">
+                    <hr/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12 type-job">
+                    <span style={{marginLeft: "14px", fontSize: "14px"}}>Mức lương</span>
+                    <div className="switch">
+                        <input id="switch-1" type="checkbox" onClick={(event) => handleRange(event.target.checked)}
+                               name={'price'}
+                               className="switch-input"/>
+                        <label htmlFor="switch-1" className="switch-label">Switch</label>
+                    </div>
+                    <div className="wrapper col-12">
+                        <div className="price-input">
+                            <div className="filed">
+                                <spap>Từ</spap>
+                                <input type="number" className="input-min" value="0"/><span>tr</span>
+                            </div>
+                            <div style={{width: 40}}></div>
+                            <div className="filed">
+                                <spap>đến</spap>
+                                <input type="number" className="input-max" value="0"/><span>tr</span>
+                            </div>
+                        </div>
+                        <div className="slider">
+                            <div className="progress"></div>
+                        </div>
+                        <div className="range-input">
+                            <input type="range" className="range-min" min="0" max="50" step="1"/>
+                            <input type="range" className="range-max" min="0" max="50" step="1"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {/*    search by money end*/}
             {/*loai cong viec*/}
             <div className="row">
