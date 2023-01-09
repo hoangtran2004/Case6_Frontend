@@ -7,7 +7,6 @@ export default function SearchJob() {
         return state.job.jobSearch
     });
     const detailJob = ({id}) => {
-        console.log(id)
         navigate('/job-detail/' + id)
     }
 
