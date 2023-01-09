@@ -25,7 +25,8 @@ export default function WorkAddJob() {
 
     let item = JSON.parse(localStorage.getItem('work'));
 
-    const [company, setCompany] = useState(item.company);
+    const company = item.company;
+
 
     let time = (new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
@@ -63,6 +64,8 @@ export default function WorkAddJob() {
 
 
     const handleAddJob = async (value) => {
+        console.log(value)
+        console.log(company, 111111)
         value.addressWork = +value.addressWork
         value.categoryId = +value.categoryId
         if (value.wageStart > value.wageEnd) {

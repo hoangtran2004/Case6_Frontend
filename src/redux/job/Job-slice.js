@@ -50,7 +50,6 @@ const jobSlice = createSlice({
             state.jobSearchInput = action.payload
         })
         builder.addCase(findJobByIdWork.fulfilled, (state, action) => {
-            console.log(action)
             state.jobEnd = action.payload
         })
         builder.addCase(findJobById.fulfilled, (state, action) => {

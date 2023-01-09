@@ -1,5 +1,5 @@
 import AuthSearch from "./Auth-search";
-import SideBar from "../../component/Side-bar";
+import SideBar from "../../component/Sizebar/Side-bar";
 import '../../style/Auth-home.css'
 import {Outlet} from "react-router-dom";
 

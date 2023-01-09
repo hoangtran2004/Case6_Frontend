@@ -36,7 +36,6 @@ export const findJobByIdWork = createAsyncThunk(
     async (id) => {
         console.log('id service',id)
         const res = await axios.get(`http://localhost:8080/job/company-job/${id}`);
-        console.log(res.data)
         return res.data
     }
 )

@@ -4,19 +4,19 @@ export default function SearchJob() {
     const jobs = useSelector(state => {
         return state.job.jobSearch
     })
-    console.log({jobs})
+
     const tokenUser = localStorage.getItem('token')
 
     return (
         <>
-            <div className="container-listJob" style={{width:'99%'}}>
+            <div className="container-listJob" style={{width: '99%'}}>
                 <div className="row">
                     <div className="col-12 main">
                         <div className="row">
                             {jobs === undefined ? <h1>vui lòng chờ</h1> : jobs.length === 0 ?
-                                <div style={{marginLeft:"5%"}}>Không có kết quả tìm kiếm</div> :
+                                <div style={{marginLeft: "5%"}}>Không có kết quả tìm kiếm</div> :
                                 jobs.map((item, index) => (
-                                    <div className="col-5 card-job" style={{marginTop:'-2%'}}>
+                                    <div className="col-5 card-job" style={{marginTop: '-2%'}}>
                                         <div className="row">
                                             <div className="col-2">
                                                 <img
@@ -28,7 +28,6 @@ export default function SearchJob() {
                                                 <p className="companyName">{item?.name} </p>
                                             </div>
                                             <div className="col-3"></div>
-
                                         </div>
                                         <div className="row">
                                             <div className="col-12">
@@ -41,7 +40,7 @@ export default function SearchJob() {
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
                                                         alt=""
-                                                        className="icon-description"/>{item.addressWork}
+                                                        className="icon-description"/>{item.nameCity}
                                                     </div>
                                                     {tokenUser ?
                                                         <div className="description"><img
@@ -51,7 +50,6 @@ export default function SearchJob() {
                                                         </div>
                                                         : <></>
                                                     }
-
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
                                                         alt=""
