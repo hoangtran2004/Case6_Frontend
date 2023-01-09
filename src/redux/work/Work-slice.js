@@ -29,7 +29,9 @@ const workSlice = createSlice({
             state.work = action.payload
         });
         builder.addCase(workEditInformation.fulfilled, (state, action) => {
+            console.log('state',state)
             state.workFind = action.payload.job
+
         });
         builder.addCase(workById.fulfilled, (state, action) => {
             state.workFind = action.payload[0]

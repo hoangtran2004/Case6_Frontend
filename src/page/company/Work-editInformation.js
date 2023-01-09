@@ -30,17 +30,19 @@ export default function WorkEditInformation() {
     });
 
     const handleEdit = (values) => {
+        console.log(values)
         let data = {
             ...values,
             companyId: companyId,
             image: img
         };
+        console.log(data)
         dispatch(workEditInformation(data)).then(Toast.fire({
             icon: 'success',
             title: 'Chỉnh sửa thông tin thành công!',
 
         }))
-        navigate('/work')
+        // navigate('/work')
     };
     useEffect(() => {
         dispatch(workById(idCompany))
@@ -50,7 +52,6 @@ export default function WorkEditInformation() {
     }, [])
 
     const city = useSelector(state => {
-        console.log(state)
         return state.city.city
     })
     const [imageUrls, setImageUrls] = useState([]);
@@ -61,7 +62,6 @@ export default function WorkEditInformation() {
     const imagesListRef = ref(storage, "images/");
 
     let companyFind = useSelector((state) => {
-        console.log('state edit', state.work)
         return state.work.workFind
     })
 
@@ -104,8 +104,8 @@ export default function WorkEditInformation() {
                             <div className="col-12">
                                 <div className="form-add-job">
                                     <Formik initialValues={companyFind} onSubmit={(values) => {
-                                        handleEdit(values);
-                                    }}>
+                                        handleEdit(values)
+                                    }} enableReinitialize={true}>
                                         <Form className="input-job">
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Tên công ty</label>
@@ -145,7 +145,7 @@ export default function WorkEditInformation() {
                                                        aria-label="Default select example">
 
                                                     {city?.map((item, index) => (<option value={item.cityId}
-                                                                                         name={'cityID'}>{item?.nameCity}</option>))}
+                                                                                         >{item?.nameCity}</option>))}
                                                 </Field>
                                             </div>
                                             <div className="form-group group-input">

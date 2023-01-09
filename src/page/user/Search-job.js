@@ -4,7 +4,6 @@ export default function SearchJob() {
     const jobs = useSelector(state => {
         return state.job.jobSearch
     })
-    console.log({jobs})
     const tokenUser = localStorage.getItem('token')
 
     return (
@@ -41,7 +40,7 @@ export default function SearchJob() {
                                                     <div className="description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
                                                         alt=""
-                                                        className="icon-description"/>{item.addressWork}
+                                                        className="icon-description"/>{item.nameCity}
                                                     </div>
                                                     {tokenUser ?
                                                         <div className="description"><img

@@ -29,6 +29,7 @@ export default function SideBar() {
         return map
     }
     let cities = useSelector((state) => {
+        console.log(state)
         return state.city.city
     })
     let categories = useSelector(state => {
@@ -39,8 +40,9 @@ export default function SideBar() {
             return item.key === `${key}`
         })
     }
-    if (checkQuery('addressWork').length !== 0) {
-        cityQuery = checkQuery('addressWork')[0].value.split(',')
+    if (checkQuery('address').length !== 0) {
+        cityQuery = checkQuery('address')[0].value.split(',')
+        console.log(cityQuery, 111111)
     }
     if (checkQuery("categoryId").length !== 0) {
         categoryQuery = checkQuery("categoryId")[0].value.split(',')
@@ -120,18 +122,7 @@ export default function SideBar() {
             <div className="row">
                 <div className="col-12 type-job">
                     <p style={{marginLeft: "14px", fontSize: "14px"}}>Địa điểm làm viêc</p>
-                    <input type={"checkbox"} name="addressWork" value={'1'}
-                           onChange={(values) => handleSearch(values)} className={'check-box'}/>
-                    <label htmlFor="vehicle1" className={'option'}>Hà Nội</label>
-                    <br/>
-                    <input type={"checkbox"} name="addressWork" value={'2'}
-                           onChange={(values) => handleSearch(values)} className={'check-box'}/>
-                    <label htmlFor="vehicle1" className={'option'}>TP.Hồ Chí Minh</label>
-                    <br/>
-                    <input type={"checkbox"} name="addressWork" value={'3'}
-                           onChange={(values) => handleSearch(values)} className={'check-box'}/>
-                    <label htmlFor="vehicle1" className={'option'}>Đà Nẵng</label>
-                    <br/>
+                    {cities.map((item)=> (cityQuery.includes(`${item.cityId}`)? printCheckbox("address", `${item.cityId}`, `${item.nameCity}`, true, `${item.address}${item.nameCity}`):printCheckbox("address", `${item.cityId}`, `${item.nameCity}`, false, `${item.address}${item.nameCity}`)))}
                 </div>
             </div>
             {/*search address end*/}

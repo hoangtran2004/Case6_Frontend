@@ -144,7 +144,7 @@ export default function AuthJobDetail() {
                             }} id="btnText" style={{backgroundColor: 'white', border: 'none', color: 'blue'}}>Xem thêm
                             </button>
                             <h6>Địa chỉ văn phòng</h6>
-                            <p>{job?.nameCity}</p>
+                            <p>{job?.addressWork}</p>
 
                         </div>
                     </div>
@@ -166,7 +166,7 @@ export default function AuthJobDetail() {
                                             <p className="card-text"><img
                                                 src="https://cdn-icons-png.flaticon.com/128/4300/4300058.png"
                                                 alt=""
-                                                className="icon-description-work"/>{}</p>
+                                                className="icon-description-work"/>{item?.statusTime}</p>
                                             <p className="card-text"><img
                                                 src="https://cdn-icons-png.flaticon.com/128/3885/3885079.png"
                                                 alt=""

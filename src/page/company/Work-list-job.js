@@ -18,7 +18,6 @@ function WorkListJob() {
     }, [])
 
     const job = useSelector(state => {
-        console.log('st', state)
         return state.job.jobEnd
     }) || []
 
