@@ -151,7 +151,7 @@ export default function WorkAddJob() {
                                                     <div className="col-5">
                                                         <label className={'name-item'}>Lương từ </label>
                                                         <Field type="number" className="form-control input-info-wage"
-                                                               name={"wageStart"} required/>
+                                                               name={"wageStart"} min={2000000} required/>
                                                     </div>
                                                     <div className="col-1"></div>
                                                     <div className="col-5">
@@ -159,7 +159,7 @@ export default function WorkAddJob() {
                                                             <label className={'name-item'}>Đến</label>
                                                             <Field type="number"
                                                                    className="form-control input-info-wage"
-                                                                   name={"wageEnd"} required/>
+                                                                   name={"wageEnd"} min={2000000} required/>
                                                         </div>
                                                     </div>
                                                 </div>
