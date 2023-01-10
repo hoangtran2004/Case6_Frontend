@@ -80,15 +80,12 @@ export default function AllJob() {
                                             src="https://cdn-icons-png.flaticon.com/128/2088/2088617.png"
                                             alt=""
                                             style={{
-                                                width: '12px',
-                                                height: '12px',
-                                                objectFit: 'cover',
-                                                marginRight: '5px'
+                                                width: '12px', height: '12px', objectFit: 'cover', marginRight: '5px'
                                             }}/>Thời gian ứng tuyển : 48 giờ </p>
                                     </div>
                                 </div>
                             </div>)
-                        })})}
+                        })}
                     </div>
                 </div>
             </div>

@@ -117,48 +117,48 @@ export default function SideBar() {
         </>)
     }
 
-    let handleRange = (check) => {
-        if (check) {
-            console.log(check)
-            const rangeInput = document.querySelectorAll(".range-input input"),
-                priceInput = document.querySelectorAll(".price-input input"),
-                progress = document.querySelector('.slider .progress');
-            let priceGap = 0.5;
-            rangeInput.forEach(input => {
-                input.addEventListener("input", (e) => {
-                    // get val range
-                    let minVal = parseInt(rangeInput[0].value), maxVal = parseInt(rangeInput[1].value);
-                    clearTimeout(queryPrice)
-                    if (maxVal - minVal < priceGap) {
-                        if (e.target.className === "range-min") {
-                            rangeInput[0].value = maxVal - priceGap
-                        } else {
-                            rangeInput[1].value = minVal + priceGap
-                        }
-                    } else {
-                        priceInput[0].value = minVal
-                        priceInput[1].value = maxVal
+     let handleRange = () => {
+        let rangeInput = document.querySelectorAll(".range-input input"),
+            priceInput = document.querySelectorAll(".price-input input"),
+            progress = document.querySelector('.slider .progress');
+        let priceGap = 500000;
+
+        priceInput.forEach(input => {
+            input.addEventListener("input", (e) => {
+                // get two input value
+                let minVal = parseInt(priceInput[0].value),
+                    maxVal = parseInt(priceInput[1].value);
+                if ((maxVal - minVal >= priceGap) && (maxVal < 100000000)) {
+                    if (e.target.className === "input-min") {
+                        rangeInput[0].value = minVal
                         progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+                    } else {
+                        rangeInput[1].value = maxVal
                         progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
                     }
-                    queryPrice = setTimeout(() => {
-                        return handleSearch(check, "wage", `${minVal},${maxVal}`)
-                    }, 1000)
-                })
+                }
             })
-        } else {
-            const rangeInput = document.querySelectorAll(".range-input input"),
-                priceInput = document.querySelectorAll(".price-input input"),
-                progress = document.querySelector('.slider .progress');
-            let minVal = parseInt(rangeInput[0].value), maxVal = parseInt(rangeInput[1].value);
-            rangeInput[0].value = 0
-            rangeInput[1].value = 0
-            priceInput[0].value = 0
-            priceInput[1].value = 0
-            progress.style.left = 100 + "%";
-            progress.style.right = 0;
-            return handleSearch(check, "wage", `${minVal},${maxVal}`)
-        }
+        })
+        rangeInput.forEach(input => {
+            input.addEventListener("input", (e) => {
+                // get val range
+                let minVal = parseInt(rangeInput[0].value), maxVal = parseInt(rangeInput[1].value);
+                if (maxVal - minVal < priceGap) {
+                    if (e.target.className === "range-min") {
+                        rangeInput[0].value = maxVal - priceGap
+                    } else {
+                        rangeInput[1].value = minVal + priceGap
+                    }
+
+                } else {
+                    priceInput[0].value = minVal
+                    priceInput[1].value = maxVal
+                    progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+                    progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                }
+            })
+        })
+
     }
     return (<>
         <div className="container-sideBar" style={{marginTop: 90}}>
@@ -198,12 +198,12 @@ export default function SideBar() {
             <div className="row">
                 <div className="col-12 type-job">
                     <span style={{marginLeft: "14px", fontSize: "14px"}}>Mức lương</span>
-                    <div className="switch">
-                        <input id="switch-1" type="checkbox" onClick={(event) => handleRange(event.target.checked)}
-                               name={'price'}
-                               className="switch-input"/>
-                        <label htmlFor="switch-1" className="switch-label">Switch</label>
-                    </div>
+                    {/*<div className="switch">*/}
+                    {/*    <input id="switch-1" type="checkbox" onClick={(event) => handleRange(event.target.checked)}*/}
+                    {/*           name={'price'}*/}
+                    {/*           className="switch-input"/>*/}
+                    {/*    <label htmlFor="switch-1" className="switch-label">Switch</label>*/}
+                    {/*</div>*/}
                     <div className="wrapper col-12">
                         <div className="price-input">
                             <div className="filed">
@@ -220,8 +220,8 @@ export default function SideBar() {
                             <div className="progress"></div>
                         </div>
                         <div className="range-input">
-                            <input type="range" className="range-min" min="0" max="50" step="1"/>
-                            <input type="range" className="range-max" min="0" max="50" step="1"/>
+                            <input defaultValue={0} type="range" className="range-min" onChange={ handleRange } min="0" max="100000000" step="500000"/>
+                            <input defaultValue={10000} type="range" className="range-max" onChange={handleRange } min="0" max="100000000" step="500000"/>
                         </div>
                     </div>
                 </div>
