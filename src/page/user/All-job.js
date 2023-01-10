@@ -1,37 +1,29 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {getJob} from "../../service/Job-service";
 import '../../style/Auth-home.css'
 import {useNavigate} from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
-export default function AllJob() {
+function AllJob({currentJob}) {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
-    let jobs = useSelector((state) => {
-        return state.job.job
-    })
-    // let currentTime = (new Date().getDay() + (new Date().getMonth() + (new Date().getFullYear())));
-    // console.log('currentTime', currentTime)
     const tokenUser = localStorage.getItem('token');
     const detailJob = ({id}) => {
         navigate('job-detail/' + id)
     }
 
-    useEffect(() => {
-        dispatch(getJob())
-    }, [])
-
     const formatter = new Intl.NumberFormat('vi-VN', {
         style: 'currency', currency: 'VND',
     });
+
     return (
         <div>
             <div className="container-listJob" style={{marginTop: '-1.9%'}}>
                 <div className="row">
                     <div className="col-12 main">
                         <div className="row">
-                            {jobs === undefined ? <></> :
-                                jobs.map((item) => {
+                            {
+                                currentJob && currentJob.map((item) => {
                                         let date = item.endDate.split('-').reverse()
                                         return (
                                             <div className="col-5 card-job" onClick={() => {
@@ -99,11 +91,44 @@ export default function AllJob() {
                             }
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>)
 }
 
+export default function JobPerPage({itemPerPage=6}) {
+    const [itemOffSet, setItemOffSet] = useState(0);
+    let dispatch = useDispatch();
+    const endOffset = itemOffSet + itemPerPage;
+    let jobs = useSelector((state) => {
+        return state.job.job
+    });
+    const currentItems = jobs.slice(itemOffSet, endOffset);
+    const pageCount = Math.ceil(jobs.length / itemPerPage);
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemPerPage) % jobs.length;
+        console.log(
+            `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffSet(newOffset);
+    };
+    useEffect(() => {
+        dispatch(getJob())
+    }, [])
 
-
-
+    return (
+        <>
+            <AllJob currentJob={currentItems}/>
+            <ReactPaginate
+                breakLabel="..."
+                nextLabel="next >"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="< previous"
+                renderOnZeroPageCount={null} className={'pagination'}
+            />
+        </>
+    );
+}
