@@ -14,11 +14,9 @@ function TopCompany(props) {
     },[])
 
     const topCompany = useSelector(state => {
-        console.log(state)
         return state.work.work.company
     })
     const detailCompany = ({id}) => {
-        console.log(id)
         navigate('/detail-company/' + id)
     }
 

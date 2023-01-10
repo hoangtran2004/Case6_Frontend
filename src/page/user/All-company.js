@@ -3,10 +3,15 @@ import '../../style/Work-list-job.css'
 import AuthSearchCompany from "./Auth-searchCompany";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompany} from "../../service/Work-service";
+import {useNavigate} from "react-router-dom";
 
 function AllCompany() {
+    const navigate=useNavigate()
+    const detailCompany = ({id}) => {
+        navigate('/detail-company/' + id)
+    };
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const company = useSelector(state => {
         console.log('state',state)
@@ -31,7 +36,9 @@ function AllCompany() {
                                     <div className="col-2">
                                         <img
                                             src={item?.image}
-                                            alt="logo" className="card-logo-work"/>
+                                            alt="logo" className="card-logo-work" onClick={()=>{
+                                            detailCompany({id:item?.companyId})
+                                        }} style={{cursor:'pointer'}}/>
                                     </div>
                                     <div className="col-8">
                                         <p className="job-description-work">{item?.name}</p>
