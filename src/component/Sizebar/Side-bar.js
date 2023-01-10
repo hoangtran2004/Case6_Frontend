@@ -19,6 +19,7 @@ export default function SideBar() {
     let [statusJob, setStatusJob] = useState([{idStatusTime: 0, nameStatus: 'Full time'}, {
         idStatusTime: 1, nameStatus: 'Part time'
     }])
+    let [checkRange, setCheckRange] = useState(false)
     const queryParams = new URLSearchParams(search)
     let cityQuery = []
     let categoryQuery = []
@@ -117,18 +118,17 @@ export default function SideBar() {
         </>)
     }
 
-     let handleRange = () => {
+    let scripRange = () => {
+        clearTimeout(queryPrice)
         let rangeInput = document.querySelectorAll(".range-input input"),
             priceInput = document.querySelectorAll(".price-input input"),
             progress = document.querySelector('.slider .progress');
-        let priceGap = 500000;
-
+        let priceGap = 1;
         priceInput.forEach(input => {
             input.addEventListener("input", (e) => {
                 // get two input value
-                let minVal = parseInt(priceInput[0].value),
-                    maxVal = parseInt(priceInput[1].value);
-                if ((maxVal - minVal >= priceGap) && (maxVal < 100000000)) {
+                let minVal = parseInt(priceInput[0].value), maxVal = parseInt(priceInput[1].value);
+                if ((maxVal - minVal >= priceGap) && (maxVal < 50)) {
                     if (e.target.className === "input-min") {
                         rangeInput[0].value = minVal
                         progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
@@ -149,7 +149,6 @@ export default function SideBar() {
                     } else {
                         rangeInput[1].value = minVal + priceGap
                     }
-
                 } else {
                     priceInput[0].value = minVal
                     priceInput[1].value = maxVal
@@ -158,7 +157,43 @@ export default function SideBar() {
                 }
             })
         })
-
+        queryPrice = setTimeout(() => handleRange('wage', priceInput[0].value, priceInput[1].value), 1000)
+    }
+    let printRange = (checked) => {
+        setCheckRange(checked)
+        let newArrQuery = search.split('&')
+        let index = -1
+        newArrQuery.map((item, i) => {
+            if (item.includes('wage')) {
+                index = i
+            }
+        })
+        if (index !== -1) {
+            newArrQuery.splice(index, 1)
+        }
+        dispatch(searchJob(newArrQuery.join('&')))
+        console.log(newArrQuery)
+        if (newArrQuery.join('&') === '') {
+            navigate('/')
+        } else {
+            navigate(`/search?${newArrQuery.join('&')}`)
+        }
+    }
+    let handleRange = (key, min, max) => {
+        let newArrQuery = search.split('&')
+        let index = -1
+        newArrQuery.map((item, i) => {
+            if (item.includes(key)) {
+                index = i
+            }
+        })
+        if (index === -1) {
+            newArrQuery.unshift(`wage=${min},${max}`)
+        } else {
+            newArrQuery.splice(index, 1, `wage=${min},${max}`)
+        }
+        dispatch(searchJob(newArrQuery.join('&')))
+        navigate(`/search?${newArrQuery.join('&')}`)
     }
     return (<>
         <div className="container-sideBar" style={{marginTop: 90}}>
@@ -198,32 +233,40 @@ export default function SideBar() {
             <div className="row">
                 <div className="col-12 type-job">
                     <span style={{marginLeft: "14px", fontSize: "14px"}}>Mức lương</span>
-                    {/*<div className="switch">*/}
-                    {/*    <input id="switch-1" type="checkbox" onClick={(event) => handleRange(event.target.checked)}*/}
-                    {/*           name={'price'}*/}
-                    {/*           className="switch-input"/>*/}
-                    {/*    <label htmlFor="switch-1" className="switch-label">Switch</label>*/}
-                    {/*</div>*/}
-                    <div className="wrapper col-12">
-                        <div className="price-input">
-                            <div className="filed">
-                                <spap>Từ</spap>
-                                <input type="number" className="input-min" value="0"/><span>tr</span>
-                            </div>
-                            <div style={{width: 40}}></div>
-                            <div className="filed">
-                                <spap>đến</spap>
-                                <input type="number" className="input-max" value="0"/><span>tr</span>
-                            </div>
-                        </div>
-                        <div className="slider">
-                            <div className="progress"></div>
-                        </div>
-                        <div className="range-input">
-                            <input defaultValue={0} type="range" className="range-min" onChange={ handleRange } min="0" max="100000000" step="500000"/>
-                            <input defaultValue={10000} type="range" className="range-max" onChange={handleRange } min="0" max="100000000" step="500000"/>
-                        </div>
+                    <div className="switch">
+                        <input id="switch-1" type="checkbox" onClick={(event) => printRange(event.target.checked)}
+                               name={'price'}
+                               className="switch-input"/>
+                        <label htmlFor="switch-1" className="switch-label">Switch</label>
                     </div>
+                    {checkRange === false ? <></> : <>
+                        <div className="wrapper col-12">
+                            <div className="price-input">
+                                <div className="filed">
+                                    <spap>Từ</spap>
+                                    <input type="number" className="input-min" value="0"/><span>triệu</span>
+                                </div>
+                                <div style={{width: 40}}></div>
+                                <div className="filed">
+                                    <spap>đến</spap>
+                                    <input type="number" className="input-max" value="0"/><span>triệu</span>
+                                </div>
+                            </div>
+                            <div className="slider">
+                                <div className="progress"></div>
+                            </div>
+                            <div className="range-input">
+                                <input defaultValue={0} type="range" name={'wageStart'}
+                                       className="range-min" onChange={scripRange} min="0"
+                                       max="50" step="1"/>
+                                <input defaultValue={0} type="range" name={'wageEnd'}
+                                       className="range-max"
+                                       onChange={scripRange}
+                                       min="0"
+                                       max="50" step="1"/>
+                            </div>
+                        </div>
+                    </>}
                 </div>
             </div>
             {/*    search by money end*/}
