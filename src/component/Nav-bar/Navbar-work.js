@@ -8,6 +8,7 @@ function NavbarWork(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const formEditInfoCompany = ({id}) => {
+        console.log(id)
         navigate('edit-company-information/' + id)
     };
 

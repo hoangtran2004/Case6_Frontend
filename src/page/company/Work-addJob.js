@@ -178,9 +178,16 @@ export default function WorkAddJob() {
                                                 </Field>
                                             </div>
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Địa chỉ làm việc</label>
-                                                <Field type="text" className="form-control input-info-job"
-                                                       name={"addressWork"} required/>
+                                                <label className={'name-item'}>Địa chỉ</label>
+                                                <Field as="select" name="addressWork"
+                                                       className="form-control input-info-job"
+                                                       style={{height: '53% !important'}}
+                                                       aria-label="Default select example">
+                                                    <option value="1" name={'addressWork'}>Hà Nội</option>
+                                                    <option value="2" name={'addressWork'}>TP Hồ Chí Minh</option>
+                                                    <option value="3" name={'addressWork'}>Đà Nẵng</option>
+                                                    <option value="4" name={'addressWork'}>Khác</option>
+                                                </Field>
                                             </div>
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">

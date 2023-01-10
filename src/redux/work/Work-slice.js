@@ -24,15 +24,12 @@ const workSlice = createSlice({
                 localStorage.setItem("tokenCompany", action.payload.token)
                 localStorage.setItem('work', JSON.stringify(action.payload))
             }
-
         });
         builder.addCase(workRegister.fulfilled, (state, action) => {
             state.work = action.payload
         });
         builder.addCase(workEditInformation.fulfilled, (state, action) => {
-            console.log('state',state)
             state.workFind = action.payload.job
-
         });
         builder.addCase(workById.fulfilled, (state, action) => {
             console.log(action)
