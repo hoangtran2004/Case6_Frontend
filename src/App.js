@@ -20,6 +20,7 @@ import {Cv} from "./page/cv/Cv";
 import JobPerPage from "./page/user/All-job";
 import CompanyPerPage from "./page/user/All-company";
 import WorkListCv from "./page/company/Work-ListCv";
+import JobSearchedPerPage from "./page/user/Search-job";
 function App() {
     return (<div>
             <Routes>
@@ -38,7 +39,7 @@ function App() {
                     <Route path={"/my-cv"} element={<Cv/>}></Route>
                     <Route path={'/'} element={<AuthListJob/>}>
                         <Route path={''} element={<JobPerPage itemPerPage={6}/>}></Route>
-                        <Route path={'search'} element={<SearchJob></SearchJob>}/>
+                        <Route path={'search'} element={<JobSearchedPerPage itemPerPage={6}></JobSearchedPerPage>}/>
                     </Route>
                 </Route>
                 //router user end

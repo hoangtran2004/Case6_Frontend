@@ -97,7 +97,7 @@ function AllJob({currentJob}) {
         </div>)
 }
 
-export default function JobPerPage({itemPerPage=6}) {
+export default function JobPerPage({itemPerPage = 6}) {
     const [itemOffSet, setItemOffSet] = useState(0);
     let dispatch = useDispatch();
     const endOffset = itemOffSet + itemPerPage;
@@ -109,7 +109,7 @@ export default function JobPerPage({itemPerPage=6}) {
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemPerPage) % jobs.length;
         setItemOffSet(newOffset);
-        document.getElementById('s').scroll({top:0,behavior:'smooth'});
+        document.getElementById('s').scroll({top: 0, behavior: 'smooth'});
     };
     useEffect(() => {
         dispatch(getJob())
