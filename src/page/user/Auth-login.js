@@ -69,7 +69,7 @@ export default function AuthLogin() {
                                                    placeholder="Mật khẩu"/>
                                             <ErrorMessage name={'password'}/>
                                         </div>
-                                        <button type={'submit'} className="btn btn-primary size" style={{width:'22rem'}}>Đăng nhập</button>
+                                        <button type={'submit'} className="btn btn-primary size" style={{width:'25rem'}}>Đăng nhập</button>
                                     </Form>
                                 </Formik>
                             </div>

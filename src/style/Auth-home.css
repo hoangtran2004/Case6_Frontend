@@ -32,9 +32,19 @@
 }
 
 .container-listJob {
-    /*margin-left: 18px;*/
+   display: flex;
+}
+.left-div {
+    flex: 2;
+    height: 100vh;
+    overflow: scroll;
 }
 
+.right-div{
+    flex: 10;
+    height: 100vh;
+    overflow: scroll;
+}
 .container-listJob .card-logo {
     height: 50px;
     width: 50px;
@@ -87,4 +97,43 @@
 
 .card-job:hover {
     box-shadow: rgba(0, 0, 0, 0.16) 0 10px 36px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
+}
+
+.left-div::-webkit-scrollbar {
+    height: 2px;
+    width: 10px;
+}
+
+.left-div::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    margin-top: 9.5vh;
+    border-radius: 5px;
+
+}
+
+.left-div::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: lightgrey;
+}
+
+.left-div::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.right-div::-webkit-scrollbar {
+    height: 2px;
+    width: 10px;
+}
+.right-div::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    margin-top: 9.5vh;
+
+}
+
+.right-div::-webkit-scrollbar-thumb {
+    background: lightgrey;
+}
+
+.right-div::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

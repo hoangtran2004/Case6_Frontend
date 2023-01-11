@@ -97,14 +97,12 @@ export default function CompanyPerPage({itemPerPage}) {
     const pageCount = Math.ceil(company.length / itemPerPage);
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemPerPage) % company.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffSet(newOffset);
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
     };
     useEffect(() => {
         dispatch(getCompany())
-    }, [])
+    }, []);
     return (
         <>
             <AllCompany currentCompanies={currentItems}/>

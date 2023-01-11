@@ -9,8 +9,8 @@ export default function AuthListJob() {
     return (
         <>
             <div className="row container-listJob">
-                <div className="col-3"><SideBar></SideBar></div>
-                <div className="col-9">
+                <div className="col-3 left-div"><SideBar></SideBar></div>
+                <div className="col-9 right-div">
                     <div className="row">
                         <div className="col-12">
                             <AuthSearch></AuthSearch>
