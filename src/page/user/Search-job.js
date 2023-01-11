@@ -2,8 +2,9 @@ import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
 export default function SearchJob() {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const jobs = useSelector(state => {
+        console.log(state)
         return state.job.jobSearch
     });
     const detailJob = ({id}) => {
@@ -17,14 +18,14 @@ export default function SearchJob() {
 
     return (
         <>
-            <div className="container-listJob" style={{width:'99%'}}>
+            <div className="container-listJob" style={{width: '99%'}}>
                 <div className="row">
                     <div className="col-12 main">
                         <div className="row">
                             {jobs === undefined ? <h1>vui lòng chờ</h1> : jobs.length === 0 ?
-                                <div style={{marginLeft:"5%"}}>Không có kết quả tìm kiếm</div> :
+                                <div style={{marginLeft: "5%"}}>Không có kết quả tìm kiếm</div> :
                                 jobs.map((item, index) => (
-                                    <div className="col-5 card-job" style={{marginTop:'-2%'}} onClick={() => {
+                                    <div className="col-5 card-job" style={{marginTop: '-2%'}} onClick={() => {
                                         detailJob({id: item?.jobId})
                                     }}>
                                         <div className="row">
@@ -38,7 +39,6 @@ export default function SearchJob() {
                                                 <p className="companyName">{item?.name} </p>
                                             </div>
                                             <div className="col-3"></div>
-
                                         </div>
                                         <div className="row">
                                             <div className="col-12">
@@ -57,7 +57,7 @@ export default function SearchJob() {
                                                         <div className="description"><img
                                                             src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                                                             alt=""
-                                                            className="icon-description"/>VND  {formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
+                                                            className="icon-description"/>VND {formatter.format(item.wageStart)} - {formatter.format(item.wageEnd)}
                                                         </div>
                                                         : <></>
                                                     }
