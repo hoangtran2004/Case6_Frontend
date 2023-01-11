@@ -8,7 +8,7 @@ import {getDownloadURL, listAll, ref, uploadBytes} from "firebase/storage";
 import {v4} from "uuid";
 import Swal from "sweetalert2";
 import {getCity} from "../../service/City-service";
-
+import '../../style/Work-addJob.css'
 export default function WorkEditInformation() {
     let item = JSON.parse(localStorage.getItem('work'));
     const [companyId, setCompanyId] = useState(item.company.companyId);
@@ -145,12 +145,11 @@ export default function WorkEditInformation() {
                                             </div>
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Ảnh</label><br/>
-
                                                 <input
                                                     type="file" onChange={(event) => {
                                                     setSubmitting(true)
                                                     uploadFile(event.target.files[0])
-                                                }}/>
+                                                }} id={'file'}/>
                                             </div>
 
                                             <div className="form-group group-input">

@@ -159,7 +159,7 @@ export default function WorkEditJob() {
                                                         <Field type="number" className="form-control input-info-wage"
                                                                name={"wageStart"} required/>
                                                     </div>
-                                                    <div className="col-5">
+                                                    <div className="col-6">
                                                         <div className="form-group group-input">
                                                             <label className={'name-item'} style={{
                                                                 position: 'relative',
@@ -168,7 +168,7 @@ export default function WorkEditJob() {
                                                             <Field type="number"
                                                                    className="form-control input-info-wage"
                                                                    name={"wageEnd"} required
-                                                                   style={{marginLeft: '4.4em'}}/>
+                                                                   style={{marginLeft: '9.5%',maxWidth:'98%'}}/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -192,7 +192,7 @@ export default function WorkEditJob() {
                                                         <Field as="select" name="categoryId"
                                                                className="form-select sel input-info-category"
                                                                aria-label="Default select example">
-                                                            <option disabled selected>Loại ngành nghề</option>
+                                                            <option disabled selected style={{marginLeft:'20%'}}>Loại ngành nghề</option>
 
                                                             {category?.map((item, index) => (
                                                                 <option

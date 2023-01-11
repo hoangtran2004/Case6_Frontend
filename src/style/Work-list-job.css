@@ -28,6 +28,7 @@
     width: 60px;
     object-fit: cover;
     margin-top: 10px;
+    border-radius: 4px;
 }
 .card-description{
     padding: 2px;
@@ -189,4 +190,8 @@
     padding: 0px!important;
     border-top-right-radius: 4px;
     display: none!important;
+}
+#a:hover{
+    background-color: rgba(56, 54, 55, 0.1);
+    border-radius: 50px;
 }
