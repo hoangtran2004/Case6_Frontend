@@ -19,6 +19,7 @@ export default function SideBar() {
     let [statusJob, setStatusJob] = useState([{idStatusTime: 0, nameStatus: 'Full time'}, {
         idStatusTime: 1, nameStatus: 'Part time'
     }])
+    let [checkRange, setCheckRange] = useState(false)
     const queryParams = new URLSearchParams(search)
     let cityQuery = []
     let categoryQuery = []
@@ -117,48 +118,82 @@ export default function SideBar() {
         </>)
     }
 
-    let handleRange = (check) => {
-        if (check) {
-            console.log(check)
-            const rangeInput = document.querySelectorAll(".range-input input"),
-                priceInput = document.querySelectorAll(".price-input input"),
-                progress = document.querySelector('.slider .progress');
-            let priceGap = 0.5;
-            rangeInput.forEach(input => {
-                input.addEventListener("input", (e) => {
-                    // get val range
-                    let minVal = parseInt(rangeInput[0].value), maxVal = parseInt(rangeInput[1].value);
-                    clearTimeout(queryPrice)
-                    if (maxVal - minVal < priceGap) {
-                        if (e.target.className === "range-min") {
-                            rangeInput[0].value = maxVal - priceGap
-                        } else {
-                            rangeInput[1].value = minVal + priceGap
-                        }
-                    } else {
-                        priceInput[0].value = minVal
-                        priceInput[1].value = maxVal
+    let scripRange = () => {
+        clearTimeout(queryPrice)
+        let rangeInput = document.querySelectorAll(".range-input input"),
+            priceInput = document.querySelectorAll(".price-input input"),
+            progress = document.querySelector('.slider .progress');
+        let priceGap = 1;
+        priceInput.forEach(input => {
+            input.addEventListener("input", (e) => {
+                // get two input value
+                let minVal = parseInt(priceInput[0].value), maxVal = parseInt(priceInput[1].value);
+                if ((maxVal - minVal >= priceGap) && (maxVal < 50)) {
+                    if (e.target.className === "input-min") {
+                        rangeInput[0].value = minVal
                         progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+                    } else {
+                        rangeInput[1].value = maxVal
                         progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
                     }
-                    queryPrice = setTimeout(() => {
-                        return handleSearch(check, "wage", `${minVal},${maxVal}`)
-                    }, 1000)
-                })
+                }
             })
-        } else {
-            const rangeInput = document.querySelectorAll(".range-input input"),
-                priceInput = document.querySelectorAll(".price-input input"),
-                progress = document.querySelector('.slider .progress');
-            let minVal = parseInt(rangeInput[0].value), maxVal = parseInt(rangeInput[1].value);
-            rangeInput[0].value = 0
-            rangeInput[1].value = 0
-            priceInput[0].value = 0
-            priceInput[1].value = 0
-            progress.style.left = 100 + "%";
-            progress.style.right = 0;
-            return handleSearch(check, "wage", `${minVal},${maxVal}`)
+        })
+        rangeInput.forEach(input => {
+            input.addEventListener("input", (e) => {
+                // get val range
+                let minVal = parseInt(rangeInput[0].value), maxVal = parseInt(rangeInput[1].value);
+                if (maxVal - minVal < priceGap) {
+                    if (e.target.className === "range-min") {
+                        rangeInput[0].value = maxVal - priceGap
+                    } else {
+                        rangeInput[1].value = minVal + priceGap
+                    }
+                } else {
+                    priceInput[0].value = minVal
+                    priceInput[1].value = maxVal
+                    progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+                    progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                }
+            })
+        })
+        queryPrice = setTimeout(() => handleRange('wage', priceInput[0].value, priceInput[1].value), 1000)
+    }
+    let printRange = (checked) => {
+        setCheckRange(checked)
+        let newArrQuery = search.split('&')
+        let index = -1
+        newArrQuery.map((item, i) => {
+            if (item.includes('wage')) {
+                index = i
+            }
+        })
+        if (index !== -1) {
+            newArrQuery.splice(index, 1)
         }
+        dispatch(searchJob(newArrQuery.join('&')))
+        console.log(newArrQuery)
+        if (newArrQuery.join('&') === '') {
+            navigate('/')
+        } else {
+            navigate(`/search?${newArrQuery.join('&')}`)
+        }
+    }
+    let handleRange = (key, min, max) => {
+        let newArrQuery = search.split('&')
+        let index = -1
+        newArrQuery.map((item, i) => {
+            if (item.includes(key)) {
+                index = i
+            }
+        })
+        if (index === -1) {
+            newArrQuery.unshift(`wage=${min},${max}`)
+        } else {
+            newArrQuery.splice(index, 1, `wage=${min},${max}`)
+        }
+        dispatch(searchJob(newArrQuery.join('&')))
+        navigate(`/search?${newArrQuery.join('&')}`)
     }
     return (<>
         <div className="container-sideBar" style={{marginTop: 90}}>
@@ -199,31 +234,39 @@ export default function SideBar() {
                 <div className="col-12 type-job">
                     <span style={{marginLeft: "14px", fontSize: "14px"}}>Mức lương</span>
                     <div className="switch">
-                        <input id="switch-1" type="checkbox" onClick={(event) => handleRange(event.target.checked)}
+                        <input id="switch-1" type="checkbox" onClick={(event) => printRange(event.target.checked)}
                                name={'price'}
                                className="switch-input"/>
                         <label htmlFor="switch-1" className="switch-label">Switch</label>
                     </div>
-                    <div className="wrapper col-12">
-                        <div className="price-input">
-                            <div className="filed">
-                                <spap>Từ</spap>
-                                <input type="number" className="input-min" value="0"/><span>tr</span>
+                    {checkRange === false ? <></> : <>
+                        <div className="wrapper col-12">
+                            <div className="price-input">
+                                <div className="filed">
+                                    <spap>Từ</spap>
+                                    <input type="number" className="input-min" value="0"/><span>triệu</span>
+                                </div>
+                                <div style={{width: 40}}></div>
+                                <div className="filed">
+                                    <spap>đến</spap>
+                                    <input type="number" className="input-max" value="0"/><span>triệu</span>
+                                </div>
                             </div>
-                            <div style={{width: 40}}></div>
-                            <div className="filed">
-                                <spap>đến</spap>
-                                <input type="number" className="input-max" value="0"/><span>tr</span>
+                            <div className="slider">
+                                <div className="progress"></div>
+                            </div>
+                            <div className="range-input">
+                                <input defaultValue={0} type="range" name={'wageStart'}
+                                       className="range-min" onChange={scripRange} min="0"
+                                       max="50" step="1"/>
+                                <input defaultValue={0} type="range" name={'wageEnd'}
+                                       className="range-max"
+                                       onChange={scripRange}
+                                       min="0"
+                                       max="50" step="1"/>
                             </div>
                         </div>
-                        <div className="slider">
-                            <div className="progress"></div>
-                        </div>
-                        <div className="range-input">
-                            <input type="range" className="range-min" min="0" max="50" step="1"/>
-                            <input type="range" className="range-max" min="0" max="50" step="1"/>
-                        </div>
-                    </div>
+                    </>}
                 </div>
             </div>
             {/*    search by money end*/}
