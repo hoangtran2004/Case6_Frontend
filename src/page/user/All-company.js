@@ -92,7 +92,6 @@ export default function CompanyPerPage({itemPerPage}) {
     const company = useSelector(state => {
         return state.work.work.company || []
     });
-    console.log(company)
     const currentItems =  company ? company.slice(itemOffSet, endOffset) : [];
     const pageCount = Math.ceil(company.length / itemPerPage);
     const handlePageClick = (event) => {
@@ -113,7 +112,7 @@ export default function CompanyPerPage({itemPerPage}) {
                 pageRangeDisplayed={5}
                 pageCount={pageCount}
                 previousLabel="< Trước"
-                renderOnZeroPageCount={null} className={'pagination'}
+                renderOnZeroPageCount={null} className={'pagination-company'}
             />
         </>
     );

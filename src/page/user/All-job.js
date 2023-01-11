@@ -125,7 +125,7 @@ export default function JobPerPage({itemPerPage=6}) {
                 pageRangeDisplayed={5}
                 pageCount={pageCount}
                 previousLabel="< previous"
-                renderOnZeroPageCount={null} className={'pagination'}
+                renderOnZeroPageCount={null} className={'pagination-job'}
             />
         </>
     );
