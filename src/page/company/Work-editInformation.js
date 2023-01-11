@@ -149,7 +149,7 @@ export default function WorkEditInformation() {
                                                     type="file" onChange={(event) => {
                                                     setSubmitting(true)
                                                     uploadFile(event.target.files[0])
-                                                }} id={'file'}/>
+                                                }} id={'file-upload'}/>
                                             </div>
 
                                             <div className="form-group group-input">
