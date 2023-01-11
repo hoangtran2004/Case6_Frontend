@@ -98,7 +98,6 @@ export default function CompanyPerPage({itemPerPage}) {
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemPerPage) % company.length;
         setItemOffSet(newOffset);
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
     };
     useEffect(() => {
         dispatch(getCompany())

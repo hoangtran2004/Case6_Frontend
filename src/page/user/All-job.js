@@ -109,7 +109,7 @@ export default function JobPerPage({itemPerPage=6}) {
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemPerPage) % jobs.length;
         setItemOffSet(newOffset);
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+        document.getElementById('s').scroll({top:0,behavior:'smooth'});
     };
     useEffect(() => {
         dispatch(getJob())
