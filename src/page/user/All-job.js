@@ -108,14 +108,12 @@ export default function JobPerPage({itemPerPage=6}) {
     const pageCount = Math.ceil(jobs.length / itemPerPage);
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemPerPage) % jobs.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffSet(newOffset);
+        document.getElementById('s').scroll({top:0,behavior:'smooth'});
     };
     useEffect(() => {
         dispatch(getJob())
-    }, [])
+    }, []);
 
     return (
         <>
@@ -127,7 +125,7 @@ export default function JobPerPage({itemPerPage=6}) {
                 pageRangeDisplayed={5}
                 pageCount={pageCount}
                 previousLabel="< previous"
-                renderOnZeroPageCount={null} className={'pagination'}
+                renderOnZeroPageCount={null} className={'pagination-job'}
             />
         </>
     );
