@@ -1,5 +1,5 @@
 import './App.css';
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 import HomeUser from "./page/user/Home-user";
 import AccessAccount from "./page/Access-account";
 import WorkLogin from "./page/company/Work-login";
@@ -13,31 +13,39 @@ import WorkEditInformation from "./page/company/Work-editInformation";
 import WorkListJob from "./page/company/Work-list-job";
 import WorkEditJob from "./page/company/Work-editJob";
 import SearchJob from "./page/user/Search-job";
-import AllJob from "./page/user/All-job";
 import AuthJobDetail from "./page/user/Auth-jobDetail";
-import AllCompany from "./page/user/All-company";
 import TopCompany from "./page/user/Top-company";
 import AuthCompanyDetail from "./page/user/Auth-companyDetail";
 import {Cv} from "./page/cv/Cv";
-
+import JobPerPage from "./page/user/All-job";
+import CompanyPerPage from "./page/user/All-company";
+import WorkListCv from "./page/company/Work-ListCv";
+import {useEffect} from "react";
+import OtherJob from "./page/user/Auth-other-job";
 function App() {
+    let location = useLocation()
+    useEffect(()=> {
+        window.scrollTo(0 , 0)
+    }, [location.pathname])
     return (<div>
             <Routes>
-                <Route path={'detail'} element={<AuthJobDetail/>}></Route>
-
+                <Route path={'test-job'} element={<AccessAccount/>}></Route>
 
                 <Route path={'/access-account'} element={<AccessAccount/>}></Route>
                 //router user start
                 <Route path={'auth/login'} element={<AuthLogin/>}></Route>
                 <Route path={'auth/register'} element={<AuthRegister/>}></Route>
+
                 <Route path={'/'} element={<HomeUser/>}>
-                    <Route path={'companies'} element={<AllCompany></AllCompany>}/>
-                    <Route path={'job-detail/:id'} element={<AuthJobDetail></AuthJobDetail>}/>
+                    <Route path={'companies'} element={<CompanyPerPage itemPerPage={6}></CompanyPerPage>}/>
+                    <Route path={'job-detail/:id'} element={<AuthJobDetail></AuthJobDetail>}>
+                        <Route path={''} element={<OtherJob otherJob={4}></OtherJob>}/>
+                    </Route>
                     <Route path={'top-work'} element={<TopCompany></TopCompany>}/>
                     <Route path={'detail-company/:id'} element={<AuthCompanyDetail/>}></Route>
                     <Route path={"/my-cv"} element={<Cv/>}></Route>
                     <Route path={'/'} element={<AuthListJob/>}>
-                        <Route path={''} element={<AllJob/>}></Route>
+                        <Route path={''} element={<JobPerPage itemPerPage={6}/>}></Route>
                         <Route path={'search'} element={<SearchJob></SearchJob>}/>
                     </Route>
                 </Route>
@@ -51,6 +59,7 @@ function App() {
                     <Route path={'add-job'} element={<WorkAddJob/>}></Route>
                     <Route path={'edit-company-information/:id'} element={<WorkEditInformation/>}></Route>
                     <Route path={'edit-job/:id'} element={<WorkEditJob/>}></Route>
+                    <Route path={'list-cv'} element={<WorkListCv/>}></Route>
                 </Route>
                 //router work end
             </Routes>

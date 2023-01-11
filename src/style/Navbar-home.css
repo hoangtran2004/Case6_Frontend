@@ -34,8 +34,8 @@ nav{
     color: lightslategrey;
 }
 a:hover{
-    /*color: gray !important;*/
-    /*text-decoration: none !important;*/
+    color: gray !important;
+    text-decoration: none !important;
 }
 .navbar img{
     width: 80px;

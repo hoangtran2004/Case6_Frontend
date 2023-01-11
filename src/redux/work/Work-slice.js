@@ -9,7 +9,7 @@ import {
 } from "../../service/Work-service";
 
 const initialState = {
-    work: {},
+    work: [],
     workFind: {}
 }
 const workSlice = createSlice({
@@ -19,7 +19,6 @@ const workSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(workLogin.fulfilled, (state, action) => {
             state.work = action.payload
-            console.log(action, 22222)
             if (action.payload.token) {
                 localStorage.setItem("tokenCompany", action.payload.token)
                 localStorage.setItem('work', JSON.stringify(action.payload))
@@ -32,7 +31,6 @@ const workSlice = createSlice({
             state.workFind = action.payload.job
         });
         builder.addCase(workById.fulfilled, (state, action) => {
-            console.log(action)
             state.workFind = action.payload[0]
         });
         builder.addCase(getCompany.fulfilled, (state, action) => {
