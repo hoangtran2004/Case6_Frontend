@@ -27,6 +27,7 @@
     height: 50px;
     width: 50px;
     object-fit: cover;
+    margin-top: 10px;
 }
 .card-description{
     padding: 2px;
@@ -77,7 +78,6 @@
 }
 .pagination-job > li {
     list-style: none;
-    border: 0.9px solid;
 }
 .pagination-job > li > a,
 .pagination-job > li > span {
@@ -100,7 +100,7 @@
 
 /* Style the active class (and buttons on mouse-over) */
 .pagination-job > li > a:hover {
-    background-color:  #218838;
+    background-color:  #B0B3B5;
     color: white;
 }
 .pagination-job > li:first-child > a,
@@ -147,7 +147,6 @@
 }
 .pagination-company > li {
     list-style: none;
-    border: 0.9px solid;
 }
 .pagination-company > li > a,
 .pagination-company > li > span {
@@ -170,7 +169,7 @@
 
 /* Style the active class (and buttons on mouse-over) */
 .pagination-company > li > a:hover {
-    background-color:  #218838;
+    background-color:  #B0B3B5;
     color: white;
 }
 .pagination-company > li:first-child > a,

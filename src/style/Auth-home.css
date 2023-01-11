@@ -46,6 +46,7 @@
     overflow: scroll;
 }
 .container-listJob .card-logo {
+    margin-top: 10px;
     height: 50px;
     width: 50px;
     object-fit: cover;
