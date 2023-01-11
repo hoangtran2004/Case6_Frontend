@@ -32,6 +32,9 @@ function NavbarWork(props) {
                             }}>Sửa thông tin doanh nghiệp
                             </div>
                         </li>
+                        <li className="nav-item add">
+                            <Link to={'list-cv'} className={'text-navbar'} style={{position: 'relative',left:' 80%'}}>Danh sách tuyển dụng</Link>
+                        </li>
 
                         <li className="nav-item logout">
                             <button onClick={() => {
