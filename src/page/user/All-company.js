@@ -93,7 +93,8 @@ export default function CompanyPerPage({itemPerPage}) {
         return state.work.work.company || []
     });
     const currentItems =  company ? company.slice(itemOffSet, endOffset) : [];
-    const pageCount = Math.ceil(company.length / itemPerPage);
+    let pageCount = Math.ceil(company.length / itemPerPage);
+    console.log(pageCount)
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemPerPage) % company.length;
         setItemOffSet(newOffset);
@@ -101,20 +102,22 @@ export default function CompanyPerPage({itemPerPage}) {
     useEffect(() => {
         dispatch(getCompany())
     }, []);
-    return (
-        <>
-            <AllCompany currentCompanies={currentItems}/>
-            <ReactPaginate
-                breakLabel="..."
-                theme="default"
-                nextLabel="Sau >"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
-                pageCount={pageCount}
-                previousLabel="< Trước"
-                renderOnZeroPageCount={null} className={'pagination-company'}
-            />
-        </>
-    );
+
+    if( pageCount >1){
+        return (
+            <>
+                <ReactPaginate
+                    breakLabel="..."
+                    theme="default"
+                    nextLabel="Sau >"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={5}
+                    pageCount={pageCount}
+                    previousLabel="< Trước"
+                    renderOnZeroPageCount={null} className={'pagination-company'}
+                />
+            </>
+        );
+    }else return  <AllCompany currentCompanies={currentItems}/>
 }
 

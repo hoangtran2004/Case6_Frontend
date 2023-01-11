@@ -7,9 +7,12 @@ import {workById} from "../../service/Work-service";
 export default function AuthCompanyDetail() {
     const dispatch=useDispatch();
     const idCompany=useParams().id
+    console.log(idCompany)
+
      useEffect(()=>{
          dispatch(workById(idCompany))
      },[])
+
     let company=useSelector(state => {
         console.log('state',state)
         return state.work.workFind

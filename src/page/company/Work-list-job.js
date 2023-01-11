@@ -12,7 +12,6 @@ function WorkListJob() {
     let navigate = useNavigate();
     let item = JSON.parse(localStorage.getItem('work'));
     let companyId = item.company.companyId
-    console.log(companyId)
 
     useEffect(() => {
         dispatch(getJob())
@@ -67,7 +66,7 @@ function WorkListJob() {
                                                 }} data-toggle="dropdown" aria-expanded="false"/>
 
                                                 <div className="dropdown-menu dropdown-menu-right">
-                                                    <button className="dropdown-item" type="submit" onClick={() => {
+                                                    <button className="dropdown-item swal2-styled.swal2-confirm" type="submit" onClick={() => {
                                                         Swal.fire({
                                                             title: 'Bạn có chắc?',
                                                             text: "Dữ liệu sẽ không thể khôi phục!",
