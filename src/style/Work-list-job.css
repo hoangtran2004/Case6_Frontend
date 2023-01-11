@@ -24,8 +24,8 @@
 }
 
 .container-listJobWork .card-logo-work{
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     object-fit: cover;
     margin-top: 10px;
 }
@@ -139,6 +139,8 @@
 
 .pagination-company{
     margin-left: 50%;
+    top: 90vh;
+    position: fixed;
 }
 
 .pagination-company > li {
