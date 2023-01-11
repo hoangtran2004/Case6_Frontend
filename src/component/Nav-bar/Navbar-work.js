@@ -8,6 +8,7 @@ function NavbarWork(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const formEditInfoCompany = ({id}) => {
+        console.log(id)
         navigate('edit-company-information/' + id)
     };
 
@@ -24,7 +25,7 @@ function NavbarWork(props) {
                         <li className="nav-item add">
                             <Link to={'add-job'} className={'text-navbar'}> Thêm tin tuyển dụng</Link>
                         </li>
-                        <li className="nav-item edit ">
+                        <li className="nav-item edit">
                             <div onClick={() => {
                                 dispatch(formEditInfoCompany({id: work.company.companyId}))
 

@@ -64,7 +64,7 @@ export default function AuthSearch() {
                                             <Field type={'text'} name={'key'}
                                                    placeholder={'Tìm kiếm việc làm theo tên, công ty...'}
                                                    className={'form-control'}
-                                                   style={{width: '95%', marginLeft: '6.5%', backgroundColor: 'white',marginTop:'-  0.9%'}}>
+                                                   style={{width: '95%', marginLeft: '6.5%', backgroundColor: 'white',marginTop:'-0.9%'}}>
                                             </Field>
                                         </div>
                                     </div>

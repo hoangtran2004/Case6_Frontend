@@ -7,7 +7,9 @@ import {detailJob, findAllJobOfCompany, getJob} from "../../service/Job-service"
 export default function AuthJobDetail() {
     const dispatch = useDispatch();
     const jobId = useParams().id;
-
+    const formatter = new Intl.NumberFormat('vi-VN', {
+        style: 'currency', currency: 'VND',
+    });
 
     function myFunction(dot, more, btn) {
         let dots = document.getElementById(dot);
@@ -40,9 +42,8 @@ export default function AuthJobDetail() {
 
     let otherJob = useSelector(state => {
         return state.job.job
-    })
-
-
+    });
+    const tokenUser = localStorage.getItem('token');
     return (
         <div>
             <div className='row' style={{marginTop: '10%'}}>
@@ -54,10 +55,12 @@ export default function AuthJobDetail() {
                     <h6>{job?.title}</h6>
                     <a href='#'><h6>{job?.nameCity}</h6></a>
                     <div style={{margin: 10}}>
-                        <p style={{height: 10}}><img
+                        {tokenUser ? <p style={{height: 10}}><img
                             src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
                             alt=""
-                            className="icon-description-work"/> {job?.wageStart} - {job?.wageEnd}/Tháng</p>
+                            className="icon-description-work"/> {formatter.format(job.wageStart)} - {formatter.format(job.wageEnd)}/Tháng
+                        </p> : <></>}
+
                         <p style={{height: 10}}><img
                             src="https://cdn-icons-png.flaticon.com/128/2942/2942842.png"
                             alt=""

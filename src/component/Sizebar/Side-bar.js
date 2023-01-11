@@ -11,10 +11,10 @@ export default function SideBar() {
     let dispatch = useDispatch()
     let navigate = useNavigate()
     let search = useLocation().search.replace('?', '')
-    let [experience, setExperience] = useState([{experienceId: 0, nameExperience: '< 1 năm'}, {
-        experienceId: 1, nameExperience: '1-2 năm'
-    }, {experienceId: 2, nameExperience: '3- 5 năm'}, {
-        experienceId: 3, nameExperience: '> 5 năm'
+    let [experience, setExperience] = useState([{experienceId: 0, nameExperience: 'Dưới 1 năm'}, {
+        experienceId: 1, nameExperience: 'Từ 1 - 3 năm'
+    }, {experienceId: 2, nameExperience: 'Từ  3- 5 năm'}, {
+        experienceId: 3, nameExperience: 'Trên 5 năm'
     }])
     let [statusJob, setStatusJob] = useState([{idStatusTime: 0, nameStatus: 'Full time'}, {
         idStatusTime: 1, nameStatus: 'Part time'
@@ -54,8 +54,8 @@ export default function SideBar() {
             return item.key === `${key}`
         })
     }
-    if (checkQuery('addressWork').length !== 0) {
-        cityQuery = checkQuery('addressWork')[0].value.split(',')
+    if (checkQuery('address').length !== 0) {
+        cityQuery = checkQuery('address')[0].value.split(',')
     }
     if (checkQuery("categoryId").length !== 0) {
         categoryQuery = checkQuery("categoryId")[0].value.split(',')
@@ -111,7 +111,7 @@ export default function SideBar() {
                        let value = values.target.value
                        return handleSearch(check, key, value)
                    }}/>
-            <label htmlFor={id}>
+            <label htmlFor={id} style={{marginLeft:'2%'}}>
                 {nameCB}
             </label>
             <br/>
@@ -205,7 +205,7 @@ export default function SideBar() {
             </div>
             <div className="row">
                 <div className="col-12 type-job">
-                    <p style={{marginLeft: "14px", fontSize: "14px"}}>Ngành</p>
+                    <p style={{marginLeft: "14px", fontSize: "14px",}}>Ngành</p>
                     {categories.map((item) => (categoryQuery.includes(`${item.categoryId}`) ? printCheckbox('categoryId', `${item.categoryId}`, `${item.nameCategory}`, true, `${item.categoryId}${item.nameCategory}`) : printCheckbox('categoryId', `${item.categoryId}`, `${item.nameCategory}`, false, `${item.categoryId}${item.nameCategory}`)))}
                 </div>
             </div>
@@ -219,7 +219,7 @@ export default function SideBar() {
             <div className="row">
                 <div className="col-12 type-job">
                     <p style={{marginLeft: "14px", fontSize: "14px"}}>Địa điểm làm viêc</p>
-                    {cities.map((item) => (cityQuery.includes(`${item.cityId}`) ? printCheckbox('addressWork', `${item.cityId}`, `${item.nameCity}`, true, `${item.cityId}${item.nameCity}`) : printCheckbox('addressWork', `${item.cityId}`, `${item.nameCity}`, false, `${item.cityId}${item.nameCity}`)))}
+                    {cities.map((item) => (cityQuery.includes(`${item.cityId}`) ? printCheckbox('address', `${item.cityId}`, `${item.nameCity}`, true, `${item.cityId}${item.nameCity}`) : printCheckbox('address', `${item.cityId}`, `${item.nameCity}`, false, `${item.cityId}${item.nameCity}`)))}
                 </div>
             </div>
             {/*search address end*/}
@@ -285,7 +285,7 @@ export default function SideBar() {
             </div>
             <div className="row">
                 <div className="col-12 type-job">
-                    <p style={{marginLeft: "14px", fontSize: "14px"}}>Loại công việc</p>
+                    <p style={{marginLeft: "14px", fontSize: "14px"}}>Kinh nghiệm</p>
                     {experience.map((item) => (expQuery.includes(`${item.experienceId}`) ? printCheckbox('experience', `${item.experienceId}`, `${item.nameExperience}`, true, `${item.experienceId}${item.nameExperience}`) : printCheckbox('experience', `${item.experienceId}`, `${item.nameExperience}`, false, `${item.experienceId}${item.nameExperience}`)))}
                 </div>
             </div>

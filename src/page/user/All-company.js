@@ -1,37 +1,31 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../style/Work-list-job.css'
 import AuthSearchCompany from "./Auth-searchCompany";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompany} from "../../service/Work-service";
+import {useNavigate} from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
-function AllCompany() {
-
-    const dispatch = useDispatch()
-
-    const company = useSelector(state => {
-        console.log('state',state)
-        return state.work.work.company
-    })
-
-    useEffect(()=>{
-        dispatch(getCompany())
-
-    },[])
-
-
+function AllCompany({currentCompanies}) {
+    const navigate = useNavigate()
+    const detailCompany = ({id}) => {
+        navigate('/detail-company/' + id)
+    };
     return (
         <>
             <AuthSearchCompany></AuthSearchCompany>
-            <div className="row container-listJobWork" style={{marginTop:"-1.5%"}}>
+            <div className="row container-listJobWork" style={{marginTop: "-1.5%"}}>
                 <div className="col-12 main">
                     <div className="row">
-                        {company && company.map((item,index)=>(
+                        {currentCompanies && currentCompanies.map((item, index) => (
                             <div className="col-4 card-job-work">
                                 <div className="row">
                                     <div className="col-2">
                                         <img
                                             src={item?.image}
-                                            alt="logo" className="card-logo-work"/>
+                                            alt="logo" className="card-logo-work" onClick={() => {
+                                            detailCompany({id: item?.companyId})
+                                        }} style={{cursor: 'pointer'}}/>
                                     </div>
                                     <div className="col-8">
                                         <p className="job-description-work">{item?.name}</p>
@@ -91,4 +85,40 @@ function AllCompany() {
     );
 }
 
-export default AllCompany;
+export default function CompanyPerPage({itemPerPage}) {
+    const [itemOffSet, setItemOffSet] = useState(0);
+    let dispatch = useDispatch();
+    const endOffset = itemOffSet + itemPerPage;
+    const company = useSelector(state => {
+        return state.work.work.company || []
+    });
+    console.log(company)
+    const currentItems =  company ? company.slice(itemOffSet, endOffset) : [];
+    const pageCount = Math.ceil(company.length / itemPerPage);
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemPerPage) % company.length;
+        console.log(
+            `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffSet(newOffset);
+    };
+    useEffect(() => {
+        dispatch(getCompany())
+    }, [])
+    return (
+        <>
+            <AllCompany currentCompanies={currentItems}/>
+            <ReactPaginate
+                breakLabel="..."
+                theme="default"
+                nextLabel="Sau >"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="< Trước"
+                renderOnZeroPageCount={null} className={'pagination'}
+            />
+        </>
+    );
+}
+

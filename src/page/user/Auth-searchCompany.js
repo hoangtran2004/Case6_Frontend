@@ -10,7 +10,6 @@ export default function AuthSearchCompany() {
                 <Formik initialValues={{
                     name: ''
                 }} onSubmit={(values)=>{
-                    console.log(values)
                     dispatch(searchCompany(values))
                 }}>
                     <Form>

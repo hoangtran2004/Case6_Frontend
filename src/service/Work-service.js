@@ -18,7 +18,7 @@ export const workRegister = createAsyncThunk(
 export const workEditInformation = createAsyncThunk(
     'work/edit',
     async (data) => {
-        const res = await axios.put(`http://localhost:8080/company/update/${data.companyId}`, data);
+        const res = await axios.post(`http://localhost:8080/company/update/${data.companyId}?_method=PUT`, data.formData);
         console.log(res)
         return res
     }
@@ -27,10 +27,10 @@ export const workById = createAsyncThunk(
     'workById',
     async (id) => {
         const res = await axios.get(`http://localhost:8080/company/${id}`);
+        console.log(res)
         return res.data.companyFind
     }
 )
-
 export const findJobByIdWork = createAsyncThunk(
     'findJobByIdWork',
     async (id) => {
@@ -48,9 +48,7 @@ export const getCompany = createAsyncThunk(
 export const searchCompany = createAsyncThunk(
     'searchCompany',
     async (data) => {
-        console.log(data)
         const res = await axios.post(`http://localhost:8080/company/search`,data)
-        console.log('res search',res)
         return res.data
     }
 )

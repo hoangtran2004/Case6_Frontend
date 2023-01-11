@@ -30,19 +30,31 @@ export default function WorkEditInformation() {
     });
 
     const handleEdit = (values) => {
-        console.log(values)
-        let data = {
-            ...values,
-            companyId: companyId,
-            image: img
-        };
-        console.log(data)
-        dispatch(workEditInformation(data)).then(Toast.fire({
-            icon: 'success',
-            title: 'Chỉnh sửa thông tin thành công!',
+        setIs_disable(true)
+        let formData = {};
+        for (const key in values) {
+            if (key !== 'cityId' && key !== 'nameCity') formData[key] = values[key];
+        }
+        formData.image = img;
+        let params = {
+            companyId: idCompany,
+            formData: formData
+        }
+        dispatch(workEditInformation(params)).then(() => {
+            setIs_disable(false)
+            Toast.fire({
+                icon: 'success',
+                title: 'Chỉnh sửa thông tin thành công!',
+            })
+            navigate('/work')
+        }).catch(() => {
+            Toast.fire({
+                icon: "error",
+                title: 'Chỉnh sửa thông tin thất bại!',
 
-        }))
-        // navigate('/work')
+            })
+        })
+
     };
     useEffect(() => {
         dispatch(workById(idCompany))
@@ -56,6 +68,7 @@ export default function WorkEditInformation() {
     })
     const [imageUrls, setImageUrls] = useState([]);
 
+    const [is_disable, setIs_disable] = useState(false)
     const [img, setImg] = useState("");
 
 
@@ -67,10 +80,12 @@ export default function WorkEditInformation() {
 
 
     const uploadFile = (imageUpload) => {
+        setIs_disable(true)
         if (imageUpload == null) return;
         const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
         uploadBytes(imageRef, imageUpload).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
+                setIs_disable(false)
                 setImg(url)
                 setSubmitting(false)
             });
@@ -104,6 +119,7 @@ export default function WorkEditInformation() {
                             <div className="col-12">
                                 <div className="form-add-job">
                                     <Formik initialValues={companyFind} onSubmit={(values) => {
+
                                         handleEdit(values)
                                     }} enableReinitialize={true}>
                                         <Form className="input-job">
@@ -139,11 +155,11 @@ export default function WorkEditInformation() {
 
                                             <div className="form-group group-input">
                                                 <label className={'name-item'}>Địa chỉ</label>
+
                                                 <Field as="select" name="address"
                                                        className="form-control input-info-job"
                                                        style={{height: '53% !important'}}
                                                        aria-label="Default select example">
-
                                                     {city?.map((item, index) => (<option value={item.cityId}
                                                                                          >{item?.nameCity}</option>))}
                                                 </Field>
@@ -156,7 +172,7 @@ export default function WorkEditInformation() {
 
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                             </div>
-                                            <button type={'submit'} className="btn btn-primary">Xác nhận</button>
+                                            <button type={'submit'} className="btn btn-primary" disabled={is_disable}>Xác nhận</button>
                                         </Form>
                                     </Formik>
                                 </div>

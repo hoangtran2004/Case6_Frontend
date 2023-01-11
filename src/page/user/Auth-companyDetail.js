@@ -83,6 +83,7 @@ export default function AuthCompanyDetail() {
                                     <h6 className="card-title"><strong>Giới thiệu</strong></h6>
                                     <hr/>
                                     <p>{company.description}</p>
+                                    <h6><strong>Văn hóa doanh nghiệp</strong></h6>
                                     <hr/>
                                     <h6 style={{marginTop: 10}}><strong>Địa chỉ văn phòng</strong></h6>
                                     <hr/>
@@ -102,7 +103,7 @@ export default function AuthCompanyDetail() {
                             <div className="card">
                                 <div className="card-body" style={{boxShadow: ' 0 4px 8px 0 rgba(0,0,0,0.1)'}}>
                                     <h5 className="card-title"><strong>Thư viện ảnh công ty</strong></h5>
-                                    <p className="card-text">Công ty chưa thêm bất kỳ hình ảnh nào.</p>
+                                    <h7 className="card-text">Công ty chưa thêm bất kỳ hình ảnh nào.</h7>
                                 </div>
                             </div>
                         </div>

@@ -45,3 +45,9 @@ a:hover{
 .active{
     font-weight: 500;
 }
+.active a:focus{
+    border-bottom: 2px solid;
+}
+.active a::after{
+    border-bottom: 2px solid;
+}
