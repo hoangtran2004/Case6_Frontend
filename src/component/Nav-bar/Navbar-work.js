@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 
 function NavbarWork(props) {
     const work = JSON.parse(localStorage.getItem('work'));
+    console.log(work)
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const formEditInfoCompany = ({id}) => {
@@ -39,7 +40,7 @@ function NavbarWork(props) {
                     <ul className="navbar-nav">
 
                         <li className="nav-item add">
-                            <Link to={'add-job'} className={'text-navbar'} style={styleAdd} onClick={() => {checkClick(true)}}>Tin tuyển dụng</Link>
+                            <Link to={'add-job'} className={'text-navbar'} style={styleAdd} onClick={() => {checkClick(true)}}> Thêm tin tuyển dụng</Link>
                         </li>
                         <li className="nav-item edit">
                             <div onClick={() => {
@@ -55,6 +56,9 @@ function NavbarWork(props) {
                                 navigate('/access-account')
                             }} id={'out'}>Đăng xuất
                             </button>
+                        </li>
+                        <li className="nav-item li-avatar">
+                            <img src={work.company.image} alt="" id={'avatar-work'}/>
                         </li>
                     </ul>
                 </div>
