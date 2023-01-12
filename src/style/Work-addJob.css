@@ -27,6 +27,7 @@
 .group-input{
     margin-left: 1.5em!important;
     margin-bottom: 0.3em!important;
+
 }
 .input-job{
     padding: 2em;
@@ -40,12 +41,16 @@
 .input-info-wage{
     height: 50%!important;
     width: 110%!important;
+    max-width: 100%;
+
 }
 .input-info-category{
     height: 53%!important;
-    width: 110%!important;
+    width: 114%!important;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+    margin-top: 0%;
+    margin-left: -4%;
 }
 .select-city{
 
@@ -53,4 +58,29 @@
     width: 100%!important;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+}
+.input-info-time{
+    width: 100%!important;
+}
+.input-info-category:focus{
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+
+}
+
+input[type=file]::file-selector-button:hover {
+    background: #0d45a5;
 }

@@ -24,9 +24,11 @@
 }
 
 .container-listJobWork .card-logo-work{
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     object-fit: cover;
+    margin-top: 10px;
+    border-radius: 4px;
 }
 .card-description{
     padding: 2px;
@@ -77,7 +79,6 @@
 }
 .pagination-job > li {
     list-style: none;
-    border: 0.9px solid;
 }
 .pagination-job > li > a,
 .pagination-job > li > span {
@@ -100,7 +101,7 @@
 
 /* Style the active class (and buttons on mouse-over) */
 .pagination-job > li > a:hover {
-    background-color:  #218838;
+    background-color:  #B0B3B5;
     color: white;
 }
 .pagination-job > li:first-child > a,
@@ -136,62 +137,11 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
-.pagination-job{
-    margin-left: 44%;
-}
-
-.pagination-job > li {
-    display: inline-block;
-    padding-left: 0;
-}
-.pagination-job > li {
-    list-style: none;
-    border: 0.9px solid;
-}
-.pagination-job > li > a,
-.pagination-job > li > span {
-    position: relative;
-    float: left;
-    padding: 6px 12px;
-    line-height: 1.42857143;
-    text-decoration: none;
-    color: #2c689c;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin-left: -1px;
-}
-
-.pagination-job>li.active>a {
-    color: #fff;
-    background-color: #218838;
-    border-color: #1e7e34;
-}
-
-/* Style the active class (and buttons on mouse-over) */
-.pagination-job > li > a:hover {
-    background-color:  #218838;
-    color: white;
-}
-.pagination-job > li:first-child > a,
-.pagination-job > li:first-child > span {
-    margin-left: 0;
-    padding: 0px;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
-    display: none!important;
-}
-.pagination-job > li:last-child > a,
-.pagination-job > li:last-child > span {
-    border-bottom-right-radius: 4px;
-    margin-right: 0;
-    padding: 0px!important;
-    border-top-right-radius: 4px;
-    display: none!important;
-}
-
 
 .pagination-company{
     margin-left: 50%;
+    top: 90vh;
+    position: fixed;
 }
 
 .pagination-company > li {
@@ -200,7 +150,6 @@
 }
 .pagination-company > li {
     list-style: none;
-    border: 0.9px solid;
 }
 .pagination-company > li > a,
 .pagination-company > li > span {
@@ -223,13 +172,13 @@
 
 /* Style the active class (and buttons on mouse-over) */
 .pagination-company > li > a:hover {
-    background-color: #007bff;
+    background-color:  #B0B3B5;
     color: white;
 }
 .pagination-company > li:first-child > a,
 .pagination-company > li:first-child > span {
     margin-left: 0;
-    padding: 0;
+    padding: 0px;
     border-bottom-left-radius: 4px;
     border-top-left-radius: 4px;
     display: none!important;
@@ -242,6 +191,7 @@
     border-top-right-radius: 4px;
     display: none!important;
 }
-.swal2-styled.swal2-confirm{
-    background: #007bff !important;
+#a:hover{
+    background-color: rgba(56, 54, 55, 0.1);
+    border-radius: 50px;
 }

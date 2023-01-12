@@ -146,7 +146,7 @@ export default function WorkAddJob() {
                                                 <Field type="number" className="form-control input-info-job"
                                                        name={"applicants"}/>
                                             </div>
-                                            <div className="form-group group-input">
+                                            <div className="form-group group-input" >
                                                 <div className="row">
                                                     <div className="col-5">
                                                         <label className={'name-item'}>Lương từ </label>
@@ -155,7 +155,7 @@ export default function WorkAddJob() {
                                                     </div>
                                                     <div className="col-1"></div>
                                                     <div className="col-5">
-                                                        <div className="form-group group-input">
+                                                        <div className="form-group group-input" style={{width:'357px',position:'relative',right:'-2%'}}>
                                                             <label className={'name-item'}>Đến</label>
                                                             <Field type="number"
                                                                    className="form-control input-info-wage"
@@ -189,33 +189,34 @@ export default function WorkAddJob() {
                                                     <option value="4" name={'addressWork'}>Khác</option>
                                                 </Field>
                                             </div>
+                                            <div className="form-group group-input">
+                                                <label className={'name-item'}>Ngành nghề</label>
+                                                <Field as="select" name="categoryId"
+                                                       className="form-control input-info-job"
+                                                       aria-label="Default select example">
+                                                    <option disabled selected>Loại ngành nghề</option>
+                                                    {category?.map((item, index) => (
+                                                        <option value={+item?.categoryId}
+                                                                name={'nameCategory'}>{item?.nameCategory}</option>
+                                                    ))}
+                                                </Field>
+                                            </div>
+
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">
-                                                    <div className="col-4">
+                                                    <div className="col-5">
                                                         <label className={'name-item'}>Thời gian ứng tuyển hiệu
                                                             lực</label>
                                                         <Field type="date" className="form-control input-info-time"
                                                                min={time}
                                                                name={"endDate"} required/>
                                                     </div>
-                                                    <div className="col-4">
-                                                        <label className={'name-item'}></label>
-                                                        <Field as="select" name="categoryId"
-                                                               className="form-select sel input-info-category"
-                                                               style={{height: '53% !important'}}
-                                                               aria-label="Default select example">
-                                                            <option disabled selected>Loại ngành nghề</option>
-                                                            {category?.map((item, index) => (
-                                                                <option value={+item?.categoryId}
-                                                                        name={'nameCategory'}>{item?.nameCategory}</option>
-                                                            ))}
-                                                        </Field>
-                                                    </div>
-                                                    <div className="col-4">
-                                                        <label className={'name-item'}></label>
+                                                    <div className="col-1"></div>
+                                                    <div className="col-5" >
+                                                        <label className={'form-group group-input'}></label>
                                                         <Field as="select" name="statusTime"
                                                                className="form-select sel input-info-category"
-                                                               style={{height: '53% !important'}}
+                                                               style={{    marginLeft:' 9%',marginTop:' 1.6%',maxWidth: '100%'}}
                                                                aria-label="Default select example">
                                                             <option disabled selected>Thời gian làm việc</option>
                                                             <option value={1}

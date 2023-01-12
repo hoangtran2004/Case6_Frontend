@@ -19,7 +19,6 @@ export const workEditInformation = createAsyncThunk(
     'work/edit',
     async (data) => {
         const res = await axios.post(`http://localhost:8080/company/update/${data.companyId}?_method=PUT`, data.formData);
-        console.log(res)
         return res
     }
 )
@@ -27,7 +26,6 @@ export const workById = createAsyncThunk(
     'workById',
     async (id) => {
         const res = await axios.get(`http://localhost:8080/company/${id}`);
-        console.log(res)
         return res.data.companyFind
     }
 )

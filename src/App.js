@@ -1,5 +1,5 @@
 import './App.css';
-import {Route, Routes, useLocation} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import HomeUser from "./page/user/Home-user";
 import AccessAccount from "./page/Access-account";
 import WorkLogin from "./page/company/Work-login";
@@ -20,13 +20,9 @@ import {Cv} from "./page/cv/Cv";
 import JobPerPage from "./page/user/All-job";
 import CompanyPerPage from "./page/user/All-company";
 import WorkListCv from "./page/company/Work-ListCv";
-import {useEffect} from "react";
+import JobSearchedPerPage from "./page/user/Search-job";
 import OtherJob from "./page/user/Auth-other-job";
 function App() {
-    let location = useLocation()
-    useEffect(()=> {
-        window.scrollTo(0 , 0)
-    }, [location.pathname])
     return (<div>
             <Routes>
                 <Route path={'test-job'} element={<AccessAccount/>}></Route>
@@ -46,7 +42,7 @@ function App() {
                     <Route path={"/my-cv"} element={<Cv/>}></Route>
                     <Route path={'/'} element={<AuthListJob/>}>
                         <Route path={''} element={<JobPerPage itemPerPage={6}/>}></Route>
-                        <Route path={'search'} element={<SearchJob></SearchJob>}/>
+                        <Route path={'search'} element={<JobSearchedPerPage itemPerPage={6}></JobSearchedPerPage>}/>
                     </Route>
                 </Route>
                 //router user end

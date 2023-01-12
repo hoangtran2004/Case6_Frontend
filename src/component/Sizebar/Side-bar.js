@@ -172,7 +172,6 @@ export default function SideBar() {
             newArrQuery.splice(index, 1)
         }
         dispatch(searchJob(newArrQuery.join('&')))
-        console.log(newArrQuery)
         if (newArrQuery.join('&') === '') {
             navigate('/')
         } else {
@@ -232,7 +231,7 @@ export default function SideBar() {
             </div>
             <div className="row">
                 <div className="col-12 type-job">
-                    <span style={{marginLeft: "14px", fontSize: "14px"}}>Mức lương</span>
+                    <span style={{marginLeft: "14px", fontSize: "14px"}}>Mức lương </span>
                     <div className="switch">
                         <input id="switch-1" type="checkbox" onClick={(event) => printRange(event.target.checked)}
                                name={'price'}
@@ -244,12 +243,12 @@ export default function SideBar() {
                             <div className="price-input">
                                 <div className="filed">
                                     <spap>Từ</spap>
-                                    <input type="number" className="input-min" value="0"/><span>triệu</span>
+                                    <input type="number" className="input-min" value=""/><span>triệu</span>
                                 </div>
                                 <div style={{width: 40}}></div>
                                 <div className="filed">
                                     <spap>đến</spap>
-                                    <input type="number" className="input-max" value="0"/><span>triệu</span>
+                                    <input type="number" className="input-max" value=""/><span>triệu</span>
                                 </div>
                             </div>
                             <div className="slider">

@@ -46,9 +46,11 @@
     overflow: scroll;
 }
 .container-listJob .card-logo {
-    height: 50px;
-    width: 50px;
+    margin-top: 10px;
+    height: 60px;
+    width: 60px;
     object-fit: cover;
+    border-radius: 4px;
 }
 
 .job-description {
@@ -76,7 +78,6 @@
 
 .container-listJob .sideBar {
     margin-top: 20px;
-    /*position: fixed;*/
 }
 
 .description {

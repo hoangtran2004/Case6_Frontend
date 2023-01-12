@@ -70,7 +70,7 @@ export default function AuthSearch() {
                                     </div>
                                     <div className="col-3">
                                         <button type={'submit'} className="btn btn-primary"
-                                                style={{marginLeft: '6%'}}>Tìm kiếm
+                                                style={{marginLeft: '6%',marginTop:'-3%'}}>Tìm kiếm
                                         </button>
                                     </div>
                                 </div>
