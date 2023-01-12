@@ -3,7 +3,7 @@ import {
     addJob,
     deleteJob, detailJob,
     editJob, findAllJobOfCompany,
-    findJobById,
+    findJobById, findJobWithId,
     getJob,
     lockJob,
     searchJob,
@@ -16,7 +16,8 @@ const initialState = {
     job: [],
     jobSearch: [],
     jobCurrent: {},
-    jobEnd:[]
+    jobEnd:[],
+    jobFindWithId : {}
 }
 
 const jobSlice = createSlice({
@@ -61,9 +62,10 @@ const jobSlice = createSlice({
             state.jobCurrent = action.payload[0]
         })
         builder.addCase(findAllJobOfCompany.fulfilled, (state, action) => {
-            console.log("action other job",action)
-            console.log('state other job',state)
             state.job = action.payload
+        }) ;
+        builder.addCase(findJobWithId.fulfilled, (state, action) => {
+            state.jobFindWithId = action.payload[0]
         })
     }
 })

@@ -60,6 +60,13 @@ export const findJobById = createAsyncThunk(
         return id
     }
 )
+export const findJobWithId = createAsyncThunk(
+    'findJobWithId',
+    async (id) => {
+        let res = await axios.get(`http://localhost:8080/job/detail/${id}`)
+        return res.data
+    }
+)
 export const detailJob = createAsyncThunk(
     'detailJob',
     async (data) => {
@@ -70,7 +77,7 @@ export const detailJob = createAsyncThunk(
 export const findAllJobOfCompany = createAsyncThunk(
     'findJobByWork',
     async (id) => {
-        console.log('id company',id)
+        console.log('id company', id)
         const res = await axios.get(`http://localhost:8080/job/company-job/${id}`);
         return res.data
     }

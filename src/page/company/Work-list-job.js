@@ -45,16 +45,16 @@ function WorkListJob() {
                                 let date = item.endDate.split('-').reverse()
 
                                 return (
-                                    <div className="col-4 card-job-work" onClick={()=>{
-                                        detailJob({id:item.jobId})
-                                    }}>
+                                    <div className="col-4 card-job-work" >
                                         <div className="row">
                                             <div className="col-2">
                                                 <img
                                                     src={item?.image}
                                                     alt="logo" className="card-logo-work"/>
                                             </div>
-                                            <div className="col-8">
+                                            <div className="col-8" onClick={()=>{
+                                                detailJob({id:item.jobId})
+                                            }} style={{cursor:'pointer'}}>
                                                 <p className="job-description-work">{item?.title}</p>
                                                 <p className="companyName-work">{item?.nameCategory}</p>
                                             </div>

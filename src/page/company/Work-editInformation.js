@@ -119,7 +119,6 @@ export default function WorkEditInformation() {
                             <div className="col-12">
                                 <div className="form-add-job">
                                     <Formik initialValues={companyFind} onSubmit={(values) => {
-
                                         handleEdit(values)
                                     }} enableReinitialize={true}>
                                         <Form className="input-job">
