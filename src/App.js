@@ -52,7 +52,7 @@ function App() {
                     <Route path={'add-job'} element={<WorkAddJob/>}></Route>
                     <Route path={'edit-company-information/:id'} element={<WorkEditInformation/>}></Route>
                     <Route path={'edit-job/:id'} element={<WorkEditJob/>}></Route>
-                    <Route path={'list-cv'} element={<WorkListCv/>}></Route>
+                    <Route path={'list-cv/:id'} element={<WorkListCv/>}></Route>
                 </Route>
                 //router work end
             </Routes>

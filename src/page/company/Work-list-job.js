@@ -11,9 +11,10 @@ function WorkListJob() {
     const dispatch = useDispatch();
     let navigate = useNavigate();
     let item = JSON.parse(localStorage.getItem('work'));
-    let companyId = item.company.companyId
-    console.log(companyId)
-
+    let companyId = item.company.companyId;
+    const detailJob = ({id}) => {
+        navigate('list-cv/' + id)
+    }
     useEffect(() => {
         dispatch(getJob())
         dispatch(findJobByIdWork(companyId))
@@ -44,7 +45,9 @@ function WorkListJob() {
                                 let date = item.endDate.split('-').reverse()
 
                                 return (
-                                    <div className="col-4 card-job-work">
+                                    <div className="col-4 card-job-work" onClick={()=>{
+                                        detailJob({id:item.jobId})
+                                    }}>
                                         <div className="row">
                                             <div className="col-2">
                                                 <img
