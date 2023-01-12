@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../style/Work-list-job.css'
 import {useDispatch, useSelector} from "react-redux";
 import {deleteJob, getJob, lockJob} from "../../service/Job-service";
@@ -6,24 +6,15 @@ import Banner from "../../component/Banner";
 import {useNavigate} from "react-router-dom";
 import {findJobByIdWork} from "../../service/Work-service";
 import Swal from 'sweetalert2'
+import ReactPaginate from "react-paginate";
 
-function WorkListJob() {
+function WorkListJob({currentJobs}) {
     const dispatch = useDispatch();
     let navigate = useNavigate();
-    let item = JSON.parse(localStorage.getItem('work'));
-    let companyId = item.company.companyId;
     const detailJob = ({id}) => {
         navigate('list-cv/' + id)
     }
-    useEffect(() => {
-        dispatch(getJob())
-        dispatch(findJobByIdWork(companyId))
-    }, [])
 
-    const job = useSelector(state => {
-        console.log(state)
-        return state.job.jobEnd
-    })
 
     const formEdit = ({id}) => {
         navigate('edit-job/' + id)
@@ -37,25 +28,24 @@ function WorkListJob() {
     return (
         <>
             <Banner></Banner>
-            <h1>Danh sách công việc tuyển dụng</h1>
             <div className="row container-listJobWork">
                 <div className="col-12 main">
                     <div className="row">
                         {
-                            job?.map((item, index) => {
+                            currentJobs && currentJobs?.map((item, index) => {
                                 let date = item.endDate.split('-').reverse()
 
                                 return (
-                                    <div className="col-4 card-job-work" >
+                                    <div className="col-4 card-job-work">
                                         <div className="row">
                                             <div className="col-2">
                                                 <img
                                                     src={item?.image}
                                                     alt="logo" className="card-logo-work"/>
                                             </div>
-                                            <div className="col-8" onClick={()=>{
-                                                detailJob({id:item.jobId})
-                                            }} style={{cursor:'pointer'}}>
+                                            <div className="col-8" onClick={() => {
+                                                detailJob({id: item.jobId})
+                                            }} style={{cursor: 'pointer'}}>
                                                 <p className="job-description-work">{item?.title}</p>
                                                 <p className="companyName-work">{item?.nameCategory}</p>
                                             </div>
@@ -126,7 +116,7 @@ function WorkListJob() {
                                                     <div className="work-description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
                                                         alt=""
-                                                        className="icon-description-work"/>{item?.experience}
+                                                        className="icon-description-work"/>{item.experience === 0 ? "Dưới 1 năm" : item.experience === 1 ? "Từ 1-3 năm" : item.experience === 2 ? "Từ 3-5 năm" : "Trên 5 năm"}
                                                     </div>
                                                     <div className="work-description"><img
                                                         src="https://cdn-icons-png.flaticon.com/128/3885/3885079.png"
@@ -169,4 +159,40 @@ function WorkListJob() {
     );
 }
 
-export default WorkListJob;
+export default function JobCompanyPerPage({itemPerPage = 9}) {
+    const [itemOffSet, setItemOffSet] = useState(0);
+    let dispatch = useDispatch();
+    let item = JSON.parse(localStorage.getItem('work'));
+    let companyId = item.company.companyId;
+    const endOffset = itemOffSet + itemPerPage;
+    let job = useSelector(state => {
+        console.log(state)
+        return state.job.jobEnd
+    });
+    const currentItems = job.slice(itemOffSet, endOffset);
+    const pageCount = Math.ceil(job.length / itemPerPage);
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemPerPage) % job.length;
+        setItemOffSet(newOffset);
+        window.scrollTo({top: 0, behavior: 'smooth'})
+    };
+    useEffect(() => {
+        dispatch(getJob())
+        dispatch(findJobByIdWork(companyId))
+    }, []);
+    return (
+        <>
+            <WorkListJob currentJobs={currentItems}/>
+            <ReactPaginate
+                breakLabel="..."
+                nextLabel="next >"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="< previous"
+                renderOnZeroPageCount={null} className={'pagination-job'}
+            />
+        </>
+    )
+
+}

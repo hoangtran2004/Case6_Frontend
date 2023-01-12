@@ -39,14 +39,14 @@ function NavbarWork(props) {
                     <ul className="navbar-nav">
 
                         <li className="nav-item add">
-                            <Link to={'add-job'} className={'text-navbar'} style={styleAdd} onClick={() => {checkClick(true)}}> Thêm tin tuyển dụng</Link>
+                            <Link to={'add-job'} className={'text-navbar'} style={styleAdd} onClick={() => {checkClick(true)}}>Tin tuyển dụng</Link>
                         </li>
                         <li className="nav-item edit">
                             <div onClick={() => {
                                 dispatch(formEditInfoCompany({id: work.company.companyId}))
 
                             }}>
-                                <button style={styleEdit} onClick={() => {checkClick(false)}} id={'edit'}>Sửa thông tin doanh nghiệp</button>
+                                <button style={styleEdit} onClick={() => {checkClick(false)}} id={'edit'}>Thông tin doanh nghiệp</button>
                             </div>
                         </li>
                         <li className="nav-item logout">
