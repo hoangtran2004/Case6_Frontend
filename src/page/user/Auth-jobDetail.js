@@ -22,6 +22,7 @@ export default function AuthJobDetail() {
     const [submitting, setSubmitting] = useState(false);
     const [is_disable, setIs_disable] = useState(false)
     const [img, setImg] = useState("");
+    const [phone, setPhone] = useState("");
     const imagesListRef = ref(storage, "images/");
     const tokenUser = localStorage.getItem('token');
     const userIdCurren = localStorage.getItem('id');
@@ -52,12 +53,13 @@ export default function AuthJobDetail() {
         })
     };
 
-    const handleFile = async (e, jobId) => {
-        if (e.sdt !== '' && e.imgCv !== 0) {
+    const handleFile = async (img, phone, userId, jobId) => {
+        if (phone !== '' && img !== '') {
             let newCv = {
-                image: img, userId: userIdCurren, jobId: jobId, sdt: e.sdt
+                image: img, userId: userId, jobId: jobId, sdt: phone
             }
             await dispatch(addCv(newCv))
+            await dispatch(getCvByIdJob(jobId))
         } else {
             alert("thiếu trường")
         }
@@ -122,55 +124,46 @@ export default function AuthJobDetail() {
                                         style={{textAlign: "center"}}>Bạn hiện đang ứng tuyển cho Company với vị trí
                                         Job</h5>
                                 </div>
-                                <Formik initialValues={{
-                                    imgCv: '', sdt: ''
-                                }} onSubmit={(values, {resetForm}) => {
-                                    console.log(1111111, values)
-                                    handleFile(values, job?.jobId).then()
-                                    resetForm();
-                                }}>
-                                    <Form>
-                                        <div className="modal-body">
-                                            <h6>Hồ sơ xin việc</h6>
-                                            <button type="button" id='btn12'><Field onChange={(event) => {
-                                                setSubmitting(true)
-                                                uploadFile(event.target.files[0])
-                                            }} type="file" name="imgCv" className={'inputfile'} id="fileCv"/>
-                                                <label style={{padding: 17}}
-                                                       htmlFor="fileCv">Đăng tải hồ sơ của tôi</label></button>
-                                            <div id='style1'>
-                                                <h6>Lưu ý : đảm bảo hồ sơ xin việc của bạn sử dụng ngôn ngữ trùng khớp
-                                                    với
-                                                    mô tả
-                                                    công việc (Ví dụ: viết CV bằng tiếng Anh nếu mô tả công việc bằng
-                                                    tiếng
-                                                    Anh)
-                                                    và đăng tải dưới dạng PDF dưới 5MB.</h6>
-                                                <h6>Hồ sơ đã đăng tải sẽ được lưu lại cho lần nộp đơn sau.</h6>
-                                            </div>
-                                            <Field id='input' name={"sdt"} className='form-control'
-                                                   placeholder='Nhập số điện thoại'/>
-                                            <div id='style1'>
-                                                <h6>Ví dụ: +84912345678.</h6>
-                                                <h6> Nhà tuyển dụng cần thông tin này để liên lạc với bạn nhanh
-                                                    chóng.</h6>
-                                            </div>
-                                            <a href="" data-dismiss="modal"
-                                               aria-label="Close">
-                                                <button id='btn13' onClick={() => {
-                                                    console.log(1111)
-                                                }} type={"submit"}>Ứng tuyển ngay
-                                                </button>
-                                                <label htmlFor='btn13' >aaaa</label>
-                                            </a>
-                                            <div id='style'>
-                                                <h6>Bạn chưa chuẩn bị hồ sơ?</h6>
-                                                <h6>Thêm hồ sơ <a target="_blank" href="https://cv.fullstack.edu.vn/">tại
-                                                    đây.</a></h6>
-                                            </div>
-                                        </div>
-                                    </Form>
-                                </Formik>
+                                <div className="modal-body">
+                                    <h6>Hồ sơ xin việc</h6>
+                                    <button type="button" id='btn12'>
+                                        <input onChange={(event) => {
+                                            setSubmitting(true)
+                                            uploadFile(event.target.files[0])
+                                        }} type="file" name="imgCv" className={'inputfile'} id="fileCv"/>
+                                        <label style={{padding: 17}}
+                                               htmlFor="fileCv">Đăng tải hồ sơ của tôi</label></button>
+                                    <div id='style1'>
+                                        <h6>Lưu ý : đảm bảo hồ sơ xin việc của bạn sử dụng ngôn ngữ trùng khớp
+                                            với
+                                            mô tả
+                                            công việc (Ví dụ: viết CV bằng tiếng Anh nếu mô tả công việc bằng
+                                            tiếng
+                                            Anh)
+                                            và đăng tải dưới dạng PDF dưới 5MB.</h6>
+                                        <h6>Hồ sơ đã đăng tải sẽ được lưu lại cho lần nộp đơn sau.</h6>
+                                    </div>
+                                    <input id='input' onChange={(event) => {
+                                        setPhone(event.target.value)
+                                    }} name={"sdt"} value={phone} className='form-control'
+                                           placeholder='Nhập số điện thoại'/>
+                                    <div id='style1'>
+                                        <h6>Ví dụ: +84912345678.</h6>
+                                        <h6> Nhà tuyển dụng cần thông tin này để liên lạc với bạn nhanh
+                                            chóng.</h6>
+                                    </div>
+                                    <a href="" data-dismiss="modal"
+                                       aria-label="Close">
+                                        <button id='btn13' onClick={() => handleFile(img, phone, userIdCurren, jobId)}
+                                                type={"submit"}>Ứng tuyển ngay
+                                        </button>
+                                    </a>
+                                    <div id='style'>
+                                        <h6>Bạn chưa chuẩn bị hồ sơ?</h6>
+                                        <h6>Thêm hồ sơ <a target="_blank" href="https://cv.fullstack.edu.vn/">tại
+                                            đây.</a></h6>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
