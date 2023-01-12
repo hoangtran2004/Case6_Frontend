@@ -1,6 +1,6 @@
 import '../../style/Side-bar.css'
 import {useLocation, useNavigate, useParams, useSearchParams,} from "react-router-dom";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {editJob, getJob, searchJob} from "../../service/Job-service";
 import {getCity} from "../../service/City-service";
@@ -199,13 +199,16 @@ export default function SideBar() {
             {/*search category start*/}
             <div className="row" style={{padding: '12px'}}>
                 <div className="col-12">
-                    <p>Lọc tìm kiếm của bạn</p>
+                    <p><i className="fa-solid fa-magnifying-glass" style={{opacity:0.7,marginRight:5}}></i>Lọc tìm kiếm của bạn</p>
                     <hr/>
                 </div>
             </div>
             <div className="row">
                 <div className="col-12 type-job">
-                    <p style={{marginLeft: "14px", fontSize: "14px",}}>Ngành</p>
+                    <p style={{marginLeft: "14px", fontSize: "14px",}}><img
+                        src="https://cdn-icons-png.flaticon.com/128/3850/3850259.png"
+                        alt=""
+                        className="icon-description"/>Ngành</p>
                     {categories.map((item) => (categoryQuery.includes(`${item.categoryId}`) ? printCheckbox('categoryId', `${item.categoryId}`, `${item.nameCategory}`, true, `${item.categoryId}${item.nameCategory}`) : printCheckbox('categoryId', `${item.categoryId}`, `${item.nameCategory}`, false, `${item.categoryId}${item.nameCategory}`)))}
                 </div>
             </div>
@@ -218,7 +221,10 @@ export default function SideBar() {
             </div>
             <div className="row">
                 <div className="col-12 type-job">
-                    <p style={{marginLeft: "14px", fontSize: "14px"}}>Địa điểm làm viêc</p>
+                    <p style={{marginLeft: "14px", fontSize: "14px"}}><img
+                        src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
+                        alt=""
+                        className="icon-description"/>Địa điểm làm viêc</p>
                     {cities.map((item) => (cityQuery.includes(`${item.cityId}`) ? printCheckbox('address', `${item.cityId}`, `${item.nameCity}`, true, `${item.cityId}${item.nameCity}`) : printCheckbox('address', `${item.cityId}`, `${item.nameCity}`, false, `${item.cityId}${item.nameCity}`)))}
                 </div>
             </div>
@@ -231,7 +237,10 @@ export default function SideBar() {
             </div>
             <div className="row">
                 <div className="col-12 type-job">
-                    <span style={{marginLeft: "14px", fontSize: "14px"}}>Mức lương </span>
+                    <span style={{marginLeft: "14px", fontSize: "14px"}}><img
+                        src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
+                        alt=""
+                        className="icon-description"/>Mức lương </span>
                     <div className="switch">
                         <input id="switch-1" type="checkbox" onClick={(event) => printRange(event.target.checked)}
                                name={'price'}
@@ -272,7 +281,10 @@ export default function SideBar() {
             {/*loai cong viec*/}
             <div className="row">
                 <div className="col-12 type-job">
-                    <p style={{marginLeft: "14px", fontSize: "14px"}}>Loại công việc</p>
+                    <p style={{marginLeft: "14px", fontSize: "14px"}}><img
+                        src="https://cdn-icons-png.flaticon.com/128/439/439398.png"
+                        alt=""
+                        className="icon-description-work"/>Loại công việc</p>
                     {statusJob.map((item) => (statusQuery.includes(`${item.idStatusTime}`) ? printCheckbox('statusTime', `${item.idStatusTime}`, `${item.nameStatus}`, true, `${item.idStatusTime}${item.nameStatus}`) : printCheckbox('statusTime', `${item.idStatusTime}`, `${item.nameStatus}`, false, `${item.idStatusTime}${item.nameStatus}`)))}
                 </div>
             </div>
@@ -285,7 +297,10 @@ export default function SideBar() {
             </div>
             <div className="row">
                 <div className="col-12 type-job">
-                    <p style={{marginLeft: "14px", fontSize: "14px"}}>Kinh nghiệm</p>
+                    <p style={{marginLeft: "14px", fontSize: "14px"}}><img
+                        src="https://cdn-icons-png.flaticon.com/128/639/639394.png"
+                        alt=""
+                        className="icon-description"/>Kinh nghiệm</p>
                     {experience.map((item) => (expQuery.includes(`${item.experienceId}`) ? printCheckbox('experience', `${item.experienceId}`, `${item.nameExperience}`, true, `${item.experienceId}${item.nameExperience}`) : printCheckbox('experience', `${item.experienceId}`, `${item.nameExperience}`, false, `${item.experienceId}${item.nameExperience}`)))}
                 </div>
             </div>

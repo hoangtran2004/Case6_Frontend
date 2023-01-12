@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import '../../style/Work-navbar.css'
 import {useDispatch} from "react-redux";
@@ -11,11 +11,27 @@ function NavbarWork(props) {
         console.log(id)
         navigate('edit-company-information/' + id)
     };
+    const [styleAdd, setStyleAdd] = useState({});
+    const [styleEdit, setStyleEdit] = useState({});
+
+    const checkClick = (e) => {
+        if (e) {
+            setStyleAdd({color: '#239baf', width: '100%', left: 0})
+            setStyleEdit({})
+        } else {
+            setStyleEdit({color: '#239baf', width: '100%', left: 0})
+            setStyleAdd({})
+        }
+    }
+    const reset = () => {
+        setStyleAdd({})
+        setStyleEdit({})
+    }
 
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light work-navbar">
-                <Link to={'/work'}><img
+                <Link to={'/work'} onClick={reset}><img
                     src={'https://img.freepik.com/free-vector/branding-identity-corporate-vector-logo-w-design_460848-8606.jpg'}
                     alt={''} style={{width: '10rem', height: '-2rem'}}/></Link>
 
@@ -23,24 +39,21 @@ function NavbarWork(props) {
                     <ul className="navbar-nav">
 
                         <li className="nav-item add">
-                            <Link to={'add-job'} className={'text-navbar'}> Thêm tin tuyển dụng</Link>
+                            <Link to={'add-job'} className={'text-navbar'} style={styleAdd} onClick={() => {checkClick(true)}}> Thêm tin tuyển dụng</Link>
                         </li>
                         <li className="nav-item edit">
                             <div onClick={() => {
                                 dispatch(formEditInfoCompany({id: work.company.companyId}))
 
-                            }}>Sửa thông tin doanh nghiệp
+                            }}>
+                                <button style={styleEdit} onClick={() => {checkClick(false)}} id={'edit'}>Sửa thông tin doanh nghiệp</button>
                             </div>
                         </li>
-                        <li className="nav-item add">
-                            <Link to={'list-cv'} className={'text-navbar'} style={{position: 'relative',left:' 80%'}}>Danh sách tuyển dụng</Link>
-                        </li>
-
                         <li className="nav-item logout">
                             <button onClick={() => {
                                 localStorage.clear()
                                 navigate('/access-account')
-                            }}>Đăng xuất
+                            }} id={'out'}>Đăng xuất
                             </button>
                         </li>
                     </ul>

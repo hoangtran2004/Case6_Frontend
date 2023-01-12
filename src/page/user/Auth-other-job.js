@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getJob} from "../../service/Job-service";
 import ReactPaginate from "react-paginate";
+import {useNavigate} from "react-router-dom";
 
 function AuthOtherJob({otherJob}) {
     const dispatch = useDispatch();
@@ -13,9 +14,12 @@ function AuthOtherJob({otherJob}) {
         return state.job.jobCurrent
     });
 
+
     return (<div className="col-4">
-        <h6>Các công việc khác của công ty</h6>
+        <h5><strong>Các công việc khác của công ty</strong></h5>
         {otherJob && otherJob.map((item, index) => {
+            let date = item.endDate.split('-').reverse()
+
             if (job.companyId === item.companyId) {
                 return (<div className="card" id='card' style={{marginTop: '40px', marginBottom: "40px"}}>
                     <div className="card-body">
@@ -27,12 +31,12 @@ function AuthOtherJob({otherJob}) {
                             alt=""
                             className="icon-description-work"/>{item?.statusTime === 0 ? "Full time" : "Part time"}
                         </p>
-                        <p className="card-text"><img
+                        <hr/>
+                        <p className="card-text" ><img
                             src="https://cdn-icons-png.flaticon.com/128/3885/3885079.png"
                             alt=""
                             className="icon-description-work"/>
-                            <a href="#" className="card-link">Số lượng ứng tuyển
-                                :{item?.applicants}</a>
+                            Thời gian hiệu lực : {date[0]}-{date[1]}-{date[2]}
                         </p>
 
                     </div>

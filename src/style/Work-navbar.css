@@ -34,3 +34,20 @@
 .edit:hover{
     color: rgba(60, 60, 60,0.6)
 }
+#out{
+
+    line-height: 190%;
+    width: 120%;
+    color: red;
+    background: white;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+#out:hover{
+    color: white ;
+    background-color: red;
+}
+#edit{
+    border:none;
+    background-color: white;
+}

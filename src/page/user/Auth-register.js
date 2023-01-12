@@ -15,11 +15,7 @@ function AuthRegister() {
         position: 'top-end',
         showConfirmButton: false,
         timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+        timerProgressBar: true
     })
     const handleRegister = async (values) => {
         if (values.name.length < 8) {

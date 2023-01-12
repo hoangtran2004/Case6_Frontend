@@ -56,25 +56,14 @@ export default function AuthSearch() {
                     handleSearch(values)
                 }>
                     <Form>
-                        <div className="row">
-                            <div className="col-9">
-                                <div className="row">
-                                    <div className="col-9">
-                                        <div className="form-group">
-                                            <Field type={'text'} name={'key'}
-                                                   placeholder={'Tìm kiếm việc làm theo tên, công ty...'}
-                                                   className={'form-control'}
-                                                   style={{width: '95%', marginLeft: '6.5%', backgroundColor: 'white',marginTop:'-0.9%'}}>
-                                            </Field>
-                                        </div>
+                        <div className="row" style={{marginLeft:25}}>
+                                <div className="col-9">
+                                    <div className="input-group mb-3">
+                                        <Field style={{backgroundColor:'white',borderRadius:'5px'}} name={'key'} type="text" className="form-control" placeholder="Nhập từ khóa"/>
+                                        <button id={'search'} style={{border:"none",backgroundColor:'#016999',marginLeft:20,color:'white',borderRadius:'5px'}}>Tìm kiếm</button>
                                     </div>
-                                    <div className="col-3">
-                                        <button type={'submit'} className="btn btn-primary"
-                                                style={{marginLeft: '6%',marginTop:'-3%'}}>Tìm kiếm
-                                        </button>
-                                    </div>
+
                                 </div>
-                            </div>
                         </div>
                     </Form>
                 </Formik>

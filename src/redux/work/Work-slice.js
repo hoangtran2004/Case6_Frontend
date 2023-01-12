@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {
+    findImageByIdCompany,
     findJobByIdWork,
     getCompany, getTopCompany, searchCompany,
     workById,
@@ -10,7 +11,8 @@ import {
 
 const initialState = {
     work: [],
-    workFind: {}
+    workFind: {},
+    workImage: ''
 }
 const workSlice = createSlice({
     name: "work",
@@ -33,13 +35,16 @@ const workSlice = createSlice({
         builder.addCase(workById.fulfilled, (state, action) => {
             state.workFind = action.payload[0]
         });
+        builder.addCase(findImageByIdCompany.fulfilled, (state, action) => {
+            state.workImage = action.payload[0].image
+        });
         builder.addCase(getCompany.fulfilled, (state, action) => {
             state.work = action.payload
         });
         builder.addCase(searchCompany.fulfilled, (state, action) => {
             state.work = action.payload
         });
-        builder.addCase(getTopCompany.fulfilled,(state, action)=>{
+        builder.addCase(getTopCompany.fulfilled, (state, action) => {
             state.work = action.payload
         });
     }

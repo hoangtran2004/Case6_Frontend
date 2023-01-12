@@ -29,6 +29,13 @@ export const workById = createAsyncThunk(
         return res.data.companyFind
     }
 )
+export const findImageByIdCompany = createAsyncThunk(
+    'findImageByIdCompany',
+    async (id) => {
+        const res = await axios.get(`http://localhost:8080/company/${id}`);
+        return res.data.companyFind
+    }
+)
 export const findJobByIdWork = createAsyncThunk(
     'findJobByIdWork',
     async (id) => {

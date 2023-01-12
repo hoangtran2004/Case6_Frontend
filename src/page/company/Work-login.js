@@ -24,11 +24,7 @@ function WorkLogin() {
             position: 'top-end',
             showConfirmButton: false,
             timer: 1500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
+            timerProgressBar: true
         });
         await dispatch(workLogin(values))
         let tokenCompany = localStorage.getItem("tokenCompany");

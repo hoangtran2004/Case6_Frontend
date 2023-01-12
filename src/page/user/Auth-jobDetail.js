@@ -54,6 +54,13 @@ export default function AuthJobDetail() {
             });
         })
     };
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true
+    });
 
     const handleFile = async (img, phone, userId, jobId, cv_des) => {
         if (phone !== '' && img !== '' && cv_des !== '') {
@@ -63,11 +70,10 @@ export default function AuthJobDetail() {
             await dispatch(addCv(newCv))
             await dispatch(checkCv(jobId))
         } else {
-            Swal.fire(
-                'Lỗi!',
-                'SĐT hoặc mô tả đang để trống!',
-                'warning'
-            )
+            Toast.fire({
+                icon: 'warning',
+                title: 'SĐT và mô tả không được để trống!'
+            })
         }
     }
     useEffect(() => {
@@ -83,12 +89,11 @@ export default function AuthJobDetail() {
     return (<div>
         <div className='row' style={{marginTop: '7%', marginBottom: "40px"}}>
             <div className="col-1">
-                <img id='img' src={job?.image}
-                     style={{float: 'right'}} alt={''}/>
+
             </div>
             <div className="col-7">
-                <h6>{job?.title}</h6>
-                <a href='#'><h6>{job?.nameCity}</h6></a>
+                <h4>{job?.title}</h4>
+                <h5 style={{color:'rgb(1, 126, 183)'}}>{job?.name}</h5>
                 <div style={{margin: 10}}>
                     {tokenUser ? <p style={{height: 10}}><img
                         src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
@@ -112,7 +117,12 @@ export default function AuthJobDetail() {
                         </button> : <button disabled id='btn111' data-toggle="modal"
                                             style={{backgroundColor: 'white', color: "#017eb7",border:"none"}}>Đã gửi hồ sơ
                         </button> : <button id='btn1' data-toggle="modal"
-                                            style={{backgroundColor: '#017eb7', color: "white"}}>Gửi hồ sơ
+                                            style={{backgroundColor: '#017eb7', color: "white"}} onClick={()=>{
+                            Toast.fire({
+                                icon: 'warning',
+                                title: 'Đăng nhập để gửi hồ sơ công việc!'
+                            })
+                        }}>Gửi hồ sơ
                         </button>}
                     </div>
 
@@ -179,18 +189,24 @@ export default function AuthJobDetail() {
                     </div>
                     {/*modal đăng nhập rồi*/}
                 </div>
+                <div className="col-12"></div>
                 <div>
-                    <h6 style={{marginTop: 30}}>Chi tiết công việc {job?.title} tại {job?.name}
-                        Asia</h6>
+                    <h5 style={{marginTop: 30}}>Chi tiết công việc {job?.title} tại {job?.name}
+                        Asia</h5>
                     <br/>
                     <h6>Mô tả công việc</h6>
-                    <p>{job.jobDescription}</p>
+                    <i>{job.jobDescription}</i>
                 </div>
-                <div className="card" style={{}}>
-                    <h6 style={{textAlign: "center", marginTop: '2%'}}>Giới thiệu về công ty</h6>
+                <div className="card" style={{padding:'3%'}}>
+                    <h5> <strong>Giới thiệu về công ty</strong></h5>
+                    <div className="row">
+                        <div className="col-1">
+                            <img id='img' src={job?.image}
+                                 alt={''}/>
+                        </div>
+                        <div className="col-5">
                     <div className="card-body">
-                        <img id='img' src={job?.image}
-                             alt={''}/>
+
                         <h5 className="card-title">{job?.name}</h5>
                         <h6 className="card-subtitle mb-2 text-muted" style={{marginRight: 10}}>{job?.name} ||
                             {job?.staffNumber} nhân viên</h6>
@@ -199,7 +215,8 @@ export default function AuthJobDetail() {
                         </p>
                         <h6>Địa chỉ văn phòng</h6>
                         <p>{job?.addressWork}</p>
-
+                    </div>
+                        </div>
                     </div>
                 </div>
             </div>

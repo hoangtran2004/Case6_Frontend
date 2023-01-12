@@ -12,7 +12,7 @@ nav{
     right: 7rem;
     margin-top: 15px;
 }
-.login{
+.login1{
     position: relative;
     right: 130px;
     color: black;
@@ -50,4 +50,7 @@ a:hover{
 }
 .active a::after{
     border-bottom: 2px solid;
+}
+#search:hover{
+    opacity: 0.8;
 }

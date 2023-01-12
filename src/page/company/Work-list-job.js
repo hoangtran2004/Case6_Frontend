@@ -37,6 +37,7 @@ function WorkListJob() {
     return (
         <>
             <Banner></Banner>
+            <h1>Danh sách công việc tuyển dụng</h1>
             <div className="row container-listJobWork">
                 <div className="col-12 main">
                     <div className="row">

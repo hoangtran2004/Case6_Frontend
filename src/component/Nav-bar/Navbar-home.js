@@ -44,13 +44,13 @@ function NavbarHome() {
                                     <button style={{left:'-3rem'}} className={'logout'} onClick={() => {
                                         localStorage.clear()
                                         navigate('/access-account')
-                                    }}>Đăng xuất
+                                    }} id={'out1'}>Đăng xuất
                                     </button>
                                 </div>
                             </>
                             :
                             <div>
-                                <Link to={'/access-account'} className={'login'}>Đăng nhập</Link>
+                                <Link to={'/access-account'} className={'login1'} >Đăng nhập</Link>
                             </div>
                         }
                     </nav>

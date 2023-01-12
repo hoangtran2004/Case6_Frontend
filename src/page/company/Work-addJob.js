@@ -93,15 +93,7 @@ export default function WorkAddJob() {
             <div className="container-add-job">
                 <div className="row" style={{width: '100%'}}>
                     <div className="col-8 offset-2">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="title-add-job">
-                                    <h2 style={{color: 'yellowgreen'}}>Đăng thông tin tuyển dụng của bạn ở đây</h2>
-                                    <h5>Nhanh chóng tìm được những nhà phát triển tiềm năng!</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
+                        <div className="row" style={{marginTop: 30}}>
                             <div className="col-12">
                                 <div className="form-add-job">
                                     <Formik initialValues={{
@@ -111,7 +103,7 @@ export default function WorkAddJob() {
                                         experience: '',
                                         endDate: '',
                                         jobDescription: '',
-                                        addressWork:'',
+                                        addressWork: '',
                                         vacancies: '',
                                         categoryId: 0,
                                         nameCategory: '',
@@ -127,36 +119,61 @@ export default function WorkAddJob() {
                                     }}>
                                         <Form className="input-job">
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Tiêu đề</label>
+                                                <label className={'name-item'}><i className="fa-solid fa-file-pen"
+                                                                                  style={{
+                                                                                      marginRight: 5,
+                                                                                      color: "#99cad2"
+                                                                                  }}></i>Tiêu đề</label>
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"title"} required/>
                                             </div>
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Mô tả công việc</label>
+                                                <label className={'name-item'}><i
+                                                    className="fa-solid fa-file-lines"
+                                                    style={{marginRight: 5, color: "#99cad2"}}></i>Mô tả công
+                                                    việc</label>
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"jobDescription"} required/>
                                             </div>
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Vị trí ứng tuyển</label>
+                                                <label className={'name-item'}><i className="fa-solid fa-user-plus"
+                                                                                  style={{
+                                                                                      marginRight: 5,
+                                                                                      color: "#99cad2"
+                                                                                  }}></i>Vị trí ứng tuyển</label>
                                                 <Field type="text" className="form-control input-info-job"
                                                        name={"vacancies"} required/>
                                             </div>
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Số lượng ứng tuyển</label>
+                                                <label className={'name-item'}><i className="fa-solid fa-users" style={{
+                                                    marginRight: 5,
+                                                    color: "#99cad2"
+                                                }}></i>Số lượng ứng tuyển</label>
                                                 <Field type="number" className="form-control input-info-job"
                                                        name={"applicants"}/>
                                             </div>
-                                            <div className="form-group group-input" >
+                                            <div className="form-group group-input">
                                                 <div className="row">
                                                     <div className="col-5">
-                                                        <label className={'name-item'}>Lương từ </label>
+                                                        <label className={'name-item'}><i
+                                                            className="fa-solid fa-dollar-sign"
+                                                            style={{marginRight: 5, color: "#99cad2"}}></i>Lương từ
+                                                        </label>
                                                         <Field type="number" className="form-control input-info-wage"
                                                                name={"wageStart"} min={2000000} required/>
                                                     </div>
                                                     <div className="col-1"></div>
                                                     <div className="col-5">
-                                                        <div className="form-group group-input" style={{width:'357px',position:'relative',right:'-2%'}}>
-                                                            <label className={'name-item'}>Đến</label>
+                                                        <div className="form-group group-input" style={{
+                                                            width: '357px',
+                                                            position: 'relative',
+                                                            right: '-2%'
+                                                        }}>
+                                                            <label className={'name-item'}><i
+                                                                className="fa-solid fa-dollar-sign" style={{
+                                                                marginRight: 5,
+                                                                color: "#99cad2"
+                                                            }}></i>Đến</label>
                                                             <Field type="number"
                                                                    className="form-control input-info-wage"
                                                                    name={"wageEnd"} min={2000000} required/>
@@ -165,32 +182,33 @@ export default function WorkAddJob() {
                                                 </div>
                                             </div>
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Kinh nghiệm</label>
+                                                <label className={'name-item'}><i
+                                                    className="fa-solid fa-business-time"
+                                                    style={{marginRight: 5, color: "#99cad2"}}></i>Kinh nghiệm</label>
                                                 <Field as="select" name="experience"
                                                        className="form-control input-info-job"
                                                        style={{height: '53% !important'}}
                                                        aria-label="Default select example">
                                                     <option disabled={true} selected={true}>Kinh nghiệm</option>
-                                                        <option value="0" name={'experience'}>Dưới 1 năm</option>
-                                                        <option value="1" name={'experience'}>Từ 1-3 năm</option>
-                                                        <option value="2" name={'experience'}>Từ 3-5 năm</option>
-                                                        <option value="3" name={'experience'}>Trên 5 năm</option>
+                                                    <option value="0" name={'experience'}>Dưới 1 năm</option>
+                                                    <option value="1" name={'experience'}>Từ 1-3 năm</option>
+                                                    <option value="2" name={'experience'}>Từ 3-5 năm</option>
+                                                    <option value="3" name={'experience'}>Trên 5 năm</option>
                                                 </Field>
                                             </div>
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Địa chỉ</label>
-                                                <Field as="select" name="addressWork"
-                                                       className="form-control input-info-job"
-                                                       style={{height: '53% !important'}}
-                                                       aria-label="Default select example">
-                                                    <option value="1" name={'addressWork'}>Hà Nội</option>
-                                                    <option value="2" name={'addressWork'}>TP Hồ Chí Minh</option>
-                                                    <option value="3" name={'addressWork'}>Đà Nẵng</option>
-                                                    <option value="4" name={'addressWork'}>Khác</option>
-                                                </Field>
+                                                <label className={'name-item'}><i className="fa-solid fa-location-dot   "
+                                                                                  style={{
+                                                                                      marginRight: 5,
+                                                                                      color: "#99cad2"
+                                                                                  }}></i>Địa chỉ làm việc</label>
+                                                <Field type="text" className="form-control input-info-job"
+                                                       name={"addressWork"} required/>
                                             </div>
                                             <div className="form-group group-input">
-                                                <label className={'name-item'}>Ngành nghề</label>
+                                                <label className={'name-item'}><i
+                                                    className="fa-solid fa-users-between-lines"
+                                                    style={{marginRight: 5, color: "#99cad2"}}></i>Ngành nghề</label>
                                                 <Field as="select" name="categoryId"
                                                        className="form-control input-info-job"
                                                        aria-label="Default select example">
@@ -205,20 +223,25 @@ export default function WorkAddJob() {
                                             <div className="form-group group-input" style={{marginBottom: '1rem'}}>
                                                 <div className="row">
                                                     <div className="col-5">
-                                                        <label className={'name-item'}>Thời gian ứng tuyển hiệu
+                                                        <label className={'name-item'}><i
+                                                            className="fa-solid fa-stopwatch"
+                                                            style={{marginRight: 5, color: "#99cad2"}}></i>Thời gian ứng
+                                                            tuyển hiệu
                                                             lực</label>
                                                         <Field type="date" className="form-control input-info-time"
                                                                min={time}
                                                                name={"endDate"} required/>
                                                     </div>
                                                     <div className="col-1"></div>
-                                                    <div className="col-5" >
-                                                        <label className={'form-group group-input'}></label>
+                                                    <div className="col-5">
+                                                        <label className={'name-item'} style={{marginLeft: 33}}><i
+                                                            className="fa-regular fa-hourglass-half"
+                                                            style={{marginRight: 5, color: "#99cad2"}}></i>Thời gian làm
+                                                            việc</label>
                                                         <Field as="select" name="statusTime"
                                                                className="form-select sel input-info-category"
-                                                               style={{    marginLeft:' 9%',marginTop:' 1.6%',maxWidth: '100%'}}
+                                                               style={{marginLeft: ' 9%', maxWidth: '100%'}}
                                                                aria-label="Default select example">
-                                                            <option disabled selected>Thời gian làm việc</option>
                                                             <option value={1}
                                                                     name={'statusTime'}>Full time
                                                             </option>

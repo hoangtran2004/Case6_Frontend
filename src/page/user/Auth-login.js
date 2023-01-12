@@ -22,11 +22,7 @@ export default function AuthLogin() {
         position: 'top-end',
         showConfirmButton: false,
         timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
+        timerProgressBar: true
     })
 
     const handleAuthLogin = async (value) => {

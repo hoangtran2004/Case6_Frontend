@@ -81,10 +81,9 @@ export default function AuthCompanyDetail() {
                                     <h5 className="card-title" style={{marginBottom: 30}}><strong>Thông tin công
                                         ty</strong></h5>
                                     <h6 className="card-title"><strong>Giới thiệu</strong></h6>
+                                    <p>{company?.description}</p>
                                     <hr/>
                                     <p>{company.description}</p>
-                                    <h6><strong>Văn hóa doanh nghiệp</strong></h6>
-                                    <hr/>
                                     <h6 style={{marginTop: 10}}><strong>Địa chỉ văn phòng</strong></h6>
                                     <hr/>
                                     <p>{company.nameCity}, Việt Nam</p>
