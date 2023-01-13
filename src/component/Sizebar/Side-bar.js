@@ -248,8 +248,8 @@ export default function SideBar() {
                         <label htmlFor="switch-1" className="switch-label">Switch</label>
                     </div>
                     {checkRange === false ? <></> : <>
-                        <div className="wrapper col-12">
-                            <div className="price-input">
+                        <div className="wrapper col-12" style={{width:'90%',marginBottom:-10}}>
+                            <div className="price-input" style={{marginTop:-25,width:'90%'}}>
                                 <div className="filed">
                                     <spap>Từ</spap>
                                     <input type="number" className="input-min" value=""/><span>triệu</span>
@@ -277,6 +277,7 @@ export default function SideBar() {
                     </>}
                 </div>
             </div>
+            <hr style={{width: '92%', marginLeft: 15}}/>
             {/*    search by money end*/}
             {/*loai cong viec*/}
             <div className="row">

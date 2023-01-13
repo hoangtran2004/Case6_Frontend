@@ -54,3 +54,26 @@ a:hover{
 #search:hover{
     opacity: 0.8;
 }
+#out1{
+    width: 180%;
+    border: 1px solid red;
+    line-height: 35px ;
+    background: white;
+    position: relative;
+    margin-left: -30px;
+    margin-right: 0;
+    color: red;
+    right: 36px;
+    font-weight: 500;
+    border-radius: 5px;
+
+}
+#out1:hover{
+    color: white;
+    background: red;
+    border: 1px solid red;
+}
+#btn3{
+    border: none;
+    background-color: white;
+}

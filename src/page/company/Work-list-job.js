@@ -28,6 +28,8 @@ function WorkListJob({currentJobs}) {
     return (
         <>
             <Banner></Banner>
+            <h1 style={{textAlign:"center",color:'#508592',marginTop:20}}>Danh sách tin tuyển dụng của doanh nghiệp</h1>
+
             <div className="row container-listJobWork">
                 <div className="col-12 main">
                     <div className="row">
