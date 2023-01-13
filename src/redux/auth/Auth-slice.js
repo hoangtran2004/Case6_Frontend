@@ -7,20 +7,17 @@ const initialState = {
 }
 
 const authSlice = createSlice({
-    name:'auth',
-    initialState,
-    reducers:{},
-    extraReducers: builder => {
-        builder.addCase(authLogin.fulfilled, (state, action)=>{
+    name: 'auth', initialState, reducers: {}, extraReducers: builder => {
+        builder.addCase(authLogin.fulfilled, (state, action) => {
             console.log(action)
             state.currentAuth = action.payload
-            if(action.payload.token){
-                localStorage.setItem('token',action.payload.token)
-                localStorage.setItem('name',action.payload.user.name)
+            if (action.payload.token) {
+                localStorage.setItem('token', action.payload.token)
+                localStorage.setItem('name', action.payload.user.name)
+                localStorage.setItem('id', action.payload.user.userId)
             }
-
         })
-        builder.addCase(authRegister.fulfilled,(state, action)=>{
+        builder.addCase(authRegister.fulfilled, (state, action) => {
             state.currentAuth = action.payload
         })
     }
