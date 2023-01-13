@@ -174,7 +174,12 @@ export default function AuthJobDetail() {
                                     <a href="" data-dismiss="modal"
                                        aria-label="Close">
                                         <button id='btn13'
-                                                onClick={() => handleFile(img, phone, userIdCurren, jobId, cv_des)}
+                                                onClick={() => handleFile(img, phone, userIdCurren, jobId, cv_des).then(()=>{
+                                                    Toast.fire({
+                                                        icon: 'success',
+                                                        title: 'Gửi thông tin thành công.'
+                                                    })
+                                                })}
                                                 type={"submit"}>Ứng tuyển ngay
                                         </button>
                                     </a>
@@ -206,7 +211,6 @@ export default function AuthJobDetail() {
                         </div>
                         <div className="col-11">
                     <div className="card-body">
-
                         <h5 className="card-title">{job?.name}</h5>
                         <h6 className="card-subtitle mb-2 text-muted" style={{marginRight: 10}}>{job?.name} ||
                             {job?.staffNumber} nhân viên</h6>
@@ -221,7 +225,6 @@ export default function AuthJobDetail() {
                 </div>
             </div>
             <AuthOtherJob></AuthOtherJob>
-
         </div>
     </div>)
 }
