@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {
     findImageByIdCompany,
     findJobByIdWork,
-    getCompany, getTopCompany, searchCompany,
+    getCompany, getTopCompany, searchCompany, setImage,
     workById,
     workEditInformation,
     workLogin,
@@ -46,6 +46,9 @@ const workSlice = createSlice({
         });
         builder.addCase(getTopCompany.fulfilled, (state, action) => {
             state.work = action.payload
+        });
+        builder.addCase(setImage.fulfilled, (state, action) => {
+            state.workImage = action.payload
         });
     }
 })

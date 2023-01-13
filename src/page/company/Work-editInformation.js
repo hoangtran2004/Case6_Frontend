@@ -2,16 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {Field, Form, Formik} from "formik";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {findImageByIdCompany, workById, workEditInformation} from "../../service/Work-service";
+import {findImageByIdCompany, setImage, workById, workEditImage, workEditInformation} from "../../service/Work-service";
 import {storage} from "../../firebase";
 import {getDownloadURL, listAll, ref, uploadBytes} from "firebase/storage";
 import {v4} from "uuid";
 import Swal from "sweetalert2";
 import {getCity} from "../../service/City-service";
 import '../../style/Work-addJob.css'
-import {string} from "yup";
 
 export default function WorkEditInformation() {
+    const idCompany = useParams().id
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {
@@ -19,13 +19,12 @@ export default function WorkEditInformation() {
         dispatch(findImageByIdCompany(idCompany))
         dispatch(getCity())
     }, [])
+    console.log(idCompany)
     const [submitting, setSubmitting] = useState(false);
-    const idCompany = useParams().id
     let companyFind = useSelector((state) => {
         return state.work.workFind
     })
     let image = useSelector((state) => {
-        console.log(state)
         return state.work.workImage
     })
     const [imageUrls, setImageUrls] = useState([]);
@@ -87,12 +86,20 @@ export default function WorkEditInformation() {
                 setIs_disable(false)
                 setImg(url)
                 setSubmitting(false)
-            });
+                let params = {
+                    companyId: idCompany,
+                    image: image
+                }
+                console.log(params)
+
+                dispatch(workEditImage(params))
+                dispatch(setImage(url))
+            })
         })
     };
     let handleChange = (event) => {
-        dispatch(workEditInformation(event))
-        dispatch(findImageByIdCompany(idCompany))
+        // dispatch(workEditInformation(event))
+        // dispatch(findImageByIdCompany(idCompany))
     }
 
     useEffect(() => {

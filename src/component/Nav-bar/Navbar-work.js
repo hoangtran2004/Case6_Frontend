@@ -1,20 +1,26 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {Link, useNavigate, useParams} from "react-router-dom";
 import '../../style/Work-navbar.css'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {findImageByIdCompany, workById} from "../../service/Work-service";
 
 function NavbarWork(props) {
-    const work = JSON.parse(localStorage.getItem('work'));
-    console.log(work)
+    let item = JSON.parse(localStorage.getItem('work'));
+    let idCompany = item.company.companyId;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const formEditInfoCompany = ({id}) => {
-        console.log(id)
         navigate('edit-company-information/' + id)
     };
     const [styleAdd, setStyleAdd] = useState({});
     const [styleEdit, setStyleEdit] = useState({});
-
+    useEffect(() => {
+        dispatch(workById(idCompany))
+        dispatch(findImageByIdCompany(idCompany))
+    }, [])
+    const imageCompany = useSelector(state => {
+        return state.work.workImage
+    })
     const checkClick = (e) => {
         if (e) {
             setStyleAdd({color: '#239baf', width: '100%', left: 0})
@@ -27,7 +33,8 @@ function NavbarWork(props) {
     const reset = () => {
         setStyleAdd({})
         setStyleEdit({})
-    }
+    };
+
 
     return (
         <div>
@@ -40,15 +47,9 @@ function NavbarWork(props) {
                     <ul className="navbar-nav">
 
                         <li className="nav-item add">
-                            <Link to={'add-job'} className={'text-navbar'} style={styleAdd} onClick={() => {checkClick(true)}}> Thêm tin tuyển dụng</Link>
-                        </li>
-                        <li className="nav-item edit">
-                            <div onClick={() => {
-                                dispatch(formEditInfoCompany({id: work.company.companyId}))
-
-                            }}>
-                                <button style={styleEdit} onClick={() => {checkClick(false)}} id={'edit'}>Thông tin doanh nghiệp</button>
-                            </div>
+                            <Link to={'add-job'} className={'text-navbar'} style={styleAdd} onClick={() => {
+                                checkClick(true)
+                            }}> Thêm tin tuyển dụng</Link>
                         </li>
                         <li className="nav-item logout">
                             <button onClick={() => {
@@ -58,7 +59,9 @@ function NavbarWork(props) {
                             </button>
                         </li>
                         <li className="nav-item li-avatar">
-                            <img src={work.company.image} alt="" id={'avatar-work'}/>
+                            <img src={imageCompany} alt="" id={'avatar-work'} onClick={() => {
+                                dispatch(formEditInfoCompany({id: idCompany}))
+                            }}/>
                         </li>
                     </ul>
                 </div>

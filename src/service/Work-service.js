@@ -22,6 +22,14 @@ export const workEditInformation = createAsyncThunk(
         return res
     }
 )
+export const workEditImage = createAsyncThunk(
+    'work/editImage',
+    async (data) => {
+        console.log(data)
+        const res = await axios.put(`http://localhost:8080/company/update-image/${data.companyId}`, data);
+        return res
+    }
+)
 export const workById = createAsyncThunk(
     'workById',
     async (id) => {
@@ -33,6 +41,7 @@ export const findImageByIdCompany = createAsyncThunk(
     'findImageByIdCompany',
     async (id) => {
         const res = await axios.get(`http://localhost:8080/company/${id}`);
+        console.log(res, 1111111111111111)
         return res.data.companyFind
     }
 )
@@ -62,5 +71,12 @@ export const getTopCompany = createAsyncThunk(
     async () => {
         const res = await axios.get(`http://localhost:8080/company/top-companies`)
         return res.data
+    }
+)
+export const setImage = createAsyncThunk(
+    'setImage',
+    async (data) => {
+        console.log(data)
+        return data
     }
 )

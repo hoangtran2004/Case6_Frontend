@@ -9,7 +9,12 @@ import ReactPaginate from "react-paginate";
 function AllCompany({currentCompanies}) {
     const navigate = useNavigate()
     const detailCompany = ({id}) => {
-        navigate('/detail-company/' + id)
+        navigate('/detail-company/' + id);
+        const get_day_of_time = (d1, d2) => {
+            let ms1 = d1.getTime();
+            let ms2 = d2.getTime();
+            return Math.ceil((ms1 - ms2) / (24 * 60 * 60 * 1000));
+        };
     };
     return (
         <>
@@ -18,6 +23,7 @@ function AllCompany({currentCompanies}) {
                 <div className="col-12 main">
                     <div className="row">
                         {currentCompanies && currentCompanies.map((item, index) => (
+
                             <div className="col-4 card-job-work">
                                 <div className="row">
                                     <div className="col-2">

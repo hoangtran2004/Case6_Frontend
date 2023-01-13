@@ -15,6 +15,11 @@ function AllJob({currentJob}) {
     const formatter = new Intl.NumberFormat('vi-VN', {
         style: 'currency', currency: 'VND',
     });
+    const get_day_of_time = (d1, d2) => {
+        let ms1 = d1.getTime();
+        let ms2 = d2.getTime();
+        return Math.ceil((ms1 - ms2) / (24 * 60 * 60 * 1000));
+    };
 
     return (
         <div>
@@ -24,7 +29,9 @@ function AllJob({currentJob}) {
                         <div className="row">
                             {
                                 currentJob && currentJob.map((item) => {
-                                        let date = item.endDate.split('-').reverse()
+                                    let date = new Date(item.endDate)
+                                    let time = new Date((new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()))
+                                    let today = get_day_of_time(date, time)
                                         return (
                                             <div className="col-5 card-job" onClick={() => {
                                                 detailJob({id: item?.jobId})
@@ -79,7 +86,7 @@ function AllJob({currentJob}) {
                                                                 height: '12px',
                                                                 objectFit: 'cover',
                                                                 marginRight: '5px'
-                                                            }}/>Thời gian hiệu lực : {date[0]}-{date[1]}-{date[2]}
+                                                            }}/>Thời gian hiệu lực : {today} ngày
 
                                                         </p>
                                                     </div>
