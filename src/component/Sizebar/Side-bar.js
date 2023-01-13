@@ -111,7 +111,7 @@ export default function SideBar() {
                        let value = values.target.value
                        return handleSearch(check, key, value)
                    }}/>
-            <label htmlFor={id} style={{marginLeft:'2%'}}>
+            <label htmlFor={id} style={{marginLeft: '2%'}}>
                 {nameCB}
             </label>
             <br/>
@@ -199,7 +199,8 @@ export default function SideBar() {
             {/*search category start*/}
             <div className="row" style={{padding: '12px'}}>
                 <div className="col-12">
-                    <p><i className="fa-solid fa-magnifying-glass" style={{opacity:0.7,marginRight:5}}></i>Lọc tìm kiếm của bạn</p>
+                    <p><i className="fa-solid fa-magnifying-glass" style={{opacity: 0.7, marginRight: 5}}></i>Lọc tìm
+                        kiếm của bạn</p>
                     <hr/>
                 </div>
             </div>
@@ -248,8 +249,8 @@ export default function SideBar() {
                         <label htmlFor="switch-1" className="switch-label">Switch</label>
                     </div>
                     {checkRange === false ? <></> : <>
-                        <div className="wrapper col-12">
-                            <div className="price-input">
+                        <div className="wrapper col-12" style={{width:'90%',marginBottom:-10}}>
+                            <div className="price-input" style={{marginTop:-25,width:'90%'}}>
                                 <div className="filed">
                                     <spap>Từ</spap>
                                     <input type="number" className="input-min" value=""/><span>triệu</span>
@@ -260,10 +261,10 @@ export default function SideBar() {
                                     <input type="number" className="input-max" value=""/><span>triệu</span>
                                 </div>
                             </div>
-                            <div className="slider">
+                            <div className="slider" style={{marginTop:-20}}>
                                 <div className="progress"></div>
                             </div>
-                            <div className="range-input">
+                            <div className="range-input" >
                                 <input defaultValue={0} type="range" name={'wageStart'}
                                        className="range-min" onChange={scripRange} min="0"
                                        max="50" step="1"/>
@@ -277,6 +278,7 @@ export default function SideBar() {
                     </>}
                 </div>
             </div>
+            <hr style={{width: '92%', marginLeft: 15}}/>
             {/*    search by money end*/}
             {/*loai cong viec*/}
             <div className="row">
