@@ -26,7 +26,7 @@ export default function WorkListCv() {
                         <thead>
                         <tr>
                             <th scope="col">STT</th>
-                            <th scope="col">Tên người dùng</th>
+                            <th scope="col">Ứng viên</th>
                             <th scope="col">Email</th>
                             <th scope="col">SĐT</th>
                             <th scope="col">Công việc ứng tuyển</th>

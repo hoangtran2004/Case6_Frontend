@@ -96,7 +96,7 @@ export default function AuthJobDetail() {
                 <h5 style={{color:'rgb(1, 126, 183)'}}>{job?.name}</h5>
                 <div style={{margin: 10}}>
                     {tokenUser ? <p style={{height: 10}}><img
-                        src="https://cdn-icons-png.flaticon.com/128/2454/2454282.png"
+                        src="https://cdn-icons-png. flaticon.com/128/2454/2454282.png"
                         alt=""
                         className="icon-description-work"/> {formatter.format(job.wageStart)} - {formatter.format(job.wageEnd)}/Tháng
                     </p> : <></>}
@@ -204,7 +204,7 @@ export default function AuthJobDetail() {
                             <img id='img' src={job?.image}
                                  alt={''}/>
                         </div>
-                        <div className="col-5">
+                        <div className="col-11">
                     <div className="card-body">
 
                         <h5 className="card-title">{job?.name}</h5>
